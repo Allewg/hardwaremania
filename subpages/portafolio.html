@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HardwareMania - Tecnología Innovadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="font-sans bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-purple-600 text-white shadow-md z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="../multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 md:h-14 md:w-14 object-contain animate-slide-right-logo hover:animate-shake">
+                <div class="animate-slide-right">
+                    <h1 class="text-4xl font-bold hover:animate-shake">Hardwaremania</h1>
+                    <h6 class="ml-4 text-purple-200 italic font-medium tracking-wide text-base bg-white bg-opacity-10 px-3 py-1 rounded shadow-sm hover:animate-shake">tecnología innovadora</h6>
+                </div>
+            </div>
+            <nav class="relative">
+                <!-- Botón hamburguesa (solo visible en móvil) -->
+                <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-purple-200 hover:border-purple-200 focus:outline-none" aria-label="Abrir menú">
+                    <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
+                </button>
+                <!-- Menú de navegación -->
+                <ul id="nav-menu" class="hidden bg-purple-700 absolute top-12 right-0 w-64 text-white flex-col space-y-4 py-4 px-6 rounded-bl-lg shadow-lg md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:py-0 md:px-0">
+                    <li>
+                        <a href="../index.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Inicio">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="portafolio.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Servicios">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Portafolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="acercadenosotros.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Quiénes Somos">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            Quiénes Somos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contacto" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Contacto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+          <!-- Main Content -->
+    <main class="pt-24 pb-10">
+        <section class="container mx-auto px-4">
+            <!-- Hero Section -->
+            <div class="text-center py-20 bg-gradient-to-r from-purple-800 to bg-purple-500 shadow-2xl animate-fade-in-slow">
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 text-white drop-shadow-lg animate-pulse-slow">Bienvenidos a mi portafolio</h2>
+                <p class="text-xl md:text-2xl mb-8 text-purple-100 font-light leading-relaxed drop-shadow-md animate-fade-in">Descubre mis proyectos innovadores en tecnología y desarrollo.</p>
+                <a href="#portfolio" class="inline-block bg-gradient-to-r from-purple-900 to-purple-700 text-white font-semibold py-3 px-8 rounded-full hover:from-purple-600 hover:to-purple-400 transition-all duration-300 transform hover:scale-105 animate-bounce-slow">Explora Mis Proyectos</a>
+            </div>
+
+            <!-- Portfolio Section -->
+            <div id="portfolio" class="py-16 rounded-lg shadow-lg bg-white"> <!-- Increased py-8 to py-16 for more spacing -->
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Mis Proyectos</h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Project 1: Montpellier Eventos -->
+                    <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                        <img src="../multimedia/images/logo-montpellier-removebg-preview.png" alt="Montpellier Eventos" class="w-auto h-48 object-cover rounded-t-lg">
+                        <h3 class="text-xl font-semibold mt-4">Centro de Eventos Montpellier</h3>
+                        <p class="text-gray-600 mt-2">Una plataforma innovadora para la gestión y promoción de eventos, diseñada con tecnología moderna y responsiva.</p>
+                    </div>
+                    <!-- Preview Iframe -->
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                        <iframe src="https://allewg.github.io/montpelliereventos/" class="w-full h-96 border-2 border-purple-300 rounded-lg" title="Previsualización de Montpellier Eventos" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <a href="https://allewg.github.io/montpelliereventos/" 
+                       class="inline-block bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-30 text-white text-lg md:text-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center" 
+                       target="_blank">
+                        Visitar proyecto
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-90 text-white py-4 rounded-t-lg shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Logo - Left Column -->
+                <div class="flex items-center space-x-4">
+                    <img src="../multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 object-contain hover:animate-shake">
+                    <div>
+                        <h2 class="text-2xl font-bold hover:animate-shake">Hardwaremania</h2>
+                        <p class="text-purple-200 text-sm hover:animate-shake">tecnología innovadora</p>
+                    </div>
+                </div>
+
+                <!-- Contact Buttons - Center Column -->
+                <div class="flex justify-center items-center gap-4 flex-wrap">
+                    <a href="tel:+56949881171" aria-label="Llamar por teléfono"
+                       class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
+                        <i class="fas fa-phone text-blue-200 text-xl"></i>
+                        <span>Llamar</span>
+                    </a>
+                    <button id="openContactModal" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
+                        <i class="fas fa-envelope text-purple-200 text-xl"></i>
+                        <span>Correo</span>
+                    </button>
+                    <a href="https://www.instagram.com/hardwaremania_sbdo/" aria-label="Visitar Instagram"
+                       class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
+                        <i class="fab fa-instagram text-pink-400 text-xl"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+
+                <!-- Copyright - Right Column -->
+                <div class="text-right">
+                    <p class="text-lg font-medium whitespace-nowrap">
+                        Marca reservada © 2025<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de contacto -->
+    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Contacto</h2>
+                <button id="closeContactModal" class="text-gray-500 hover:text-gray-700">×</button>
+            </div>
+            <form id="contactForm">
+                <div class="mb-4">
+                    <label for="name" class="block mb-2">Nombre:</label>
+                    <input type="text" id="name" required class="w-full p-2 border rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block mb-2">Email:</label>
+                    <input type="email" id="email" required class="w-full p-2 border rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block mb-2">Mensaje:</label>
+                    <textarea id="message" required class="w-full p-2 border rounded"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56949881171" 
+       class="fixed bottom-8 right-24 bg-green-500 hover:bg-green-400 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 z-50"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Botón flotante de regreso al inicio -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-500 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110"
+            aria-label="Volver al inicio">
+        <i class="fas fa-arrow-up text-2xl"></i>
+    </button>
+
+    <!-- Carga EmailJS antes de tu script -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("RQXgchjC3s70hmgoT");
+        })();
+    </script>
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+            });
+
+            // Modal de contacto
+            const openContactModal = document.getElementById('openContactModal');
+            const closeContactModal = document.getElementById('closeContactModal');
+            const contactModal = document.getElementById('contactModal');
+            const contactForm = document.getElementById('contactForm');
+
+            openContactModal.addEventListener('click', () => {
+                contactModal.classList.remove('hidden');
+            });
+
+            closeContactModal.addEventListener('click', () => {
+                contactModal.classList.add('hidden');
+            });
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                emailjs.sendForm('service_123456', 'template_123456', contactForm)
+                    .then(() => {
+                        alert('Mensaje enviado con éxito!');
+                        contactForm.reset();
+                        contactModal.classList.add('hidden');
+                    }, (error) => {
+                        alert('Error al enviar el mensaje: ' + error.text);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
