@@ -4,232 +4,757 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardwareMania - Tecnología Innovadora</title>
+    
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://images.pexels.com">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
     
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
-
-</head>
-<body class="font-sans bg-gradient-to-b from-gray-100 to-gray-300">
-
-    <!-- Header -->
-     
-    <header class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-purple-600 text-white shadow-md z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-    <img src="../multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 md:h-14 md:w-14 object-contain animate-slide-right-logo hover:animate-shake">
-    <div class="animate-slide-right">
-        <h1 class="text-4xl font-bold hover:animate-shake">Hardwaremania</h1>
-        <h6 class="ml-4 text-purple-200 italic font-medium tracking-wide text-base bg-white bg-opacity-10 px-3 py-1 rounded shadow-sm hover:animate-shake">tecnología innovadora</h6>
-    </div>
-</div>
-            <nav class="relative">
-    <!-- Botón hamburguesa (solo visible en móvil) -->
-    <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-purple-200 hover:border-purple-200 focus:outline-none" aria-label="Abrir menú">
-        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
-    </button>
-    <!-- Menú de navegación -->
-<ul id="nav-menu" class="bg-purple-700 absolute top-12 right-0 w-64 text-white flex-col space-y-4 py-4 px-6 rounded-bl-lg shadow-lg md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:py-0 md:px-0">
-  <li>
-    <a href="../index.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Inicio">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-      Inicio
-    </a>
-  </li>
-  <li>
-    <a href="portafolio.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Servicios">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-      Portafolio
-    </a>
-  </li>
-  <li>
-    <a href="acercadenosotros.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Quiénes Somos">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-      Quiénes Somos
-    </a>
-  </li>
-  <li>
-    <a href="#contacto" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Contacto">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-      Contacto
-    </a>
-  </li>
-</ul>
-
-</nav>
-        </div>
-    </header>
-<section id="quienes-somos" class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-800 to-purple-500 text-white py-12">
-    <div class="container mx-auto px-4">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        /* Fuentes fluidas */
+        :root {
+            --primary-purple: #581c87;
+            --secondary-purple: #7c3aed;
+            --light-purple: #a855f7;
+        }
         
-        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-            <!-- Ícono de grupo -->
-            <div class="md:w-1/2 flex justify-center">
-                <div class="bg-white rounded-full p-6 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-48 w-48 text-purple-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a4 4 0 00-4-4h-1m-4 6v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2h5m6-10a4 4 0 110-8 4 4 0 010 8zm6 4a4 4 0 10-8 0" />
-                    </svg>
-                </div>
-            </div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
 
-            <!-- Texto y bullets -->
-            <div class="md:w-1/2">
-                <p class="text-lg md:text-xl text-gray-200 mb-6">
-                    <strong class="text-white">Hardwaremania</strong> es una empresa líder en soluciones tecnológicas. Nos apasiona empoderar a individuos y organizaciones con herramientas de hardware y software modernas, confiables y creativas.
-                </p>
-                <ul class="space-y-4 text-gray-200 mb-6">
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 mr-2 text-white flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Soluciones personalizadas en hardware y software
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 mr-2 text-white flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path d="M9 17v-6a4 4 0 014-4h4" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M9 13H7a4 4 0 00-4 4v1h6v-1z" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Asesoría experta y cercana
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 mr-2 text-white flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path d="M12 8c.6-1.2 2-2 3.5-2s2.9.8 3.5 2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12 8v4l3 3" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M4 4h16v16H4z" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Soporte continuo postventa
-                    </li>
-                </ul>
-                <div class="flex justify-center"> 
-                    <a href="tel:+56949881171" class="inline-block bg-white text-purple-900 px-6 py-3 rounded-full font-bold shadow-lg hover:bg-purple-100 transition duration-300">
-                    Contáctanos
-                </a>
-                </div>
-                
-            </div>
-        </div>
+        /* Gradiente animado para header */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #581c87, #7c3aed, #a855f7, #581c87);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
 
-        <!-- Mapa -->
-        <div class="mt-12 shadow-2xl rounded-2xl overflow-hidden">
-            <iframe
-                class="w-full h-96 border-0 rounded-lg"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.3981760317035!2d-70.70631752440927!3d-33.59418240363916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d0f0f42068bd%3A0xc70cfdd3f2b8a162!2sValdivia%201194%2C%20San%20Bernardo%2C%20Regi%C3%B3n%20Metropolitana%2C%20Chile!5e0!3m2!1ses!2scl!4v1717949152333!5m2!1ses!2scl">
-            </iframe>
-        </div>
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animación de shake mejorada */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
+        }
+
+        .hover\:animate-shake:hover {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* Animación slide-right mejorada */
+        @keyframes slide-right {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-slide-right {
+            animation: slide-right 0.8s ease-out;
+        }
+
+        .animate-slide-right-logo {
+            animation: slide-right 0.6s ease-out;
+        }
+
+        /* Swiper personalizado */
+        .hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-swiper .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease-out;
+        }
+
+        .hero-swiper .swiper-slide-active img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay con gradiente */
+        .slide-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+        }
+
+        /* Botones CTA mejorados */
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Paginación personalizada Swiper */
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 30px;
+            border-radius: 6px;
+            background: #a855f7;
+        }
+
+        /* Botones de navegación Swiper */
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(124, 58, 237, 0.8);
+            transform: scale(1.1);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Efecto glassmorphism para nav móvil */
+        .glass-nav {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Texto responsivo fluido */
+        .hero-title {
+            font-size: clamp(1.5rem, 5vw, 3.75rem);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.875rem);
+            line-height: 1.4;
+        }
+
+        /* Modal con animación */
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Botones flotantes mejorados */
+        .floating-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fix para viewport en móviles */
+        .min-h-screen-mobile {
+            min-height: 100vh;
+            min-height: 100dvh;
+        
+        }
+    </style>
+</head>
+
+<body class="font-sans m-0 p-0 overflow-x-hidden flex flex-col min-h-screen bg-gray-100">
+ <header class="fixed top-0 w-full animated-gradient text-white shadow-md z-50">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <img src="/hardwaremania/multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 md:h-14 md:w-14 object-contain animate-slide-right-logo hover:animate-shake hover:glow-effect">
+      <div class="animate-slide-right">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold hover:animate-shake hover:glow-effect">Hardwaremania</h1>
+        <h6 class="text-purple-200 italic font-medium tracking-wide text-sm sm:text-base bg-white bg-opacity-10 px-2 md:px-3 py-1 rounded shadow-sm hover:animate-shake hover:glow-effect">tecnología innovadora</h6>
+      </div>
     </div>
+
+    <nav class="relative">
+      <!-- Botón hamburguesa (visible solo en <md) -->
+      <button id="menu-toggle" aria-expanded="false" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-purple-200 hover:border-purple-200 focus:outline-none transition hover:glow-effect" aria-label="Abrir menú">
+        <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
+      </button>
+
+      <!-- Menú de navegación: añadí 'flex flex-col' para que al quitar 'hidden' se muestre correctamente en móvil -->
+      <ul id="nav-menu" class="hidden glass-nav absolute top-12 right-0 w-64 text-white flex flex-col space-y-4 py-4 px-6 rounded-bl-lg shadow-lg md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:py-0 md:px-0">
+        <!-- ... enlaces ... -->
+        <li><a href="../index.html" class="flex items-center gap-2 font-semibold hover:text-purple-200">Inicio</a></li>
+        <li><a href="/hardwaremania/subpages/portafolio.html" class="flex items-center gap-2 font-semibold hover:text-purple-200">Portafolio</a></li>
+        <li><a href="#nosotros" class="flex items-center gap-2 font-semibold hover:text-purple-200">Quiénes Somos</a></li>
+        <li><a href="#contacto" class="flex items-center gap-2 font-semibold hover:text-purple-200">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+   <main class="flex-1 pt-20 md:pt-24 pb-10 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 backdrop-blur-lg">
+<!-- Sección "Quiénes somos" actualizada: incluye Testimonios en lugar de Equipo -->
+<section id="nosotros" class="container mx-auto px-6 py-12 md:py-16" data-aos="fade-up">
+  <!-- Encabezado -->
+  <div class="max-w-4xl mx-auto text-center mb-10">
+    <h2 class="hero-title text-3xl md:text-4xl font-extrabold text-purple-900 mb-3">Quiénes somos</h2>
+    <p class="hero-subtitle text-gray-700 max-w-3xl mx-auto">
+      En Hardwaremania unimos ingeniería, diseño y soporte para crear soluciones tecnológicas robustas, 
+      seguras y orientadas a resultados. Somos un equipo profesional comprometido con la innovación y la excelencia en cada proyecto.
+    </p>
+  </div>
+
+  <<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+  <!-- Misión -->
+  <article class="bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md hover:shadow-lg transition" data-aos="fade-right" data-aos-delay="100" aria-labelledby="mision-title">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0">
+        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl shadow">
+          <i class="fas fa-rocket" aria-hidden="true"></i>
+        </div>
+        <span class="sr-only">Ícono Misión</span>
+      </div>
+      <div>
+        <h3 id="mision-title" class="text-xl font-semibold text-purple-800 mb-2">Misión</h3>
+        <p class="text-gray-700 text-sm">
+          Diseñar e implementar soluciones tecnológicas que permitan a empresas y profesionales optimizar sus procesos, 
+          reduciendo riesgos y acelerando su transformación digital.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Visión -->
+  <article class="bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200" aria-labelledby="vision-title">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0">
+        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl shadow">
+          <i class="fas fa-eye" aria-hidden="true"></i>
+        </div>
+        <span class="sr-only">Ícono Visión</span>
+      </div>
+      <div>
+        <h3 id="vision-title" class="text-xl font-semibold text-purple-800 mb-2">Visión</h3>
+        <p class="text-gray-700 text-sm">
+          Ser referentes en soluciones integrales de infraestructura y desarrollo, reconocidos por la calidad, seguridad y el impacto en los negocios.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Valores -->
+  <article class="bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md hover:shadow-lg transition" data-aos="fade-left" data-aos-delay="300" aria-labelledby="valores-title">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0">
+        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl shadow">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+        </div>
+        <span class="sr-only">Ícono Valores</span>
+      </div>
+      <div>
+        <h3 id="valores-title" class="text-xl font-semibold text-purple-800 mb-2">Valores</h3>
+        <ul class="text-gray-700 text-sm space-y-2">
+          <li>• Integridad y transparencia</li>
+          <li>• Orientación al cliente</li>
+          <li>• Innovación continua</li>
+          <li>• Calidad y responsabilidad</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</div>
+
+
+
+  <!-- Testimonios (reemplaza la sección Equipo) -->
+  <div class="max-w-6xl mx-auto mt-6" data-aos="fade-up" data-aos-delay="400" aria-labelledby="testimonios-title">
+    <h3 id="testimonios-title" class="text-2xl font-bold text-purple-900 mb-6 text-center">Testimonios de clientes</h3>
+
+    <!-- Swiper / Carousel -->
+    <div class="testimonials-swiper hero-swiper relative">
+      <div class="swiper-wrapper">
+        <!-- Testimonio 1 -->
+        <div class="swiper-slide p-4">
+          <article class="h-full bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md flex flex-col">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl text-purple-900"><i class="fas fa-quote-left"></i></div>
+              <p class="text-gray-700 text-sm flex-grow">"Hardwaremania nos ayudó a migrar a una arquitectura cloud segura y optimizada. Redujimos costos operativos y mejoramos la disponibilidad de nuestros servicios."</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-semibold text-purple-800 text-sm">Carlos Gómez</p>
+                  <p class="text-xs text-gray-600">Gerente TI — Soluciones Logísticas S.A.</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 space-x-1 hidden sm:flex" aria-hidden="true">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="swiper-slide p-4">
+          <article class="h-full bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md flex flex-col">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl text-purple-900"><i class="fas fa-quote-left"></i></div>
+              <p class="text-gray-700 text-sm flex-grow">"El soporte post-implementación es excelente: respuestas rápidas, monitoreo proactivo y mejoras continuas. Hemos visto una verdadera alianza estratégica."</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-semibold text-purple-800 text-sm">Ana Torres</p>
+                  <p class="text-xs text-gray-600">COO — RetailPlus</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 space-x-1 hidden sm:flex" aria-hidden="true">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="swiper-slide p-4">
+          <article class="h-full bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md flex flex-col">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl text-purple-900"><i class="fas fa-quote-left"></i></div>
+              <p class="text-gray-700 text-sm flex-grow">"Proyecto entregado a tiempo y con una calidad excepcional. La comunicación fue clara y el equipo muy profesional."</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-semibold text-purple-800 text-sm">Marcos Pinto</p>
+                  <p class="text-xs text-gray-600">CEO — Fintech Nova</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 space-x-1 hidden sm:flex" aria-hidden="true">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Testimonio 4 (opcional: más) -->
+        <div class="swiper-slide p-4">
+          <article class="h-full bg-white/30 backdrop-blur-lg border border-white/40 rounded-2xl p-6 shadow-md flex flex-col">
+            <div class="flex items-start gap-4">
+              <div class="text-4xl text-purple-900"><i class="fas fa-quote-left"></i></div>
+              <p class="text-gray-700 text-sm flex-grow">"Recomendados: soporte 24/7 y planificación estratégica que nos permitió aumentar la eficiencia operativa."</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-semibold text-purple-800 text-sm">Sofía Ríos</p>
+                  <p class="text-xs text-gray-600">Directora — Servicios Médicos</p>
+                </div>
+              </div>
+              <div class="text-yellow-400 space-x-1 hidden sm:flex" aria-hidden="true">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Paginación / Navegación -->
+      <div class="swiper-pagination mt-6"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <!-- Valores resumidos / iconos pequeños -->
+  <div class="max-w-5xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="600" aria-hidden="false">
+    <div class="flex items-start gap-3 bg-white/20 backdrop-blur rounded-lg p-4">
+      <div class="text-purple-900 text-2xl"><i class="fas fa-lock"></i></div>
+      <div>
+        <h5 class="font-semibold text-purple-800">Seguridad</h5>
+        <p class="text-xs text-gray-700">Protegemos tus datos y operaciones.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-3 bg-white/20 backdrop-blur rounded-lg p-4">
+      <div class="text-purple-900 text-2xl"><i class="fas fa-cloud"></i></div>
+      <div>
+        <h5 class="font-semibold text-purple-800">Escalabilidad</h5>
+        <p class="text-xs text-gray-700">Diseños preparados para crecer contigo.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-3 bg-white/20 backdrop-blur rounded-lg p-4">
+      <div class="text-purple-900 text-2xl"><i class="fas fa-cogs"></i></div>
+      <div>
+        <h5 class="font-semibold text-purple-800">Soporte</h5>
+        <p class="text-xs text-gray-700">Atención proactiva y mantenimiento continuo.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-3 bg-white/20 backdrop-blur rounded-lg p-4">
+      <div class="text-purple-900 text-2xl"><i class="fas fa-lightbulb"></i></div>
+      <div>
+        <h5 class="font-semibold text-purple-800">Innovación</h5>
+        <p class="text-xs text-gray-700">Soluciones creativas con enfoque en resultados.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- Inicializador Swiper para Testimonios: pega esto justo después de los scripts globales o al final del body -->
+
+</main>
 
 
-
-  <footer id="contacto" class="bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-90 text-white py-4 rounded-t-lg shadow-lg">
+    <!-- Footer -->
+<footer id="contacto" class="animated-gradient text-white py-4 sm:py-6 shadow-lg"> <!-- Reduje py-6 a py-4 en mobile -->
     <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            <!-- Logo - Left Column -->
-            <div class="flex items-center space-x-4">
-                <img src="../multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 object-contain hover:animate-shake">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6"> <!-- Reduje gap-6 a gap-4 en mobile -->
+            <!-- Logo -->
+            <div class="flex items-center space-x-4" data-aos="fade-right">
+                <img src="/hardwaremania/multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-10 w-10 sm:h-12 sm:w-12 object-contain hover:animate-shake"> <!-- Reduje tamaño en mobile -->
                 <div>
-                    <h2 class="text-2xl font-bold hover:animate-shake">Hardwaremania</h2>
-                    <p class="text-purple-200 text-sm hover:animate-shake">tecnología innovadora</p>
+                    <h2 class="text-xl sm:text-2xl font-bold hover:animate-shake">Hardwaremania</h2> <!-- Reduje text-2xl a text-xl en mobile -->
+                    <p class="text-purple-200 text-xs sm:text-sm hover:animate-shake">tecnología innovadora</p> <!-- Reduje text-sm a text-xs en mobile -->
                 </div>
             </div>
-
-            <!-- Contact Buttons - Center Column -->
-            <div class="flex justify-center items-center gap-4 flex-wrap">
             
-                <a href="tel:+56949881171" aria-label="Llamar por teléfono"
-                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                    <i class="fas fa-phone text-blue-200 text-xl"></i>
-                    <span>Llamar</span>
+            <!-- Botones de Contacto -->
+            <div class="flex justify-center items-center gap-3 sm:gap-4 flex-wrap" data-aos="fade-up"> <!-- Reduje gap-4 a gap-3 en mobile -->
+                <a href="tel:+56949881171" 
+                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fas fa-phone text-blue-200 text-lg sm:text-xl"></i> <!-- Reduje text-xl a text-lg en mobile -->
                 </a>
-                <button id="openContactModal" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                    <i class="fas fa-envelope text-purple-200 text-xl"></i>
-                    <span>Correo</span>
+                <button id="openContactModal" 
+                        class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fas fa-envelope text-purple-200 text-lg sm:text-xl"></i>
                 </button>
-                <a href="https://www.instagram.com/hardwaremania_sbdo/" aria-label="Visitar Instagram"
-                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                    <i class="fab fa-instagram text-pink-400 text-xl"></i>
-                    <span>Instagram</span>
+                <a href="https://www.instagram.com/hardwaremania_sbdo/" 
+                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fab fa-instagram text-pink-400 text-lg sm:text-xl"></i>
                 </a>
             </div>
-
-            <!-- Copyright - Right Column -->
-            <div class="text-right">
-                <p class="text-lg font-medium whitespace-nowrap">
-                  Marca reservada © 2025<br>
-                
+            
+            <!-- Copyright -->
+            <div class="text-center md:text-right" data-aos="fade-left">
+                <p class="text-base sm:text-lg font-medium"> <!-- Reduje text-lg a text-base en mobile -->
+                    Marca reservada © 2025
                 </p>
             </div>
         </div>
     </div>
 </footer>
-
-
-    
-
- 
-<!-- Modal de contacto -->
-<div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg max-w-md w-full">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold">Contacto</h2>
-            <button id="closeContactModal" class="text-gray-500 hover:text-gray-700">&times;</button>
+    <!-- Modal de contacto -->
+    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="modal-enter bg-white p-8 rounded-lg max-w-md w-full shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-purple-900">Contacto</h2>
+                <button id="closeContactModal" class="text-gray-500 hover:text-gray-700 text-3xl">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="mb-4">
+                    <label for="name" class="block mb-2 font-semibold text-gray-700">Nombre:</label>
+                    <input type="text" id="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block mb-2 font-semibold text-gray-700">Email:</label>
+                    <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block mb-2 font-semibold text-gray-700">Mensaje:</label>
+                    <textarea id="message" required rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-900 to-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transition duration-300">
+                    Enviar Mensaje
+                </button>
+            </form>
         </div>
-        <form id="contactForm">
-            <div class="mb-4">
-                <label for="name" class="block mb-2">Nombre:</label>
-                <input type="text" id="name" required class="w-full p-2 border rounded">
-            </div>
-            <div class="mb-4">
-                <label for="email" class="block mb-2">Email:</label>
-                <input type="email" id="email" required class="w-full p-2 border rounded">
-            </div>
-            <div class="mb-4">
-                <label for="message" class="block mb-2">Mensaje:</label>
-                <textarea id="message" required class="w-full p-2 border rounded"></textarea>
-            </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
-        </form>
     </div>
-</div>
 
-  <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/56949881171" 
-   class="fixed bottom-8 right-24 bg-green-500 hover:bg-green-400 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 z-50"
-   aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp text-2xl"></i>
-</a>
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56949881171" 
+       class="floating-btn fixed bottom-8 right-24 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-xl z-40"
+       aria-label="Contactar por WhatsApp"
+       data-aos="zoom-in"
+       data-aos-delay="500">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
 
-<!-- Botón flotante de regreso al inicio -->
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-        class="fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-500 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110"
-        aria-label="Volver al inicio">
-    <i class="fas fa-arrow-up text-2xl"></i>
-</button>
-<!-- Carga EmailJS antes de tu script -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("RQXgchjC3s70hmgoT");
-  })();
-</script>
-<script src="../script.js"></script>
+    <!-- Botón flotante de regreso al inicio -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="floating-btn fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-700 text-white rounded-full p-4 shadow-xl z-40"
+            aria-label="Volver al inicio"
+            data-aos="zoom-in"
+            data-aos-delay="600">
+        <i class="fas fa-arrow-up text-2xl"></i>
+    </button>
 
+    <!-- Scripts -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    
+    <script>
+        // Inicializar EmailJS
+        (function(){
+            emailjs.init("RQXgchjC3s70hmgoT");
+        })();
+
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Inicializar Swiper
+        const swiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            on: {
+                slideChange: function () {
+                    // Re-inicializar AOS en cada cambio de slide
+                    AOS.refresh();
+                }
+            }
+        });
+
+        // Toggle menú móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer click en un enlace (móvil)
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Modal de contacto
+        const openContactModal = document.getElementById('openContactModal');
+        const closeContactModal = document.getElementById('closeContactModal');
+        const contactModal = document.getElementById('contactModal');
+        const contactForm = document.getElementById('contactForm');
+
+        openContactModal.addEventListener('click', () => {
+            contactModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeContactModal.addEventListener('click', () => {
+            contactModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Cerrar modal al hacer click fuera
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Enviar formulario con EmailJS
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Parámetros para EmailJS
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message
+            };
+
+            // Enviar email
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then((response) => {
+                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+                    contactForm.reset();
+                    contactModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, (error) => {
+                    alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+                    console.error('Error:', error);
+                });
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+       
+
+        // Añadir transición al header
+        header.style.transition = 'transform 0.3s ease-in-out';
+
+        // Pausar autoplay al hover (desktop)
+        const heroSwiper = document.querySelector('.hero-swiper');
+        if (window.innerWidth > 768) {
+            heroSwiper.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+            
+            heroSwiper.addEventListener('mouseleave', () => {
+                swiper.autoplay.start();
+            });
+        }
+
+        // Lazy loading para imágenes
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Prevenir zoom en inputs en iOS
+        const viewport = document.querySelector('meta[name=viewport]');
+        if (viewport && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            document.querySelectorAll('input, textarea, select').forEach(element => {
+                element.addEventListener('focus', () => {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
+                });
+                element.addEventListener('blur', () => {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+                });
+            });
+        }
+
+        // Performance: Reducir animaciones en dispositivos con preferencia
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            swiper.params.speed = 0;
+            swiper.params.autoplay.delay = 0;
+            AOS.init({ disable: true });
+        }
+    </script>
 </body>
 </html>

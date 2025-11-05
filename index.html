@@ -2,244 +2,731 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HardwareMania - Tecnología Innovadora</title>
+    
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://images.pexels.com">
+    
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        /* Fuentes fluidas */
+        :root {
+            --primary-purple: #581c87;
+            --secondary-purple: #7c3aed;
+            --light-purple: #a855f7;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Gradiente animado para header */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #581c87, #7c3aed, #a855f7, #581c87);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animación de shake mejorada */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
+        }
+
+        .hover\:animate-shake:hover {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* Animación slide-right mejorada */
+        @keyframes slide-right {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-slide-right {
+            animation: slide-right 0.8s ease-out;
+        }
+
+        .animate-slide-right-logo {
+            animation: slide-right 0.6s ease-out;
+        }
+
+        /* Swiper personalizado */
+        .hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-swiper .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease-out;
+        }
+
+        .hero-swiper .swiper-slide-active img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay con gradiente */
+        .slide-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+        }
+
+        /* Botones CTA mejorados */
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Paginación personalizada Swiper */
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 30px;
+            border-radius: 6px;
+            background: #a855f7;
+        }
+
+        /* Botones de navegación Swiper */
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(124, 58, 237, 0.8);
+            transform: scale(1.1);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Efecto glassmorphism para nav móvil */
+        .glass-nav {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Texto responsivo fluido */
+        .hero-title {
+            font-size: clamp(1.5rem, 5vw, 3.75rem);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.875rem);
+            line-height: 1.4;
+        }
+
+        /* Modal con animación */
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Botones flotantes mejorados */
+        .floating-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fix para viewport en móviles */
+        .min-h-screen-mobile {
+            min-height: 100vh;
+            min-height: 100dvh;
+        
+        }
+    </style>
 </head>
-<body class="font-sans md:h-screen ">
 
-    <!-- Header -->
-    <header class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-purple-600 text-white shadow-md z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 md:h-14 md:w-14 object-contain animate-slide-right-logo hover:animate-shake">
-                <div class="animate-slide-right">
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold w-full text-center md:text-left hover:animate-shake">Hardwaremania</h1>
-<h6 class="ml-0 sm:ml-2 md:ml-4 text-purple-200 italic font-medium tracking-wide text-sm sm:text-base bg-white bg-opacity-10 px-1 sm:px-2 md:px-3 py-0.5 sm:py-1 md:py-1 rounded shadow-sm hover:animate-shake">tecnología innovadora</h6>
-                </div>
+<body class="font-sans m-0 p-0 overflow-x-hidden">
+  <!-- Header -->
+<header class="fixed top-0 w-full animated-gradient text-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <img src="/hardwaremania/multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 md:h-14 md:w-14 object-contain animate-slide-right-logo hover:animate-shake hover:glow-effect">
+            <div class="animate-slide-right">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold hover:animate-shake hover:glow-effect">Hardwaremania</h1>
+                <h6 class="text-purple-200 italic font-medium tracking-wide text-sm sm:text-base bg-white bg-opacity-10 px-2 md:px-3 py-1 rounded shadow-sm hover:animate-shake hover:glow-effect">tecnología innovadora</h6>
             </div>
-            <nav class="relative">
-                <!-- Botón hamburguesa (solo visible en móvil) -->
-                <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-purple-200 hover:border-purple-200 focus:outline-none" aria-label="Abrir menú">
-                    <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/></svg>
-                </button>
-                <!-- Menú de navegación -->
-                <ul id="nav-menu" class="hidden bg-purple-700 absolute top-12 right-0 w-64 text-white flex-col space-y-4 py-4 px-6 rounded-bl-lg shadow-lg md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:py-0 md:px-0">
-                    <li>
-                        <a href="index.html#home" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Inicio">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Inicio
-                        </a>
-                    </li>
-                    <li>
-                        <a href="subpages/portafolio.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Servicios">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Portafolio
-                        </a>
-                    </li>
-                    <li>
-                        <a href="subpages/acercadenosotros.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Quiénes Somos">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            Quiénes Somos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contacto" class="flex items-center gap-2 hover:text-purple-200 hover:underline hover:shadow-lg transition duration-300 font-semibold" aria-label="Ir a la sección de Contacto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
-    </header>
-<body class="font-sans h-screen w-screen m-0 p-0">
- <main class="pt-0 sm:pt-24 pb-0 h-screen w-screen flex flex-col">
-        <section id="home" class="h-full w-full">
-            <div class="relative w-full h-full overflow-hidden bg-transparent">
-                <div class="carousel flex transition-transform duration-500 w-full h-full">
-                    <!-- Slide 1: Soporte Técnico -->
-                    <div class="relative w-full h-full flex-shrink-0">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1024&q=80" alt="Soporte Técnico" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 p-4 overflow-y-auto">
-                            <h2 class="text-2xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl text-center">Soporte Técnico Profesional</h2>
-                            <p class="text-lg md:text-3xl text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center">
-                                Soluciones rápidas y seguras para tus equipos.<br>
-                                ¡Confía en nosotros y mantén tu tecnología siempre activa!
-                            </p>
-                            <a href="whatsapp://send?phone=56949881171&text=¡Hola! Estoy interesado en cotizar el servicio de Soporte Técnico Profesional. ¿Podrías darme más información?" class="bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-30 text-white text-lg md:text-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center">
-                                ¡Trabaja con Hardwaremania!
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Slide 2: Desarrollo Web -->
-                    <div class="relative w-full h-full flex-shrink-0">
-                        <img src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1024" alt="Desarrollo Web" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 p-4 overflow-y-auto">
-                            <h2 class="text-2xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl text-center">Desarrollo Web a tu Medida</h2>
-                            <p class="text-lg md:text-3xl text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center">
-                                Impulsa tu presencia digital con sitios modernos y responsivos.<br>
-                                ¡Haz crecer tu negocio en línea con nosotros!
-                            </p>
-                            <a href="whatsapp://send?phone=56949881171&text=¡Hola! Estoy interesado en cotizar el servicio de Desarrollo Web a tu Medida. ¿Podrías darme más información?" class="inline-block bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-30 text-white text-lg md:text-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center">
-                                ¡Solicita tu web hoy!
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Slide 3: Publicidad SEO -->
-                    <div class="relative w-full h-full flex-shrink-0">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1024&q=80" alt="Publicidad SEO" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 p-4 overflow-y-auto">
-                            <h2 class="text-2xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl text-center">Publicidad y SEO Efectivo</h2>
-                            <p class="text-lg md:text-3xl text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center">
-                                Aumenta tu visibilidad y atrae más clientes.<br>
-                                ¡Deja que tu marca destaque en Internet con Hardwaremania!
-                            </p>
-                            <a href="whatsapp://send?phone=56949881171&text=¡Hola! Estoy interesado en cotizar el servicio de Publicidad y SEO Efectivo. ¿Podrías darme más información?" class="inline-block bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-30 text-white text-lg md:text-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center">
-                                ¡Potencia tu negocio!
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Slide 4: Inteligencia Artificial -->
-                    <div class="relative w-full h-full flex-shrink-0">
-                        <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1024" alt="Inteligencia Artificial" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 p-4 overflow-y-auto">
-                            <h2 class="text-2xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl text-center">Soluciones con Inteligencia Artificial</h2>
-                            <p class="text-lg md:text-3xl text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center">
-                                Automatiza y personaliza tus procesos.<br>
-                                ¡Lleva tu empresa al siguiente nivel con innovación!
-                            </p>
-                            <a href="whatsapp://send?phone=56949881171&text=¡Hola! Estoy interesado en cotizar el servicio de Soluciones con Inteligencia Artificial. ¿Podrías darme más información?" class="inline-block bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-30 text-white text-lg mdtext-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center">
-                                ¡Descubre la IA con nosotros!
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Slide 5: Desarrollo de Aplicaciones -->
-                    <div class="relative w-full h-full flex-shrink-0">
-                        <img src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1024" alt="Desarrollo de Aplicaciones" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-40 p-4 overflow-y-auto">
-                            <h2 class="text-2xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-2xl text-center">Desarrollo de Aplicaciones</h2>
-                            <p class="text-lg md:text-3xl text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center">
-                                Aplicaciones móviles y de escritorio personalizadas.<br>
-                                ¡Haz realidad tus ideas con software a medida!
-                            </p>
-                            <a href="whatsapp://send?phone=56949881171&text=¡Hola! Estoy interesado en cotizar el servicio de Desarrollo de Aplicaciones. ¿Podrías darme más información?" class="inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-6 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-50 transition text-center">
-                                ¡Desarrolla tu app ahora!
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Navigation Buttons -->
-                <button class="prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-purple-600 transition" aria-label="Imagen anterior">❮</button>
-                <button class="next absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full hover:bg-purple-600 transition" aria-label="Imagen siguiente">❯</button>
-                <!-- Dots Navigation -->
-                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    <span class="carousel-dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer hover:bg-purple-500 transition"></span>
-                    <span class="carousel-dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer hover:bg-purple-500 transition"></span>
-                    <span class="carousel-dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer hover:bg-purple-500 transition"></span>
-                    <span class="carousel-dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer hover:bg-purple-500 transition"></span>
-                    <span class="carousel-dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer hover:bg-purple-500 transition"></span>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer id="contacto" class="bg-gradient-to-r from-purple-900 to-purple-600 bg-opacity-90 text-white py-4 rounded-t-lg shadow-lg">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <!-- Logo - Left Column -->
-                <div class="flex items-center space-x-4">
-                    <img src="multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-12 w-12 object-contain hover:animate-shake">
-                    <div>
-                        <h2 class="text-2xl font-bold hover:animate-shake">Hardwaremania</h2>
-                        <p class="text-purple-200 text-sm hover:animate-shake">tecnología innovadora</p>
-                    </div>
-                </div>
-                <!-- Contact Buttons - Center Column -->
-                <div class="flex justify-center items-center gap-4 flex-wrap">
-                    <a href="tel:+56949881171" aria-label="Llamar por teléfono"
-                       class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                        <i class="fas fa-phone text-blue-200 text-xl"></i>
-                        <span>Llamar</span>
+        
+        <nav class="relative">
+            <!-- Botón hamburguesa -->
+            <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-purple-200 hover:border-purple-200 focus:outline-none transition hover:glow-effect" aria-label="Abrir menú">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+                    <path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z"/>
+                </svg>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <ul id="nav-menu" class="hidden glass-nav absolute top-12 right-0 w-64 text-white flex-col space-y-4 py-4 px-6 rounded-bl-lg shadow-lg md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:py-0 md:px-0">
+                <li data-aos="fade-down" data-aos-delay="100" class="hover:shadow-effect">
+                    <a href="#home" class="flex items-center gap-2 hover:text-purple-200 hover:underline transition duration-300 font-semibold hover:glow-effect" aria-label="Ir a la sección de Inicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Inicio
                     </a>
-                    <button id="openContactModal" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                        <i class="fas fa-envelope text-purple-200 text-xl"></i>
-                        <span>Correo</span>
-                    </button>
-                    <a href="https://www.instagram.com/hardwaremania_sbdo/" aria-label="Visitar Instagram"
-                       class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-4 py-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-300">
-                        <i class="fab fa-instagram text-pink-400 text-xl"></i>
-                        <span>Instagram</span>
+                </li>
+                <li data-aos="fade-down" data-aos-delay="200" class="hover:shadow-effect">
+                    <a href="subpages/portafolio.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline transition duration-300 font-semibold hover:glow-effect" aria-label="Ir a Portafolio">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Portafolio
                     </a>
-                </div>
-                <!-- Copyright - Right Column -->
-                <div class="text-right">
-                    <p class="text-lg font-medium whitespace-nowrap">
-                        Marca reservada © 2025<br>
+                </li>
+                <li data-aos="fade-down" data-aos-delay="300" class="hover:shadow-effect">
+                    <a href="subpages/acercadenosotros.html" class="flex items-center gap-2 hover:text-purple-200 hover:underline transition duration-300 font-semibold hover:glow-effect" aria-label="Ir a Quiénes Somos">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        Quiénes Somos
+                    </a>
+                </li>
+                <li data-aos="fade-down" data-aos-delay="400" class="hover:shadow-effect">
+                    <a href="#contacto" class="flex items-center gap-2 hover:text-purple-200 hover:underline transition duration-300 font-semibold hover:glow-effect" aria-label="Ir a Contacto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <main class="pt-20 md:pt-24">
+       <!-- Hero Section con Swiper (optimizado para full screen en desktop y móvil) -->
+<section id="home" class="w-full h-screen relative overflow-hidden"> <!-- h-screen para full viewport; overflow-hidden para no scroll interno -->
+    <div class="swiper hero-swiper h-full w-full"> <!-- h-full w-full para llenar la section -->
+        <div class="swiper-wrapper">
+            <!-- Slide 1: Soporte Técnico -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative"> <!-- h-full w-full + flex para centrar overlay -->
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                     alt="Soporte Técnico" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover"> <!-- object-cover para full sin distorsión; inset-0 para posicionar sobre slide -->
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10"> <!-- z-10 para overlay sobre img -->
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Soporte Técnico Profesional
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Soluciones rápidas y seguras para tus equipos.<br>
+                        ¡Confía en nosotros y mantén tu tecnología siempre activa!
                     </p>
+                    <a href="https://wa.me/56949881171?text=¡Hola!%20Estoy%20interesado%20en%20cotizar%20el%20servicio%20de%20Soporte%20Técnico%20Profesional" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Trabaja con Hardwaremania!
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Desarrollo Web -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative">
+                <img src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                     alt="Desarrollo Web" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10">
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Desarrollo Web a tu Medida
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Impulsa tu presencia digital con sitios modernos y responsivos.<br>
+                        ¡Haz crecer tu negocio en línea con nosotros!
+                    </p>
+                    <a href="https://wa.me/56949881171?text=¡Hola!%20Estoy%20interesado%20en%20cotizar%20el%20servicio%20de%20Desarrollo%20Web" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Solicita tu web hoy!
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Publicidad SEO -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                     alt="Publicidad SEO" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10">
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Publicidad y SEO Efectivo
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Aumenta tu visibilidad y atrae más clientes.<br>
+                        ¡Deja que tu marca destaque en Internet!
+                    </p>
+                    <a href="https://wa.me/56949881171?text=¡Hola!%20Estoy%20interesado%20en%20cotizar%20el%20servicio%20de%20Publicidad%20y%20SEO" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Potencia tu negocio!
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Inteligencia Artificial -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative">
+                <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                     alt="Inteligencia Artificial" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10">
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Soluciones con Inteligencia Artificial
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Automatiza y personaliza tus procesos.<br>
+                        ¡Lleva tu empresa al siguiente nivel con innovación!
+                    </p>
+                    <a href="https://wa.me/56949881171?text=¡Hola!%20Estoy%20interesado%20en%20cotizar%20el%20servicio%20de%20Inteligencia%20Artificial" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Descubre la IA con nosotros!
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Desarrollo de Aplicaciones -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative">
+                <img src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                     alt="Desarrollo de Aplicaciones" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10">
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Desarrollo de Aplicaciones
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Aplicaciones móviles y de escritorio personalizadas.<br>
+                        ¡Haz realidad tus ideas con software a medida!
+                    </p>
+                    <a href="https://wa.me/56949881171?text=¡Hola!%20Estoy%20interesado%20en%20cotizar%20el%20servicio%20de%20Desarrollo%20de%20Aplicaciones" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Desarrolla tu app ahora!
+                    </a>
+                </div>
+            </div>
+            <!-- Slide 6: Portafolio (nuevo slide con imagen profesional y CTA) -->
+            <div class="swiper-slide h-full w-full flex items-center justify-center relative">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                     alt="Portafolio de Éxitos" 
+                     loading="lazy"
+                     class="absolute inset-0 w-full h-full object-cover"> <!-- Imagen profesional: equipo revisando portafolio en oficina moderna -->
+                <div class="absolute inset-0 slide-overlay flex flex-col justify-center items-center p-4 z-10">
+                    <h2 class="hero-title font-extrabold text-white mb-4 drop-shadow-2xl text-center" data-aos="fade-up">
+                        Nuestro Portafolio de Éxitos
+                    </h2>
+                    <p class="hero-subtitle text-purple-200 font-semibold mb-6 drop-shadow-2xl text-center max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+                        Explora proyectos reales que hemos transformado en realidad.<br>
+                        ¡Descubre cómo podemos elevar tu visión con profesionalismo y creatividad!
+                    </p>
+                    <a href="subpages/portafolio.html" 
+                       class="cta-button inline-block bg-gradient-to-r from-purple-900 to-purple-600 text-white text-lg md:text-2xl px-8 py-4 rounded-full font-bold shadow-lg" 
+                       data-aos="zoom-in" 
+                       data-aos-delay="400">
+                        ¡Explora Nuestro Portafolio!
+                    </a>
                 </div>
             </div>
         </div>
-    </footer>
+        
+        <!-- Navegación (posicionada fuera del slide para no interferir) -->
+        <div class="swiper-button-next absolute top-1/2 -right-4 lg:right-4 transform -translate-y-1/2 z-20"></div>
+        <div class="swiper-button-prev absolute top-1/2 -left-4 lg:left-4 transform -translate-y-1/2 z-20"></div>
+        <div class="swiper-pagination absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20"></div>
+    </div>
+</section>
+    </main>
 
+    <!-- Footer -->
+<footer id="contacto" class="animated-gradient text-white py-4 sm:py-6 shadow-lg"> <!-- Reduje py-6 a py-4 en mobile -->
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6"> <!-- Reduje gap-6 a gap-4 en mobile -->
+            <!-- Logo -->
+            <div class="flex items-center space-x-4" data-aos="fade-right">
+                <img src="/hardwaremania/multimedia/images/logo1.png" alt="Logo HardwareMania" class="h-10 w-10 sm:h-12 sm:w-12 object-contain hover:animate-shake"> <!-- Reduje tamaño en mobile -->
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold hover:animate-shake">Hardwaremania</h2> <!-- Reduje text-2xl a text-xl en mobile -->
+                    <p class="text-purple-200 text-xs sm:text-sm hover:animate-shake">tecnología innovadora</p> <!-- Reduje text-sm a text-xs en mobile -->
+                </div>
+            </div>
+            
+            <!-- Botones de Contacto -->
+            <div class="flex justify-center items-center gap-3 sm:gap-4 flex-wrap" data-aos="fade-up"> <!-- Reduje gap-4 a gap-3 en mobile -->
+                <a href="tel:+56949881171" 
+                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fas fa-phone text-blue-200 text-lg sm:text-xl"></i> <!-- Reduje text-xl a text-lg en mobile -->
+                </a>
+                <button id="openContactModal" 
+                        class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fas fa-envelope text-purple-200 text-lg sm:text-xl"></i>
+                </button>
+                <a href="https://www.instagram.com/hardwaremania_sbdo/" 
+                   class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition duration-300">
+                    <i class="fab fa-instagram text-pink-400 text-lg sm:text-xl"></i>
+                </a>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="text-center md:text-right" data-aos="fade-left">
+                <p class="text-base sm:text-lg font-medium"> <!-- Reduje text-lg a text-base en mobile -->
+                    Marca reservada © 2025
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
     <!-- Modal de contacto -->
-    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg max-w-md w-full">
+    <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="modal-enter bg-white p-8 rounded-lg max-w-md w-full shadow-2xl">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Contacto</h2>
-                <button id="closeContactModal" class="text-gray-500 hover:text-gray-700">×</button>
+                <h2 class="text-2xl font-bold text-purple-900">Contacto</h2>
+                <button id="closeContactModal" class="text-gray-500 hover:text-gray-700 text-3xl">&times;</button>
             </div>
             <form id="contactForm">
                 <div class="mb-4">
-                    <label for="name" class="block mb-2">Nombre:</label>
-                    <input type="text" id="name" required class="w-full p-2 border rounded">
+                    <label for="name" class="block mb-2 font-semibold text-gray-700">Nombre:</label>
+                    <input type="text" id="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition">
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block mb-2">Email:</label>
-                    <input type="email" id="email" required class="w-full p-2 border rounded">
+                    <label for="email" class="block mb-2 font-semibold text-gray-700">Email:</label>
+                    <input type="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition">
                 </div>
                 <div class="mb-4">
-                    <label for="message" class="block mb-2">Mensaje:</label>
-                    <textarea id="message" required class="w-full p-2 border rounded"></textarea>
+                    <label for="message" class="block mb-2 font-semibold text-gray-700">Mensaje:</label>
+                    <textarea id="message" required rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition"></textarea>
                 </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-900 to-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg transition duration-300">
+                    Enviar Mensaje
+                </button>
             </form>
         </div>
     </div>
 
-  <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/56949881171" 
-   class="fixed bottom-8 right-24 bg-green-500 hover:bg-green-400 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110 z-50"
-   aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp text-2xl"></i>
-</a>
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/56949881171" 
+       class="floating-btn fixed bottom-8 right-24 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-xl z-40"
+       aria-label="Contactar por WhatsApp"
+       data-aos="zoom-in"
+       data-aos-delay="500">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
 
-<!-- Botón flotante de regreso al inicio -->
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-        class="fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-500 text-white rounded-full p-4 shadow-xl transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-110"
-        aria-label="Volver al inicio">
-    <i class="fas fa-arrow-up text-2xl"></i>
-</button>
+    <!-- Botón flotante de regreso al inicio -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="floating-btn fixed bottom-8 right-8 bg-purple-600 hover:bg-purple-700 text-white rounded-full p-4 shadow-xl z-40"
+            aria-label="Volver al inicio"
+            data-aos="zoom-in"
+            data-aos-delay="600">
+        <i class="fas fa-arrow-up text-2xl"></i>
+    </button>
+
+    <!-- Scripts -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-
-    <!-- Carga EmailJS antes de tu script -->
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    
     <script>
+        // Inicializar EmailJS
         (function(){
             emailjs.init("RQXgchjC3s70hmgoT");
         })();
+
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Inicializar Swiper
+        const swiper = new Swiper('.hero-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            on: {
+                slideChange: function () {
+                    // Re-inicializar AOS en cada cambio de slide
+                    AOS.refresh();
+                }
+            }
+        });
+
+        // Toggle menú móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al hacer click en un enlace (móvil)
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Modal de contacto
+        const openContactModal = document.getElementById('openContactModal');
+        const closeContactModal = document.getElementById('closeContactModal');
+        const contactModal = document.getElementById('contactModal');
+        const contactForm = document.getElementById('contactForm');
+
+        openContactModal.addEventListener('click', () => {
+            contactModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeContactModal.addEventListener('click', () => {
+            contactModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Cerrar modal al hacer click fuera
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Enviar formulario con EmailJS
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Parámetros para EmailJS
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message
+            };
+
+            // Enviar email
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then((response) => {
+                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+                    contactForm.reset();
+                    contactModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, (error) => {
+                    alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+                    console.error('Error:', error);
+                });
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+       
+
+        // Añadir transición al header
+        header.style.transition = 'transform 0.3s ease-in-out';
+
+        // Pausar autoplay al hover (desktop)
+        const heroSwiper = document.querySelector('.hero-swiper');
+        if (window.innerWidth > 768) {
+            heroSwiper.addEventListener('mouseenter', () => {
+                swiper.autoplay.stop();
+            });
+            
+            heroSwiper.addEventListener('mouseleave', () => {
+                swiper.autoplay.start();
+            });
+        }
+
+        // Lazy loading para imágenes
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Prevenir zoom en inputs en iOS
+        const viewport = document.querySelector('meta[name=viewport]');
+        if (viewport && /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            document.querySelectorAll('input, textarea, select').forEach(element => {
+                element.addEventListener('focus', () => {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
+                });
+                element.addEventListener('blur', () => {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+                });
+            });
+        }
+
+        // Performance: Reducir animaciones en dispositivos con preferencia
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            swiper.params.speed = 0;
+            swiper.params.autoplay.delay = 0;
+            AOS.init({ disable: true });
+        }
     </script>
-    <script src="script.js"></script>
 </body>
-</html>
+</html
