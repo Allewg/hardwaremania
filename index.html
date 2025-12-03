@@ -119,8 +119,20 @@
         }
         /* Efecto glassmorphism para nav móvil */
         .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        /* Header mejorado */
+        header {
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        header:hover {
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
         }
         /* Texto responsivo */
         .hero-title {
@@ -146,10 +158,26 @@
         /* Botones flotantes mejorados */
         .floating-btn {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .floating-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        /* Efecto de entrada suave para secciones */
+        section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Scroll suave */
         html {
@@ -165,12 +193,17 @@
             display: flex;
             justify-content: center;
             align-items: stretch;
-            padding: 0.5rem;
+            height: auto;
             box-sizing: border-box;
         }
         /* Que la tarjeta ocupe todo el slide disponible */
         .portfolio-swiper .group {
             width: 100%;
+        }
+        /* Asegurar altura uniforme en todas las tarjetas */
+        .portfolio-swiper .swiper-slide > div {
+            width: 100%;
+            height: 100%;
         }
         /* Swiper de Servicios - asegurar que cada slide centre su contenido */
         .servicios-swiper .swiper-slide {
@@ -191,20 +224,31 @@
             color: #581c87; /* text-purple-900 */
             font-weight: 800; /* extrabold */
         }
-        /* Overlay con gradiente */
+        /* Overlay con gradiente mejorado */
         .slide-overlay {
             background: linear-gradient(
                 to bottom,
-                rgba(0, 0, 0, 0.3) 0%,
-                rgba(0, 0, 0, 0.5) 50%,
-                rgba(0, 0, 0, 0.7) 100%
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(88, 28, 135, 0.3) 30%,
+                rgba(0, 0, 0, 0.6) 70%,
+                rgba(0, 0, 0, 0.8) 100%
             );
+        }
+        /* Efecto de brillo en títulos del hero */
+        .hero-title {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(168, 85, 247, 0.3);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(168, 85, 247, 0.3); }
+            50% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 30px rgba(168, 85, 247, 0.6); }
         }
         /* Botones CTA mejorados */
         .cta-button {
             position: relative;
             overflow: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(88, 28, 135, 0.4);
         }
         .cta-button::before {
             content: '';
@@ -218,13 +262,26 @@
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
         .cta-button:hover::before {
             width: 400px;
             height: 400px;
         }
+        .cta-button:hover::after {
+            left: 100%;
+        }
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
         }
         /* Estilos para botón de Mercado Pago - manteniendo funcionalidad pero con estilo del sitio */
         [name="MP-payButton"] {
@@ -242,8 +299,163 @@
         }
         [name="MP-payButton"]:hover {
             background: linear-gradient(to right, #6b21a8, #6d28d9) !important;
-            transform: scale(1.05) !important;
-            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.4) !important;
+            transform: scale(1.05) translateY(-2px) !important;
+            box-shadow: 0 12px 25px rgba(124, 58, 237, 0.5) !important;
+        }
+        /* Tarjetas de servicios mejoradas */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        .service-card:hover::before {
+            left: 100%;
+        }
+        /* Badges mejorados */
+        .badge-new {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .badge-recommended {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(16, 185, 129, 0.7); }
+        }
+        /* Tarjetas de portafolio mejoradas */
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-card .image-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+        }
+        .portfolio-card:hover img {
+            transform: scale(1.15);
+            filter: brightness(1.15) saturate(1.2);
+        }
+        .portfolio-card .card-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 1.75rem;
+            min-height: 280px;
+        }
+        .portfolio-card .card-title {
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+        .portfolio-card .card-description {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            min-height: 5rem;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            line-height: 1.7;
+            padding: 0 0.25rem;
+            color: #4b5563;
+        }
+        .portfolio-card .card-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.025em;
+        }
+        .portfolio-card .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #7c3aed, transparent);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+        .portfolio-card .card-button {
+            margin-top: auto;
+            width: 100%;
+        }
+        /* Testimonios mejorados */
+        .testimonial-card {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(88, 28, 135, 0.2);
+        }
+        /* Modal mejorado */
+        .modal-content {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        /* Íconos de valor mejorados */
+        .value-icon {
+            transition: all 0.3s ease;
+        }
+        .value-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+            color: #7c3aed;
+        }
+        /* Footer mejorado */
+        footer {
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+        /* Botones flotantes mejorados */
+        .floating-btn {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .floating-btn:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+        /* Smooth scroll mejorado */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
     </style>
     <script>
@@ -423,8 +635,6 @@
                     </div>
                 </div>
                 <!-- Controles -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
@@ -433,9 +643,9 @@
         <section id="servicios" class="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-16">
             <div class="container mx-auto px-6">
                 <!-- Encabezado -->
-                <div class="text-center mb-16">
-                    <h2 class="flex items-center justify-center gap-3 p-4 rounded shadow-lg mb-6 text-4xl md:text-5xl font-extrabold text-purple-800 flex-col md:flex-row">
-                        <i class="fas fa-cogs text-3xl md:text-4xl"></i>
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="flex items-center justify-center gap-3 p-4 rounded-xl bg-white/50 backdrop-blur-sm shadow-lg mb-6 text-4xl md:text-5xl font-extrabold text-purple-800 flex-col md:flex-row border border-purple-200/50">
+                        <i class="fas fa-cogs text-3xl md:text-4xl text-purple-600"></i>
                         <span class="text-center">Nuestros Servicios</span>
                     </h2>
                     <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
@@ -448,7 +658,7 @@
                     <div class="swiper-wrapper">
                         <!-- Servicio 1: Soporte Técnico Profesional -->
                         <div class="swiper-slide">
-                            <div class="bg-white/80 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl p-8 transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                            <div class="service-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-3xl shadow-xl p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-400/70 flex flex-col h-full">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 text-white mb-4">
                                         <i class="fas fa-headset text-3xl"></i>
@@ -488,7 +698,7 @@
 
                         <!-- Servicio 2: Creación de Sitios Web -->
                         <div class="swiper-slide">
-                            <div class="bg-white/80 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl p-8 transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                            <div class="service-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-3xl shadow-xl p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-400/70 flex flex-col h-full">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 text-white mb-4">
                                         <i class="fas fa-globe text-3xl"></i>
@@ -527,7 +737,7 @@
 
                         <!-- Servicio 3: Automatización de Redes Sociales con IA -->
                         <div class="swiper-slide">
-                            <div class="bg-white/80 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl p-8 transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                            <div class="service-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-3xl shadow-xl p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-400/70 flex flex-col h-full">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 text-white mb-4">
                                         <i class="fas fa-robot text-3xl"></i>
@@ -567,7 +777,7 @@
 
                         <!-- Servicio 4: Desarrollo de Aplicaciones -->
                         <div class="swiper-slide">
-                            <div class="bg-white/80 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl p-8 transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                            <div class="service-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-3xl shadow-xl p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-400/70 flex flex-col h-full">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 text-white mb-4">
                                         <i class="fas fa-mobile-alt text-3xl"></i>
@@ -605,7 +815,7 @@
 
                         <!-- Servicio 5: Publicidad y SEO Efectivo -->
                         <div class="swiper-slide">
-                            <div class="bg-white/80 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl p-8 transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                            <div class="service-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-3xl shadow-xl p-8 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-400/70 flex flex-col h-full">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 text-white mb-4">
                                         <i class="fas fa-bullhorn text-3xl"></i>
@@ -656,9 +866,9 @@
         <section id="portafolio" class="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-16">
   <div class="container mx-auto px-6 ">
     <!-- Encabezado -->
-    <div class="text-center mb-16">
-   <h2 class="flex items-center justify-center gap-3 p-4 rounded shadow-lg mb-6 text-4xl md:text-5xl font-extrabold text-purple-800 flex-col md:flex-row">
-  <i class="fas fa-briefcase text-3xl md:text-4xl"></i>
+    <div class="text-center mb-16" data-aos="fade-up">
+   <h2 class="flex items-center justify-center gap-3 p-4 rounded-xl bg-white/50 backdrop-blur-sm shadow-lg mb-6 text-4xl md:text-5xl font-extrabold text-purple-800 flex-col md:flex-row border border-purple-200/50">
+  <i class="fas fa-briefcase text-3xl md:text-4xl text-purple-600"></i>
   <span class="text-center">Nuestro Portafolio</span>
 </h2>
       <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
@@ -676,63 +886,63 @@
       <div class="swiper-wrapper">
 
          <!-- Proyecto 1 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/nexo deportes.png" class="w-full h-44 object-cover rounded-t-3xl" alt="Nexo Deportes" />
-              <div class="absolute top-4 right-4 bg-green-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg">Nuevo</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/nexo deportes.png" alt="Nexo Deportes" />
+              <div class="absolute top-4 right-4 badge-new text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Nuevo</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Nexo Deportes</h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Centro de entrenamiento personalizado.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Nexo Deportes</h3>
+              <p class="card-description text-gray-700 text-sm">Centro especializado en entrenamiento personalizado que ofrece programas adaptados a las necesidades individuales de cada cliente. Nuestro sitio web destaca por su diseño moderno y funcional, facilitando la reserva de sesiones y el acceso a información sobre servicios de fitness y bienestar.</p>
               <a href="https://allewg.github.io/nexodeportes" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
+                       transition-all duration-300 flex items-center justify-center gap-2">
                 <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
           </div>
         </div>
         <!-- Proyecto 2 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/montpellier.png" class="w-full h-44 object-cover rounded-t-3xl" alt="Montpellier" />
-              <div class="absolute top-4 right-4 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">Recomendado</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/montpellier.png" alt="Montpellier" />
+              <div class="absolute top-4 right-4 badge-recommended text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Recomendado</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Montpellier Eventos</h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Centro de eventos con propuestas elegantes para celebraciones.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Montpellier Eventos</h3>
+              <p class="card-description text-gray-700 text-sm">Prestigioso centro de eventos especializado en crear celebraciones inolvidables con propuestas elegantes y sofisticadas. La plataforma web presenta un diseño refinado que permite a los clientes explorar servicios, visualizar espacios y gestionar reservas de manera intuitiva y profesional.</p>
               <a href="https://allewg.github.io/montpelliereventos" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
+                       transition-all duration-300 flex items-center justify-center gap-2">
                 <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
           </div>
         </div>
  <!-- Proyecto 3 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/vallmel.png" class="w-full h-44 object-cover rounded-t-3xl" alt="Nexo Deportes" />
-              <div class="absolute top-4 right-4 bg-green-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg">Nuevo</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/vallmel.png" alt="Artículos de limpieza Vallmel" />
+              <div class="absolute top-4 right-4 badge-new text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Nuevo</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Articulos de limpieza Vallmel </h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Centro de entrenamiento personalizado.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Artículos de Limpieza Vallmel</h3>
+              <p class="card-description text-gray-700 text-sm">Comercio especializado en artículos de limpieza de alta calidad para hogar y empresas. La solución web implementada facilita la navegación por catálogo de productos, incluyendo filtros avanzados, descripciones detalladas y un sistema de pedidos eficiente para clientes residenciales y corporativos.</p>
               <a href="https://allewg.github.io/Vallmell-Articulos-de-limpieza" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
+                       transition-all duration-300 flex items-center justify-center gap-2">
                 <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
@@ -740,21 +950,21 @@
         </div>
 
         <!-- Proyecto 4 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/spa_mama.png" class="w-full h-44 object-cover rounded-t-3xl" alt="SPA Mamá" />
-              <div class="absolute top-4 right-4 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">Recomendado</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/spa_mama.png" alt="SPA Mamá" />
+              <div class="absolute top-4 right-4 badge-recommended text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Recomendado</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Masoterapia Paola</h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Servicios integrales de masoterapia y bienestar.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Masoterapia Paola</h3>
+              <p class="card-description text-gray-700 text-sm">Clínica especializada en servicios integrales de masoterapia y bienestar, ofreciendo tratamientos terapéuticos personalizados. El sitio web presenta una experiencia visual relajante con galería de servicios, sistema de reserva de citas y sección informativa sobre técnicas y beneficios de los tratamientos disponibles.</p>
               <a href="https://allewg.github.io/SPA-Mama" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
+                       transition-all duration-300 flex items-center justify-center gap-2">
                 <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
@@ -766,42 +976,42 @@
         
 
         <!-- Proyecto 5 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/cuidamos.png" class="w-full h-44 object-cover rounded-t-3xl" alt="Cuidamos Tus Pies" />
-              <div class="absolute top-4 right-4 bg-green-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">Nuevo</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/cuidamos.png" alt="Cuidamos Tus Pies" />
+              <div class="absolute top-4 right-4 badge-new text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Nuevo</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Podología Pies Felices</h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Podología profesional con enfoque en salud y estética.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Podología Pies Felices</h3>
+              <p class="card-description text-gray-700 text-sm">Centro de podología profesional que combina salud y estética podológica con atención especializada. La plataforma digital desarrollada incluye presentación de servicios médicos y estéticos, información sobre condiciones tratadas, galería de resultados y sistema de contacto para consultas y citas médicas.</p>
               <a href="https://allewg.github.io/CuidamosTusPies" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
-                <i class="fas fas fa-eye"></i> Ver Proyecto
+                       transition-all duration-300 flex items-center justify-center gap-2">
+                <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
           </div>
         </div>
         <!-- Proyecto 6 -->
-        <div class="swiper-slide p-4 flex">
-          <div class="bg-white/50 backdrop-blur-lg border border-white/40 rounded-3xl shadow-xl 
-                      transition-transform duration-300 transform hover:scale-105 hover:-translate-y-2 
-                      hover:shadow-2xl hover:animate-pulse hover:bg-opacity-60 flex flex-col flex-1">
-            <div class="relative">
-              <img src="./multimedia/images/bodegaje.png" class="w-full h-44 object-cover rounded-t-3xl" alt="Bodegaje Portofino" />
-              <div class="absolute top-4 right-4 bg-green-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-lg">Nuevo</div>
+        <div class="swiper-slide p-3">
+          <div class="portfolio-card bg-white/90 backdrop-blur-lg border border-purple-200/50 rounded-2xl shadow-lg 
+                      transition-all duration-300 hover:scale-[1.02] hover:-translate-y-3 
+                      hover:shadow-2xl hover:border-purple-400/70">
+            <div class="image-container rounded-t-2xl">
+              <img src="./multimedia/images/bodegaje.png" alt="Bodegaje Portofino" />
+              <div class="absolute top-4 right-4 badge-new text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10">Nuevo</div>
             </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-purple-800 text-center mb-2 hover:animate-shake">Bodegaje Portofino</h3>
-              <p class="text-gray-700 text-sm flex-grow mb-4">Soluciones de bodegaje seguro y flexible.</p>
+            <div class="card-content">
+              <h3 class="card-title text-xl font-bold text-purple-800 hover:animate-shake">Bodegaje Portofino</h3>
+              <p class="card-description text-gray-700 text-sm">Servicio de bodegaje que ofrece soluciones de almacenamiento seguro y flexible para particulares y empresas. El sitio web desarrollado presenta información sobre instalaciones, servicios de guardamuebles, tarifas personalizadas y sistema de cotización online, diseñado para facilitar la gestión de reservas de espacios.</p>
               <a href="https://allewg.github.io/Bodegajeportofino" target="_blank"
-                class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
+                class="card-button px-6 py-3 rounded-xl bg-gradient-to-r from-purple-900 to-purple-600 text-white font-semibold shadow-md 
                        hover:from-purple-700 hover:to-purple-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 
-                       transition duration-300 flex items-center justify-center gap-2">
+                       transition-all duration-300 flex items-center justify-center gap-2">
                 <i class="fas fa-eye"></i> Ver Proyecto
               </a>
             </div>
@@ -823,9 +1033,9 @@
         <!-- Quiénes Somos Section -->
         <section id="nosotros" class="min-h-screen bg-gradient-to-br from-purple-50 to-white py-16">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-10">
+                <div class="max-w-4xl mx-auto text-center mb-10" data-aos="fade-up">
                     <h2 class="text-4xl md:text-5xl unified-title font-extrabold mb-4 flex items-center justify-center gap-4">
-                        <i class="fas fa-users w-14 h-10"></i> Quiénes Somos
+                        <i class="fas fa-users text-purple-600"></i> Quiénes Somos
                     </h2>
                     <p class="text-lg text-gray-700">
                         En Hardwaremania unimos ingeniería, diseño y soporte para crear soluciones tecnológicas robustas, seguras y orientadas a resultados.
@@ -835,7 +1045,7 @@
                 <!-- MVV -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     <!-- Misión -->
-                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition">
+                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-purple-100">
                         <div class="flex items-start gap-4">
                             <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl flex-shrink-0">
                                 <i class="fas fa-rocket"></i>
@@ -849,7 +1059,7 @@
                         </div>
                     </article>
                     <!-- Visión -->
-                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition">
+                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-purple-100">
                         <div class="flex items-start gap-4">
                             <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl flex-shrink-0">
                                 <i class="fas fa-eye"></i>
@@ -863,7 +1073,7 @@
                         </div>
                     </article>
                     <!-- Valores -->
-                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition">
+                    <article class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-purple-100">
                         <div class="flex items-start gap-4">
                             <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-800 to-purple-600 text-white flex items-center justify-center text-xl flex-shrink-0">
                                 <i class="fas fa-star"></i>
@@ -882,15 +1092,15 @@
                 </div>
 
                 <!-- Testimonios -->
-                <div class="max-w-6xl mx-auto mt-12">
-                    <h3 class="text-2xl font-bold text-purple-900 mb-6 text-center flex items-center justify-center gap-2">
-                        <i class="fas fa-comments"></i> Testimonios de Clientes
+                <div class="max-w-6xl mx-auto mt-12" data-aos="fade-up">
+                    <h3 class="text-2xl md:text-3xl font-bold text-purple-900 mb-6 text-center flex items-center justify-center gap-3">
+                        <i class="fas fa-comments text-purple-600"></i> Testimonios de Clientes
                     </h3>
                     <div class="swiper testimonials-swiper">
                         <div class="swiper-wrapper">
                             <!-- Testimonio 1 -->
                             <div class="swiper-slide p-4">
-                                <article class="bg-white rounded-2xl p-6 shadow-md h-full">
+                                <article class="testimonial-card bg-white rounded-2xl p-6 shadow-md border border-purple-100 h-full">
                                     <div class="flex items-start gap-4 mb-4">
                                         <div class="text-3xl text-purple-900">
                                             <i class="fas fa-user"></i>
@@ -910,7 +1120,7 @@
                             </div>
                             <!-- Testimonio 2 -->
                             <div class="swiper-slide p-4">
-                                <article class="bg-white rounded-2xl p-6 shadow-md h-full">
+                                <article class="testimonial-card bg-white rounded-2xl p-6 shadow-md border border-purple-100 h-full">
                                     <div class="flex items-start gap-4 mb-4">
                                         <div class="text-3xl text-purple-900">
                                             <i class="fas fa-user"></i>
@@ -930,7 +1140,7 @@
                             </div>
                             <!-- Testimonio 3 -->
                             <div class="swiper-slide p-4">
-                                <article class="bg-white rounded-2xl p-6 shadow-md h-full">
+                                <article class="testimonial-card bg-white rounded-2xl p-6 shadow-md border border-purple-100 h-full">
                                     <div class="flex items-start gap-4 mb-4">
                                         <div class="text-3xl text-purple-900">
                                             <i class="fas fa-user"></i>
@@ -950,7 +1160,7 @@
                             </div>
                             <!-- Testimonio 4 -->
                             <div class="swiper-slide p-4">
-                                <article class="bg-white rounded-2xl p-6 shadow-md h-full">
+                                <article class="testimonial-card bg-white rounded-2xl p-6 shadow-md border border-purple-100 h-full">
                                     <div class="flex items-start gap-4 mb-4">
                                         <div class="text-3xl text-purple-900">
                                             <i class="fas fa-user"></i>
@@ -976,8 +1186,8 @@
                 </div>
                 <!-- Íconos de Valor -->
                 <div class="max-w-5xl mx-auto mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 pb-20">
-                    <div class="bg-white rounded-lg p-4 shadow-md flex items-start gap-3">
-                        <div class="text-purple-900 text-2xl">
+                    <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100 flex items-start gap-3">
+                        <div class="value-icon text-purple-900 text-2xl">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <div>
@@ -985,8 +1195,8 @@
                             <p class="text-xs text-gray-700">Protegemos tus datos</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md flex items-start gap-3">
-                        <div class="text-purple-900 text-2xl">
+                    <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100 flex items-start gap-3">
+                        <div class="value-icon text-purple-900 text-2xl">
                             <i class="fas fa-expand"></i>
                         </div>
                         <div>
@@ -994,8 +1204,8 @@
                             <p class="text-xs text-gray-700">Crecemos contigo</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md flex items-start gap-3">
-                        <div class="text-purple-900 text-2xl">
+                    <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100 flex items-start gap-3">
+                        <div class="value-icon text-purple-900 text-2xl">
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <div>
@@ -1003,8 +1213,8 @@
                             <p class="text-xs text-gray-700">Soluciones creativas</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md flex items-start gap-3">
-                        <div class="text-purple-900 text-2xl">
+                    <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100 flex items-start gap-3">
+                        <div class="value-icon text-purple-900 text-2xl">
                             <i class="fas fa-star"></i>
                         </div>
                         <div>
@@ -1018,32 +1228,32 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contacto" class="animated-gradient text-white py-4 sm:py-6 shadow-lg">
+    <footer id="contacto" class="animated-gradient text-white py-6 sm:py-8 shadow-lg relative">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
                 <!-- Logo -->
                 <div class="flex items-center space-x-4">
-                    <img src="./multimedia/images/logo1.png" alt="Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-contain hover:animate-shake" />
+                    <img src="./multimedia/images/logo1.png" alt="Logo" class="h-12 w-12 sm:h-14 sm:w-14 object-contain hover:animate-shake transition-transform" />
                     <div>
-                        <h2 class="text-xl sm:text-2xl font-bold hover:animate-shake">Hardwaremania</h2>
-                        <p class="text-purple-200 text-xs sm:text-sm hover:animate-shake">tecnología innovadora</p>
+                        <h2 class="text-xl sm:text-2xl font-bold hover:animate-shake transition-all">Hardwaremania</h2>
+                        <p class="text-purple-200 text-xs sm:text-sm hover:animate-shake transition-all">tecnología innovadora</p>
                     </div>
                 </div>
                 <!-- Botones de Contacto -->
                 <div class="flex justify-center items-center gap-3 sm:gap-4 flex-wrap">
-                    <a href="tel:+56949881171" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition">
+                    <a href="tel:+56949881171" class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-40 backdrop-blur-sm text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
                         <i class="fas fa-phone"></i>
                     </a>
-                    <button @click="modalOpen = true" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition">
+                    <button @click="modalOpen = true" class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-40 backdrop-blur-sm text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
                         <i class="fas fa-envelope"></i>
                     </button>
-                    <a href="https://www.instagram.com/hwmania.sb/" class="flex items-center gap-2 bg-white bg-opacity-25 hover:bg-opacity-50 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full transition">
+                    <a href="https://www.instagram.com/hwmania.sb/" class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-40 backdrop-blur-sm text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
                 <!-- Copyright -->
                 <div class="text-center md:text-right">
-                    <p class="text-base sm:text-lg font-medium">Marca reservada © 2025</p>
+                    <p class="text-sm sm:text-base font-medium opacity-90">Marca reservada © 2025</p>
                 </div>
             </div>
         </div>
@@ -1061,7 +1271,7 @@
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 scale-90"
              x-transition:enter-end="opacity-100 scale-100"
-             class="bg-white p-8 rounded-lg max-w-md w-full shadow-2xl">
+             class="modal-content bg-white p-8 rounded-xl max-w-md w-full shadow-2xl border border-purple-100">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold text-purple-900">Contacto</h2>
                 <button @click="modalOpen = false" class="text-gray-500 hover:text-gray-700 text-3xl">&times;</button>
@@ -1141,10 +1351,6 @@
                             el: '.hero-swiper .swiper-pagination',
                             clickable: true,
                             dynamicBullets: true,
-                        },
-                        navigation: {
-                            nextEl: '.hero-swiper .swiper-button-next',
-                            prevEl: '.hero-swiper .swiper-button-prev',
                         },
                         on: {
                             slideChange: function () {
