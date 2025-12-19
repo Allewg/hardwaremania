@@ -315,6 +315,17 @@
                                     allow="autoplay; fullscreen" 
                                     title="Gemelo Digital HardwareMania">
                                 </iframe>
+                                
+                                <!-- Indicador de Audio Desactivado -->
+                                <div id="audio-indicator" class="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-2xl transition-opacity duration-300 cursor-pointer group/indicator">
+                                    <div class="text-center p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md group-hover/indicator:bg-white/15 transition-all">
+                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/50 group-hover/indicator:border-primary group-hover/indicator:scale-110 transition-all">
+                                            <i class="fas fa-volume-mute text-2xl text-primary"></i>
+                                        </div>
+                                        <p class="text-white font-semibold text-lg mb-2">Audio Desactivado</p>
+                                        <p class="text-gray-300 text-sm">Haz clic para activar el audio</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- Decorative Elements -->
@@ -994,6 +1005,27 @@
                         }
 
                         // C. SmartPlay Audio: Gestión inteligente del audio
+                        const audioIndicator = document.getElementById('audio-indicator');
+                        
+                        const updateAudioIndicator = () => {
+                            if (audioIndicator) {
+                                if (audioEnabled) {
+                                    audioIndicator.style.opacity = '0';
+                                    audioIndicator.style.pointerEvents = 'none';
+                                    // Ocultar completamente después de la transición
+                                    setTimeout(() => {
+                                        if (audioEnabled && audioIndicator) {
+                                            audioIndicator.style.display = 'none';
+                                        }
+                                    }, 300);
+                                } else {
+                                    audioIndicator.style.display = 'flex';
+                                    audioIndicator.style.opacity = '1';
+                                    audioIndicator.style.pointerEvents = 'auto';
+                                }
+                            }
+                        };
+                        
                         const enableSmartAudio = async () => {
                             if (audioEnabled) return;
                             
@@ -1003,6 +1035,9 @@
                                 await player.setMuted(false);
                                 await player.setVolume(1);
                                 audioEnabled = true;
+                                
+                                // Actualizar indicador visual
+                                updateAudioIndicator();
                                 
                                 // Si el video está visible o tiene focus, reproducir con audio
                                 const rect = iframe.getBoundingClientRect();
@@ -1017,15 +1052,30 @@
                             }
                         };
 
-                        // Activar audio inteligente con cualquier interacción del usuario
-                        const interactionEvents = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'];
-                        interactionEvents.forEach(event => {
-                            document.addEventListener(event, enableSmartAudio, { once: true, passive: true });
-                        });
+                        // Inicializar indicador visual (mostrar porque audioEnabled es false inicialmente)
+                        setTimeout(() => {
+                            updateAudioIndicator();
+                        }, 100);
 
-                        // También activar audio si el usuario hace hover sobre el video
-                        if (videoContainer) {
-                            videoContainer.addEventListener('mouseenter', enableSmartAudio, { once: true });
+                        // Activar audio solo con click o touchstart
+                        const initializeAudio = (e) => {
+                            enableSmartAudio();
+                        };
+                        
+                        // Agregar eventos de click y touchstart al documento
+                        document.addEventListener('click', initializeAudio, { once: true, passive: true });
+                        document.addEventListener('touchstart', initializeAudio, { once: true, passive: true });
+                        
+                        // También permitir activar desde el indicador
+                        if (audioIndicator) {
+                            audioIndicator.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                enableSmartAudio();
+                            });
+                            audioIndicator.addEventListener('touchstart', (e) => {
+                                e.stopPropagation();
+                                enableSmartAudio();
+                            });
                         }
 
                         // Inicializar: Intentar reproducir al cargar si está visible
