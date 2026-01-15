@@ -24,12 +24,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- GSAP & Lenis -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -48,7 +51,11 @@
                             card: '#0f0c29',
                             border: '#2a2450'
                         },
-                        primary: '#7c3aed',
+                        primary: {
+                            DEFAULT: '#7c3aed',
+                            dark: '#6d28d9',
+                        },
+                        secondary: '#7c3aed',
                         accent: '#00f0ff',
                     }
                 }
@@ -147,12 +154,14 @@
         .text-gradient {
             background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-purple {
             background: linear-gradient(to right, #c084fc, #7c3aed);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -200,18 +209,6 @@
             border-radius: 4px;
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#581c87',
-                        secondary: '#7c3aed',
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 
 <body class="m-0 p-0 overflow-x-hidden bg-dark-bg text-white" x-data="hardwaremania()">
@@ -306,41 +303,41 @@
                     style="animation-delay: 2s;"></div>
             </div>
 
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
                     <!-- Left Column: Content -->
                     <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                         <div
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-4 animate-fade-in-up">
-                            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                            <span class="text-sm font-medium text-gray-300">Innovación Tecnológica 2026</span>
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-2 sm:mb-4 animate-fade-in-up">
+                            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-400 animate-pulse"></span>
+                            <span class="text-xs sm:text-sm font-medium text-gray-300">Innovación Tecnológica 2026</span>
                         </div>
 
                         <h1
-                            class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 tracking-tight leading-tight">
+                            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 tracking-tight leading-tight">
                             Transformamos el <br />
                             <span class="text-gradient-purple">Futuro Digital</span>
                         </h1>
 
-                        <p class="text-base md:text-lg text-gray-400 max-w-2xl mb-6 font-light leading-relaxed">
+                        <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mb-4 sm:mb-6 font-light leading-relaxed">
                             Soluciones integrales en desarrollo web, soporte TI e inteligencia artificial para potenciar
                             tu negocio al siguiente nivel.
                         </p>
 
-                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                             <a href="#servicios"
-                                class="btn-glow px-6 py-3 rounded-full bg-primary text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-1">
+                                class="btn-glow px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-primary text-white font-semibold text-xs sm:text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-1">
                                 Explorar Servicios
                             </a>
                             <a href="#contacto"
-                                class="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 transition-all backdrop-blur-sm">
+                                class="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-xs sm:text-sm hover:bg-white/10 transition-all backdrop-blur-sm">
                                 Contáctanos
                             </a>
                         </div>
                     </div>
 
                     <!-- Right Column: Video -->
-                    <div class="relative h-[45vh] lg:h-[75vh] w-auto aspect-[9/16] mx-auto lg:mx-0" data-aos="fade-left"
+                    <div class="relative h-[35vh] sm:h-[40vh] md:h-[45vh] lg:h-[75vh] w-auto aspect-[9/16] mx-auto lg:mx-0" data-aos="fade-left"
                         data-aos-delay="200">
                         <div
                             class="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:shadow-[0_0_50px_rgba(124,58,237,0.8)] transition-all duration-500 group">
@@ -353,20 +350,20 @@
                             <div class="relative z-10 w-full h-full bg-black overflow-hidden rounded-2xl">
                                 <iframe id="gemelo-iframe" :src="videoUrl"
                                     class="absolute top-0 left-1/2 h-full w-[320%] -translate-x-1/2 pointer-events-none"
-                                    frameborder="0" allow="autoplay; fullscreen" title="Gemelo Digital HardwareMania">
+                                    style="border: 0;" allow="autoplay; fullscreen" title="Gemelo Digital HardwareMania">
                                 </iframe>
 
                                 <!-- Indicador de Audio Desactivado -->
                                 <div id="audio-indicator"
                                     class="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-2xl transition-opacity duration-300 cursor-pointer group/indicator">
                                     <div
-                                        class="text-center p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md group-hover/indicator:bg-white/15 transition-all">
+                                        class="text-center p-4 sm:p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md group-hover/indicator:bg-white/15 transition-all">
                                         <div
-                                            class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/50 group-hover/indicator:border-primary group-hover/indicator:scale-110 transition-all">
-                                            <i class="fas fa-volume-mute text-2xl text-primary"></i>
+                                            class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-4 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/50 group-hover/indicator:border-primary group-hover/indicator:scale-110 transition-all">
+                                            <i class="fas fa-volume-mute text-xl sm:text-2xl text-primary"></i>
                                         </div>
-                                        <p class="text-white font-semibold text-lg mb-2">Audio Desactivado</p>
-                                        <p class="text-gray-300 text-sm">Haz clic para activar el audio</p>
+                                        <p class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">Audio Desactivado</p>
+                                        <p class="text-gray-300 text-xs sm:text-sm">Haz clic para activar el audio</p>
                                     </div>
                                 </div>
                             </div>
@@ -1090,9 +1087,6 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         // Initialize Lenis for smooth scrolling
