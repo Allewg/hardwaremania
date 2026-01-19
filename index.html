@@ -37,178 +37,11 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: {
-                            bg: '#030014',
-                            card: '#0f0c29',
-                            border: '#2a2450'
-                        },
-                        primary: {
-                            DEFAULT: '#7c3aed',
-                            dark: '#6d28d9',
-                        },
-                        secondary: '#7c3aed',
-                        accent: '#00f0ff',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind Configuration -->
+    <script src="assets/js/config.js"></script>
 
-    <style>
-        /* Reset & Base */
-        :root {
-            --bg-dark: #030014;
-            --card-dark: #0f0c29;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent-purple: #7c3aed;
-            --accent-cyan: #00f0ff;
-        }
-
-        html.lenis {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
-        }
-
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
-
-        .lenis.lenis-scrolling iframe {
-            pointer-events: none;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-purple);
-        }
-
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(15, 12, 41, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.3);
-        }
-
-        /* Text Gradients */
-        .text-gradient {
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .text-gradient-purple {
-            background: linear-gradient(to right, #c084fc, #7c3aed);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Hero Animations */
-        .hero-title {
-            line-height: 1.1;
-        }
-
-        /* Bento Grid */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Button Glow */
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-glow:hover::before {
-            left: 100%;
-        }
-
-        /* Swiper Customization for Dark Theme */
-        .swiper-pagination-bullet {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .swiper-pagination-bullet-active {
-            background: var(--accent-purple);
-            width: 24px;
-            border-radius: 4px;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body class="m-0 p-0 overflow-x-hidden bg-dark-bg text-white" x-data="hardwaremania()">
@@ -579,9 +412,9 @@
                 <!-- Portfolio Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <!-- Project 1: SFITS -->
+                    <!-- Project 1: SFITS (Hidden) -->
                     <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
+                        class="hidden group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
                         <div class="aspect-video overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
                                 alt="SFITS"
@@ -603,6 +436,33 @@
                                 <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Community</span>
                             </div>
                             <a href="https://allewg.github.io/SFITS/" target="_blank" class="absolute inset-0 z-10"></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 1: Vallesur -->
+                    <div
+                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-green-400/50 transition-all duration-500">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="./multimedia/images/vallesur.png" alt="Vallesur"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+                        </div>
+                        <div class="p-6 relative">
+                            <div
+                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-400 flex items-center justify-center text-white shadow-lg shadow-green-400/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Vallesur</h3>
+                            <p class="text-gray-400 text-sm mb-4">E-commerce de frutas congeladas premium. Berries y
+                                frutas tropicales 100% naturales del sur de Chile.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">E-commerce</span>
+                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Food</span>
+                            </div>
+                            <a href="https://allewg.github.io/vallesur/" target="_blank"
+                                class="absolute inset-0 z-10"></a>
                         </div>
                     </div>
 
@@ -660,9 +520,9 @@
                         </div>
                     </div>
 
-                    <!-- Project 4: Sharkfit -->
+                    <!-- Project 4: Sharkfit (Hidden) -->
                     <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-pink-500/50 transition-all duration-500">
+                        class="hidden group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-pink-500/50 transition-all duration-500">
                         <div class="aspect-video overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80"
                                 alt="Sharkfit"
@@ -688,7 +548,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 5: Nexo Deportes -->
+                    <!-- Project 3: Nexo Deportes -->
                     <div
                         class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
                         <div class="aspect-video overflow-hidden">
@@ -715,7 +575,7 @@
                         </div>
                     </div>
 
-                    <!-- Project 6: Montpellier Eventos -->
+                    <!-- Project 4: Montpellier Eventos -->
                     <div
                         class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-secondary/50 transition-all duration-500">
                         <div class="aspect-video overflow-hidden">
@@ -794,33 +654,6 @@
                                 <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Booking</span>
                             </div>
                             <a href="https://allewg.github.io/SPA-Mama" target="_blank"
-                                class="absolute inset-0 z-10"></a>
-                        </div>
-                    </div>
-
-                    <!-- Project 9: Vallesur -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-green-400/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="./multimedia/images/vallesur.png" alt="Vallesur"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-400 flex items-center justify-center text-white shadow-lg shadow-green-400/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Vallesur</h3>
-                            <p class="text-gray-400 text-sm mb-4">E-commerce de frutas congeladas premium. Berries y
-                                frutas tropicales 100% naturales del sur de Chile.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">E-commerce</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Food</span>
-                            </div>
-                            <a href="https://allewg.github.io/vallesur/" target="_blank"
                                 class="absolute inset-0 z-10"></a>
                         </div>
                     </div>
@@ -1087,319 +920,8 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        // Initialize Lenis for smooth scrolling
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-            easing: 'ease-out-cubic'
-        });
-
-        // Alpine.js Data
-        function hardwaremania() {
-            return {
-                menuOpen: false,
-                scrolled: false,
-                videoUrl: '',
-                init() {
-                    window.addEventListener('scroll', () => {
-                        this.scrolled = window.scrollY > 50;
-                    });
-
-                    // 1. Configuración de URL para Autoplay Visual Garantizado
-                    // muted=1 es CRÍTICO para que arranque en móviles y desktop sin interacción previa.
-                    const baseUrl = "https://player.vimeo.com/video/1148040991";
-                    const params = "?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&dnt=1&playsinline=1&transparent=0&muted=1";
-                    this.videoUrl = baseUrl + params;
-
-                    // 2. Cargar Vimeo SDK para gestionar SmartPlay con Audio Inteligente
-                    const script = document.createElement('script');
-                    script.src = "https://player.vimeo.com/api/player.js";
-                    script.onload = () => {
-                        const iframe = document.querySelector('#gemelo-iframe');
-                        const player = new Vimeo.Player(iframe);
-
-                        let isPlaying = false;
-                        let audioEnabled = false;
-                        let hasUserInteracted = false;
-
-                        // Función SmartPlay: Reproduce el video cuando tiene focus o está visible
-                        const smartPlay = async () => {
-                            if (isPlaying) return;
-
-                            try {
-                                // Intentar reproducir con audio si el usuario ya interactuó
-                                if (hasUserInteracted && audioEnabled) {
-                                    await player.setMuted(false);
-                                    await player.setVolume(1);
-                                    await player.play();
-                                } else {
-                                    // Reproducir silenciado por defecto
-                                    await player.setMuted(true);
-                                    await player.play();
-                                }
-                                isPlaying = true;
-                            } catch (error) {
-                                // Si falla, forzar mute y reproducir
-                                try {
-                                    await player.setMuted(true);
-                                    await player.play();
-                                    isPlaying = true;
-                                } catch (e) {
-                                    console.log('SmartPlay: Video no disponible aún');
-                                }
-                            }
-                        };
-
-                        // Función SmartPause: Pausa cuando pierde focus y visibilidad
-                        const smartPause = async () => {
-                            if (!isPlaying) return;
-
-                            try {
-                                await player.pause();
-                                isPlaying = false;
-                            } catch (error) {
-                                console.log('SmartPause: Error al pausar');
-                            }
-                        };
-
-                        // A. Gestión de Visibilidad con IntersectionObserver
-                        const observer = new IntersectionObserver((entries) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    smartPlay();
-                                } else {
-                                    // Solo pausar si no tiene focus
-                                    if (document.activeElement !== iframe && !iframe.matches(':focus-within')) {
-                                        smartPause();
-                                    }
-                                }
-                            });
-                        }, { threshold: 0.1 });
-                        observer.observe(iframe);
-
-                        // B. Gestión de Focus para SmartPlay
-                        const handleFocus = () => {
-                            smartPlay();
-                        };
-
-                        const handleBlur = () => {
-                            // Solo pausar si no está visible
-                            const rect = iframe.getBoundingClientRect();
-                            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                            if (!isVisible) {
-                                smartPause();
-                            }
-                        };
-
-                        // Eventos de focus en el iframe y su contenedor
-                        iframe.addEventListener('focus', handleFocus, true);
-                        iframe.addEventListener('blur', handleBlur, true);
-
-                        // También manejar focus en el contenedor padre
-                        const videoContainer = iframe.closest('.relative');
-                        if (videoContainer) {
-                            videoContainer.addEventListener('focusin', handleFocus);
-                            videoContainer.addEventListener('focusout', handleBlur);
-                        }
-
-                        // C. SmartPlay Audio: Gestión inteligente del audio
-                        const audioIndicator = document.getElementById('audio-indicator');
-
-                        const hideAudioIndicator = () => {
-                            if (audioIndicator) {
-                                audioIndicator.style.opacity = '0';
-                                audioIndicator.style.pointerEvents = 'none';
-                                // Ocultar completamente después de la transición
-                                setTimeout(() => {
-                                    if (audioIndicator) {
-                                        audioIndicator.style.display = 'none';
-                                    }
-                                }, 300);
-                            }
-                        };
-
-                        const showAudioIndicator = () => {
-                            if (audioIndicator) {
-                                audioIndicator.style.display = 'flex';
-                                audioIndicator.style.opacity = '1';
-                                audioIndicator.style.pointerEvents = 'auto';
-                            }
-                        };
-
-                        const enableSmartAudio = async (hideIndicator = false) => {
-                            if (audioEnabled) return;
-
-                            hasUserInteracted = true;
-
-                            try {
-                                await player.setMuted(false);
-                                await player.setVolume(1);
-                                audioEnabled = true;
-
-                                // Ocultar indicador solo si se especifica
-                                if (hideIndicator) {
-                                    hideAudioIndicator();
-                                }
-
-                                // Si el video está visible o tiene focus, reproducir con audio
-                                const rect = iframe.getBoundingClientRect();
-                                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                                const hasFocus = document.activeElement === iframe || iframe.matches(':focus-within');
-
-                                if (isVisible || hasFocus) {
-                                    await smartPlay();
-                                }
-                            } catch (error) {
-                                console.log('SmartAudio: Error al activar audio', error);
-                            }
-                        };
-
-                        // Inicializar indicador visual (mostrar porque audioEnabled es false inicialmente)
-                        setTimeout(() => {
-                            showAudioIndicator();
-                        }, 100);
-
-                        // Detectar si es un dispositivo táctil
-                        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-                        // Variable para evitar doble ejecución en móvil (touchstart + click)
-                        let touchHandled = false;
-
-                        // Activar audio solo con click o touchstart
-                        const initializeAudio = (e) => {
-                            // En móvil, si ya se manejó el touchstart, ignorar el click
-                            if (isTouchDevice && e.type === 'click' && touchHandled) {
-                                touchHandled = false; // Reset para el próximo ciclo
-                                return;
-                            }
-
-                            // Marcar como manejado si es touchstart
-                            if (e.type === 'touchstart') {
-                                touchHandled = true;
-                            }
-
-                            // Verificar si el click/touch fue en el indicador
-                            if (audioIndicator && audioIndicator.contains(e.target)) {
-                                // Click/touch en el indicador: activar audio y ocultar indicador
-                                enableSmartAudio(true);
-                            } else {
-                                // Click/touch fuera del indicador: activar audio pero mantener indicador visible
-                                enableSmartAudio(false);
-                            }
-                        };
-
-                        // Agregar eventos de click y touchstart al documento (solo una vez para activar audio)
-                        // En móvil, touchstart tiene prioridad
-                        if (isTouchDevice) {
-                            document.addEventListener('touchstart', initializeAudio, { once: true, passive: true });
-                            // Click como respaldo (pero será ignorado si touchstart ya se ejecutó)
-                            document.addEventListener('click', initializeAudio, { once: true, passive: true });
-                        } else {
-                            document.addEventListener('click', initializeAudio, { once: true, passive: true });
-                        }
-
-                        // Evento permanente en el indicador para ocultarlo cuando el usuario lo seleccione
-                        if (audioIndicator) {
-                            let indicatorTouchHandled = false;
-
-                            // Función para manejar la interacción con el indicador
-                            const handleIndicatorInteraction = () => {
-                                // Si el audio ya está activado, solo ocultar el indicador
-                                if (audioEnabled) {
-                                    hideAudioIndicator();
-                                } else {
-                                    // Si no está activado, activarlo y ocultar el indicador
-                                    enableSmartAudio(true);
-                                }
-                            };
-
-                            // Manejar touchstart (móvil) - prioridad sobre click
-                            audioIndicator.addEventListener('touchstart', (e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-                                indicatorTouchHandled = true;
-                                handleIndicatorInteraction();
-                            }, { passive: false });
-
-                            // Manejar click (desktop y como respaldo en móvil)
-                            audioIndicator.addEventListener('click', (e) => {
-                                // En móvil, si ya se manejó el touchstart, ignorar el click
-                                if (isTouchDevice && indicatorTouchHandled) {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    indicatorTouchHandled = false;
-                                    return;
-                                }
-
-                                // Para desktop o si no se manejó touchstart
-                                e.stopPropagation();
-                                e.preventDefault();
-                                handleIndicatorInteraction();
-                            }, { passive: false });
-
-                            // Manejar touchend para prevenir el click que viene después en móvil
-                            audioIndicator.addEventListener('touchend', (e) => {
-                                e.stopPropagation();
-                                if (isTouchDevice) {
-                                    e.preventDefault();
-                                }
-                            }, { passive: false });
-                        }
-
-                        // Inicializar: Intentar reproducir al cargar si está visible
-                        setTimeout(() => {
-                            const rect = iframe.getBoundingClientRect();
-                            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                            if (isVisible) {
-                                smartPlay();
-                            }
-                        }, 500);
-                    };
-                    document.head.appendChild(script);
-                }
-            }
-        }
-
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animate sections on scroll
-        gsap.utils.toArray('section').forEach(section => {
-            gsap.from(section.children, {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/video-player.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
