@@ -160,6 +160,84 @@ h6 {
     color: var(--accent-cyan);
 }
 
+/* Background colors with opacity for production */
+.bg-accent-purple\/20 {
+    background-color: rgba(124, 58, 237, 0.2);
+}
+
+.bg-accent-purple\/30 {
+    background-color: rgba(124, 58, 237, 0.3);
+}
+
+.bg-accent-purple\/5 {
+    background-color: rgba(124, 58, 237, 0.05);
+}
+
+.bg-accent-cyan\/20 {
+    background-color: rgba(0, 240, 255, 0.2);
+}
+
+.bg-accent-cyan\/30 {
+    background-color: rgba(0, 240, 255, 0.3);
+}
+
+.bg-accent-cyan\/5 {
+    background-color: rgba(0, 240, 255, 0.05);
+}
+
+/* Border colors with opacity for production */
+.border-accent-purple\/30 {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.border-accent-purple\/50 {
+    border-color: rgba(124, 58, 237, 0.5);
+}
+
+.border-accent-cyan\/30 {
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.border-accent-cyan\/50 {
+    border-color: rgba(0, 240, 255, 0.5);
+}
+
+/* Gradient colors with opacity */
+.from-accent-purple\/5 {
+    --tw-gradient-from: rgba(124, 58, 237, 0.05);
+    --tw-gradient-to: rgba(124, 58, 237, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-accent-cyan\/5 {
+    --tw-gradient-from: rgba(0, 240, 255, 0.05);
+    --tw-gradient-to: rgba(0, 240, 255, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-accent-purple {
+    --tw-gradient-from: #7c3aed;
+    --tw-gradient-to: rgba(124, 58, 237, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-accent-cyan {
+    --tw-gradient-from: #00f0ff;
+    --tw-gradient-to: rgba(0, 240, 255, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.via-accent-cyan {
+    --tw-gradient-to: rgba(0, 240, 255, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), #00f0ff, var(--tw-gradient-to);
+}
+
+.from-accent-cyan\/30 {
+    --tw-gradient-from: rgba(0, 240, 255, 0.3);
+    --tw-gradient-to: rgba(0, 240, 255, 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .purple-glow-btn {
     box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
     transition: all 0.3s ease;
