@@ -4,19 +4,24 @@
     
     // Wait for DOM and Alpine.js to be ready
     function initVideoPlayer() {
-        // Check if Alpine.js is loaded and the iframe exists
+        // Check if Alpine.js is loaded and the iframe exists with a valid src
         const iframe = document.querySelector('#gemelo-iframe');
-        if (!iframe) {
+        if (!iframe || !iframe.src || iframe.src === 'about:blank') {
             // Retry after a short delay if iframe is not ready
             setTimeout(initVideoPlayer, 100);
             return;
         }
 
         // 1. Cargar Vimeo SDK para gestionar SmartPlay con Audio Inteligente
-            const script = document.createElement('script');
-            script.src = "https://player.vimeo.com/api/player.js";
-            script.onload = () => {
+        const script = document.createElement('script');
+        script.src = "https://player.vimeo.com/api/player.js";
+        script.onload = () => {
                 const iframe = document.querySelector('#gemelo-iframe');
+                if (!iframe || !iframe.src) {
+                    console.log('Video Player: Iframe no encontrado o sin src');
+                    return;
+                }
+                
                 const player = new Vimeo.Player(iframe);
 
                 let isPlaying = false;
@@ -105,6 +110,13 @@
 
                 // C. SmartPlay Audio: Gestión inteligente del audio
                 const audioIndicator = document.getElementById('audio-indicator');
+                
+                if (!audioIndicator) {
+                    console.log('Video Player: Indicador de audio no encontrado');
+                    return;
+                }
+                
+                console.log('Video Player: Indicador de audio encontrado, inicializando event listeners...');
 
                 const hideAudioIndicator = () => {
                     if (audioIndicator) {
@@ -128,17 +140,23 @@
                 };
 
                 const enableSmartAudio = async (hideIndicator = false) => {
-                    if (audioEnabled) return;
+                    if (audioEnabled) {
+                        console.log('Audio ya está activado');
+                        return;
+                    }
 
+                    console.log('Activando audio...');
                     hasUserInteracted = true;
 
                     try {
                         await player.setMuted(false);
                         await player.setVolume(1);
                         audioEnabled = true;
+                        console.log('Audio activado correctamente');
 
                         // Ocultar indicador solo si se especifica
                         if (hideIndicator) {
+                            console.log('Ocultando indicador de audio');
                             hideAudioIndicator();
                         }
 
@@ -148,10 +166,11 @@
                         const hasFocus = document.activeElement === iframe || iframe.matches(':focus-within');
 
                         if (isVisible || hasFocus) {
+                            console.log('Reproduciendo video con audio');
                             await smartPlay();
                         }
                     } catch (error) {
-                        console.log('SmartAudio: Error al activar audio', error);
+                        console.error('SmartAudio: Error al activar audio', error);
                     }
                 };
 
@@ -166,85 +185,65 @@
                 // Variable para evitar doble ejecución en móvil (touchstart + click)
                 let touchHandled = false;
 
-                // Activar audio solo con click o touchstart
-                const initializeAudio = (e) => {
-                    // En móvil, si ya se manejó el touchstart, ignorar el click
-                    if (isTouchDevice && e.type === 'click' && touchHandled) {
-                        touchHandled = false; // Reset para el próximo ciclo
-                        return;
+                // Función para manejar la interacción con el indicador
+                const handleIndicatorInteraction = async (e) => {
+                    if (e) {
+                        e.stopPropagation();
+                        e.preventDefault();
                     }
-
-                    // Marcar como manejado si es touchstart
-                    if (e.type === 'touchstart') {
-                        touchHandled = true;
-                    }
-
-                    // Verificar si el click/touch fue en el indicador
-                    if (audioIndicator && audioIndicator.contains(e.target)) {
-                        // Click/touch en el indicador: activar audio y ocultar indicador
-                        enableSmartAudio(true);
+                    
+                    console.log('Audio indicator clicked, audioEnabled:', audioEnabled);
+                    
+                    // Si el audio ya está activado, solo ocultar el indicador
+                    if (audioEnabled) {
+                        hideAudioIndicator();
                     } else {
-                        // Click/touch fuera del indicador: activar audio pero mantener indicador visible
-                        enableSmartAudio(false);
+                        // Si no está activado, activarlo y ocultar el indicador
+                        console.log('Activating audio...');
+                        await enableSmartAudio(true);
+                        console.log('Audio activated:', audioEnabled);
                     }
                 };
 
-                // Agregar eventos de click y touchstart al documento (solo una vez para activar audio)
-                // En móvil, touchstart tiene prioridad
-                if (isTouchDevice) {
-                    document.addEventListener('touchstart', initializeAudio, { once: true, passive: true });
-                    // Click como respaldo (pero será ignorado si touchstart ya se ejecutó)
-                    document.addEventListener('click', initializeAudio, { once: true, passive: true });
-                } else {
-                    document.addEventListener('click', initializeAudio, { once: true, passive: true });
-                }
-
-                // Evento permanente en el indicador para ocultarlo cuando el usuario lo seleccione
+                // Evento permanente en el indicador para activar audio
                 if (audioIndicator) {
-                    let indicatorTouchHandled = false;
-
-                    // Función para manejar la interacción con el indicador
-                    const handleIndicatorInteraction = () => {
-                        // Si el audio ya está activado, solo ocultar el indicador
-                        if (audioEnabled) {
-                            hideAudioIndicator();
-                        } else {
-                            // Si no está activado, activarlo y ocultar el indicador
-                            enableSmartAudio(true);
-                        }
-                    };
-
-                    // Manejar touchstart (móvil) - prioridad sobre click
+                    // Usar event delegation para capturar clicks en cualquier parte del indicador
+                    audioIndicator.addEventListener('click', handleIndicatorInteraction, { passive: false });
                     audioIndicator.addEventListener('touchstart', (e) => {
                         e.stopPropagation();
                         e.preventDefault();
-                        indicatorTouchHandled = true;
-                        handleIndicatorInteraction();
+                        handleIndicatorInteraction(e);
                     }, { passive: false });
-
-                    // Manejar click (desktop y como respaldo en móvil)
-                    audioIndicator.addEventListener('click', (e) => {
-                        // En móvil, si ya se manejó el touchstart, ignorar el click
-                        if (isTouchDevice && indicatorTouchHandled) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            indicatorTouchHandled = false;
-                            return;
-                        }
-
-                        // Para desktop o si no se manejó touchstart
+                    
+                    // También agregar mousedown como respaldo
+                    audioIndicator.addEventListener('mousedown', (e) => {
                         e.stopPropagation();
                         e.preventDefault();
-                        handleIndicatorInteraction();
+                        handleIndicatorInteraction(e);
                     }, { passive: false });
 
-                    // Manejar touchend para prevenir el click que viene después en móvil
-                    audioIndicator.addEventListener('touchend', (e) => {
-                        e.stopPropagation();
-                        if (isTouchDevice) {
-                            e.preventDefault();
+                    // Activar audio con cualquier interacción fuera del indicador (solo una vez)
+                    let documentInteractionHandled = false;
+                    const handleDocumentInteraction = (e) => {
+                        // Si el click fue en el indicador, no hacer nada (el indicador lo maneja)
+                        if (audioIndicator && audioIndicator.contains(e.target)) {
+                            return;
                         }
-                    }, { passive: false });
+                        
+                        if (documentInteractionHandled) return;
+                        documentInteractionHandled = true;
+                        
+                        // Click/touch fuera del indicador: activar audio pero mantener indicador visible
+                        enableSmartAudio(false);
+                    };
+
+                    // Agregar eventos al documento (solo una vez para activar audio fuera del indicador)
+                    if (isTouchDevice) {
+                        document.addEventListener('touchstart', handleDocumentInteraction, { once: true, passive: true });
+                        document.addEventListener('click', handleDocumentInteraction, { once: true, passive: true });
+                    } else {
+                        document.addEventListener('click', handleDocumentInteraction, { once: true, passive: true });
+                    }
                 }
 
                 // Inicializar: Intentar reproducir al cargar si está visible
@@ -258,13 +257,35 @@
             };
             document.head.appendChild(script);
         }
-    }
 
-    // Initialize when DOM is ready
+    // Initialize when DOM and Alpine.js are ready
+    function startInit() {
+        // Wait for Alpine.js to be initialized and DOM to be ready
+        if (typeof Alpine === 'undefined' || document.readyState === 'loading') {
+            setTimeout(startInit, 50);
+            return;
+        }
+        
+        // Wait for Alpine to finish initializing and the iframe to have a src
+        function checkAlpineReady() {
+            const iframe = document.querySelector('#gemelo-iframe');
+            // Check if Alpine has initialized the iframe with src
+            if (iframe && iframe.src && iframe.src !== 'about:blank' && iframe.src.includes('vimeo.com')) {
+                initVideoPlayer();
+            } else {
+                // Retry after a short delay
+                setTimeout(checkAlpineReady, 100);
+            }
+        }
+        
+        // Start checking after a small delay to let Alpine initialize
+        setTimeout(checkAlpineReady, 300);
+    }
+    
+    // Start initialization
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initVideoPlayer);
+        document.addEventListener('DOMContentLoaded', startInit);
     } else {
-        // DOM is already ready
-        initVideoPlayer();
+        startInit();
     }
 })();
