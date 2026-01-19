@@ -4,6 +4,27 @@ function hardwaremania() {
         menuOpen: false,
         scrolled: false,
         videoUrl: '',
+        showDesarrolloWeb: false,
+        openDesarrolloWeb() {
+            this.showDesarrolloWeb = true;
+            // Scroll suave a la sección después de un pequeño delay para que la transición funcione
+            setTimeout(() => {
+                const section = document.getElementById('desarrollo-web-section');
+                if (section) {
+                    lenis.scrollTo(section, { offset: -80, duration: 1.2 });
+                }
+            }, 100);
+        },
+        closeDesarrolloWeb() {
+            this.showDesarrolloWeb = false;
+            // Scroll suave de vuelta a servicios
+            setTimeout(() => {
+                const serviciosSection = document.getElementById('servicios');
+                if (serviciosSection) {
+                    lenis.scrollTo(serviciosSection, { offset: -80, duration: 1.2 });
+                }
+            }, 100);
+        },
         init() {
             window.addEventListener('scroll', () => {
                 this.scrolled = window.scrollY > 50;

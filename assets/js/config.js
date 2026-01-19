@@ -18,6 +18,11 @@ tailwind.config = {
                 },
                 secondary: '#7c3aed',
                 accent: '#00f0ff',
+                'bg-deep': '#030014',
+                'accent-purple': '#7c3aed',
+                'accent-cyan': '#00f0ff',
+                'glass-white': 'rgba(255, 255, 255, 0.03)',
+                'glass-border': 'rgba(255, 255, 255, 0.08)',
             }
         }
     }

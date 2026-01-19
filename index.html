@@ -14,14 +14,17 @@
 
     <!-- Fonts: Outfit (Headings) & Inter (Body) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     <!-- GSAP & Lenis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -279,29 +282,31 @@
                     <div
                         class="md:row-span-2 group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 hover:border-secondary/50 transition-all duration-500 flex flex-col">
                         <div
-                            class="absolute inset-0 bg-gradient-to-b from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            class="absolute inset-0 bg-gradient-to-b from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         </div>
-                        <div
-                            class="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center text-3xl text-secondary mb-6">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Desarrollo Web</h3>
-                        <p class="text-gray-400 mb-6 flex-grow">Sitios web de alto rendimiento, optimizados para
-                            conversión y SEO. Incluye dominio y hosting por un año.</p>
-                        <ul class="space-y-3 mb-8 text-gray-400 text-sm">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Diseño
-                                Responsive</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Optimización
-                                SEO</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Panel
-                                Autoadministrable</li>
-                        </ul>
-                        <div class="mt-auto">
-                            <p class="text-sm text-gray-400 mb-4">Desde $210.000 (Ref.)</p>
-                            <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20el%20Desarrollo%20Web"
-                                class="block w-full py-3 rounded-full border border-white/20 text-white text-center hover:bg-white/10 transition-colors">
-                                Cotizar
-                            </a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div
+                                class="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center text-3xl text-secondary mb-6">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Desarrollo Web</h3>
+                            <p class="text-gray-400 mb-6 flex-grow">Sitios web de alto rendimiento, optimizados para
+                                conversión y SEO. Incluye dominio y hosting por un año.</p>
+                            <ul class="space-y-3 mb-8 text-gray-400 text-sm">
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Diseño
+                                    Responsive</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Optimización
+                                    SEO</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Panel
+                                    Autoadministrable</li>
+                            </ul>
+                            <div class="mt-auto">
+                                <p class="text-sm text-gray-400 mb-4">Desde $210.000 (Ref.)</p>
+                                <button @click="openDesarrolloWeb()"
+                                    class="block w-full py-3 rounded-full border border-white/20 text-white text-center hover:bg-white/10 transition-colors cursor-pointer relative z-20">
+                                    Cotizar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -394,6 +399,141 @@
 
                 </div>
             </div>
+        </section>
+
+        <!-- Sección Desarrollo Web -->
+        <section id="desarrollo-web-section" 
+            x-show="showDesarrolloWeb"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="relative min-h-screen pb-28 bg-bg-deep">
+            <!-- Navbar móvil / Desktop -->
+            <nav class="sticky top-0 z-50 bg-bg-deep/80 backdrop-blur-xl border-b border-glass-border px-4 md:px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <button @click="closeDesarrolloWeb()" class="flex items-center gap-2 text-accent-purple hover:text-accent-cyan transition-colors">
+                        <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios</span>
+                        <h1 class="text-sm md:text-base font-bold tracking-[0.2em] uppercase text-gradient">Servicios</h1>
+                    </button>
+                </div>
+                <div class="flex gap-4">
+                    <span class="material-symbols-outlined text-accent-cyan text-xl md:text-2xl">terminal</span>
+                    <span class="material-symbols-outlined text-white/70 text-xl md:text-2xl">more_vert</span>
+                </div>
+            </nav>
+
+            <main class="max-w-md md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+                <!-- Hero Section -->
+                <section class="p-4 md:p-6 lg:p-8">
+                    <div class="relative overflow-hidden rounded-2xl md:rounded-3xl glass-card p-6 md:p-8 lg:p-12 min-h-[440px] md:min-h-[500px] lg:min-h-[600px] flex flex-col justify-end gap-4 md:gap-6" 
+                        style='background-image: linear-gradient(to top, #030014 20%, transparent 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDl_miowAQ1flWUpm0gJ8_mkOFIcoU0SO167sZEKGnb6x791jtEVdQ_v9m4RDRyGlR5lbqkohwkHK0PHGpxPcW6XRzYpAwyuKQdJTSEcwcP8lydheLFIKM0nd00QHlkE9WoVOpECDBnBI1veb3bhBvtj4ow1f2bGa3esbGyEM-Ixe7MZaMjFAIr11nu5vIze8kaLw6b6sKjuDv6l_bvKqiVGS54sNNOTNuC_qXy77Ri36PPPJzvSUtvycnNvpb-CHkM0p717fnYimSN"); background-size: cover; background-position: center;'>
+                        <div class="absolute top-6 md:top-8 lg:top-10 right-6 md:right-8 lg:right-10">
+                            <span class="px-3 md:px-4 py-1 md:py-1.5 bg-accent-purple/20 text-accent-purple text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full border border-accent-purple/30 backdrop-blur-md">
+                                Alto Rendimiento
+                            </span>
+                        </div>
+                        <div class="max-w-2xl lg:max-w-3xl">
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight text-gradient">
+                                Desarrollo Web <br/><span class="text-accent-cyan italic">Premium</span>
+                            </h1>
+                            <p class="text-gray-400 text-sm md:text-base lg:text-lg font-light leading-relaxed max-w-[90%] md:max-w-full mt-4 md:mt-6">
+                                Creamos sitios web modernos y rápidos que se ven bien en cualquier dispositivo. Diseñamos y programamos páginas web que ayudan a tu negocio a crecer.
+                            </p>
+                            <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20el%20Desarrollo%20Web%20Ultra-Premium" 
+                                class="mt-4 md:mt-6 w-full md:w-auto md:inline-flex md:px-8 bg-accent-purple text-white py-4 md:py-3 lg:py-4 rounded-xl font-bold text-sm md:text-base tracking-widest uppercase flex items-center justify-center gap-2 purple-glow-btn hover:bg-accent-purple/90 transition-all">
+                                Solicitar Cotización
+                                <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tecnologías que Usamos -->
+                <section class="px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
+                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 lg:mb-10">
+                        <h2 class="text-[10px] md:text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-accent-cyan whitespace-nowrap">Tecnologías que Usamos</h2>
+                        <div class="h-[1px] w-full bg-gradient-to-r from-accent-cyan/30 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
+                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
+                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">data_object</span>
+                            <div>
+                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Next.js 14</h3>
+                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Diseño Moderno</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
+                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">terminal</span>
+                            <div>
+                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Node.js</h3>
+                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Servidor Rápido</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
+                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">database</span>
+                            <div>
+                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">PostgreSQL</h3>
+                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Base de Datos</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
+                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">cloud_done</span>
+                            <div>
+                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Alojamiento</h3>
+                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">En la Nube</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cómo Trabajamos -->
+                <section class="px-4 md:px-6 lg:px-8 py-10 md:py-12 lg:py-16 bg-white/[0.02] border-y border-glass-border">
+                    <h2 class="text-[10px] md:text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-accent-cyan mb-10 md:mb-12 lg:mb-16 text-center">Cómo Trabajamos</h2>
+                    <div class="relative flex flex-col md:flex-row md:justify-center md:items-start gap-12 md:gap-8 lg:gap-12 max-w-[280px] md:max-w-full mx-auto">
+                        <!-- Línea vertical móvil / Horizontal desktop -->
+                        <div class="absolute left-[19px] md:left-0 md:top-[50%] md:right-0 md:h-[1px] md:-translate-y-1/2 top-2 bottom-2 md:bottom-auto w-[1px] md:w-full bg-gradient-to-b md:bg-gradient-to-r from-accent-purple via-accent-cyan to-transparent opacity-30"></div>
+                        <div class="relative flex items-center md:flex-col md:items-center gap-6 md:gap-4 lg:gap-6 md:flex-1">
+                            <div class="size-10 md:size-12 lg:size-16 rounded-full glass-card flex items-center justify-center text-accent-purple z-10 border border-accent-purple/50">
+                                <span class="material-symbols-outlined text-sm md:text-base lg:text-xl font-bold">search</span>
+                            </div>
+                            <div class="md:text-center">
+                                <h4 class="text-white font-bold text-sm md:text-base lg:text-lg tracking-tight">Análisis</h4>
+                                <p class="text-gray-500 text-[11px] md:text-xs lg:text-sm">Entendemos tu negocio y tus necesidades.</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center md:flex-col md:items-center gap-6 md:gap-4 lg:gap-6 md:flex-1">
+                            <div class="size-10 md:size-12 lg:size-16 rounded-full glass-card flex items-center justify-center text-accent-cyan z-10 border border-accent-cyan/50">
+                                <span class="material-symbols-outlined text-sm md:text-base lg:text-xl font-bold">draw</span>
+                            </div>
+                            <div class="md:text-center">
+                                <h4 class="text-white font-bold text-sm md:text-base lg:text-lg tracking-tight">Diseño</h4>
+                                <p class="text-gray-500 text-[11px] md:text-xs lg:text-sm">Creamos el diseño de tu sitio web.</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center md:flex-col md:items-center gap-6 md:gap-4 lg:gap-6 md:flex-1">
+                            <div class="size-10 md:size-12 lg:size-16 rounded-full glass-card flex items-center justify-center text-accent-purple z-10 border border-accent-purple/50">
+                                <span class="material-symbols-outlined text-sm md:text-base lg:text-xl font-bold">code</span>
+                            </div>
+                            <div class="md:text-center">
+                                <h4 class="text-white font-bold text-sm md:text-base lg:text-lg tracking-tight">Programación</h4>
+                                <p class="text-gray-500 text-[11px] md:text-xs lg:text-sm">Construimos tu sitio web paso a paso.</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center md:flex-col md:items-center gap-6 md:gap-4 lg:gap-6 md:flex-1">
+                            <div class="size-10 md:size-12 lg:size-16 rounded-full glass-card flex items-center justify-center text-accent-cyan z-10 border border-accent-cyan/50">
+                                <span class="material-symbols-outlined text-sm md:text-base lg:text-xl font-bold">rocket_launch</span>
+                            </div>
+                            <div class="md:text-center">
+                                <h4 class="text-white font-bold text-sm md:text-base lg:text-lg tracking-tight">Lanzamiento</h4>
+                                <p class="text-gray-500 text-[11px] md:text-xs lg:text-sm">Publicamos tu sitio web en internet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </section>
 
         <!-- section portafolio -->
