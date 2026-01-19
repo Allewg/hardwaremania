@@ -238,6 +238,51 @@ h6 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+/* Hover states for production */
+.hover\:bg-accent-purple\/30:hover {
+    background-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+.hover\:bg-accent-cyan\/30:hover {
+    background-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+.hover\:bg-accent-purple\/90:hover {
+    background-color: rgba(124, 58, 237, 0.9) !important;
+}
+
+.hover\:border-accent-purple\/50:hover {
+    border-color: rgba(124, 58, 237, 0.5) !important;
+}
+
+.hover\:border-accent-cyan\/50:hover {
+    border-color: rgba(0, 240, 255, 0.5) !important;
+}
+
+.hover\:border-accent-purple\/50:hover {
+    border-color: rgba(124, 58, 237, 0.5) !important;
+}
+
+/* Force color classes to work in production */
+.text-accent-purple,
+.text-accent-purple * {
+    color: #7c3aed !important;
+}
+
+.text-accent-cyan,
+.text-accent-cyan * {
+    color: #00f0ff !important;
+}
+
+/* Ensure icon colors work */
+.material-symbols-outlined.text-accent-purple {
+    color: #7c3aed !important;
+}
+
+.material-symbols-outlined.text-accent-cyan {
+    color: #00f0ff !important;
+}
+
 .purple-glow-btn {
     box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
     transition: all 0.3s ease;
@@ -282,4 +327,85 @@ h6 {
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+}
+
+/* Force Tailwind color classes in production - Servicios section */
+#desarrollo-web-section .text-accent-purple,
+#desarrollo-web-section .text-accent-cyan {
+    color: inherit;
+}
+
+#desarrollo-web-section [class*="text-accent-purple"] {
+    color: #7c3aed !important;
+}
+
+#desarrollo-web-section [class*="text-accent-cyan"] {
+    color: #00f0ff !important;
+}
+
+#desarrollo-web-section [class*="bg-accent-purple"] {
+    background-color: rgba(124, 58, 237, var(--opacity, 0.2)) !important;
+}
+
+#desarrollo-web-section [class*="bg-accent-cyan"] {
+    background-color: rgba(0, 240, 255, var(--opacity, 0.2)) !important;
+}
+
+#desarrollo-web-section [class*="border-accent-purple"] {
+    border-color: rgba(124, 58, 237, var(--opacity, 0.3)) !important;
+}
+
+#desarrollo-web-section [class*="border-accent-cyan"] {
+    border-color: rgba(0, 240, 255, var(--opacity, 0.3)) !important;
+}
+
+/* Specific opacity values */
+#desarrollo-web-section .bg-accent-purple\/20,
+#desarrollo-web-section [class*="bg-accent-purple/20"] {
+    background-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+#desarrollo-web-section .bg-accent-purple\/30,
+#desarrollo-web-section [class*="bg-accent-purple/30"] {
+    background-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+#desarrollo-web-section .bg-accent-purple\/5,
+#desarrollo-web-section [class*="bg-accent-purple/5"] {
+    background-color: rgba(124, 58, 237, 0.05) !important;
+}
+
+#desarrollo-web-section .bg-accent-cyan\/20,
+#desarrollo-web-section [class*="bg-accent-cyan/20"] {
+    background-color: rgba(0, 240, 255, 0.2) !important;
+}
+
+#desarrollo-web-section .bg-accent-cyan\/30,
+#desarrollo-web-section [class*="bg-accent-cyan/30"] {
+    background-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+#desarrollo-web-section .bg-accent-cyan\/5,
+#desarrollo-web-section [class*="bg-accent-cyan/5"] {
+    background-color: rgba(0, 240, 255, 0.05) !important;
+}
+
+#desarrollo-web-section .border-accent-purple\/30,
+#desarrollo-web-section [class*="border-accent-purple/30"] {
+    border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+#desarrollo-web-section .border-accent-purple\/50,
+#desarrollo-web-section [class*="border-accent-purple/50"] {
+    border-color: rgba(124, 58, 237, 0.5) !important;
+}
+
+#desarrollo-web-section .border-accent-cyan\/30,
+#desarrollo-web-section [class*="border-accent-cyan/30"] {
+    border-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+#desarrollo-web-section .border-accent-cyan\/50,
+#desarrollo-web-section [class*="border-accent-cyan/50"] {
+    border-color: rgba(0, 240, 255, 0.5) !important;
 }
