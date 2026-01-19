@@ -1,41 +1,18 @@
-// Alpine.js Data - Video Player Logic
-function hardwaremania() {
-    return {
-        menuOpen: false,
-        scrolled: false,
-        videoUrl: '',
-        showDesarrolloWeb: true,
-        openDesarrolloWeb() {
-            this.showDesarrolloWeb = true;
-            // Scroll suave a la sección después de un pequeño delay para que la transición funcione
-            setTimeout(() => {
-                const section = document.getElementById('desarrollo-web-section');
-                if (section) {
-                    lenis.scrollTo(section, { offset: -80, duration: 1.2 });
-                }
-            }, 100);
-        },
-        closeDesarrolloWeb() {
-            // Scroll suave de vuelta a servicios sin ocultar la sección
-            setTimeout(() => {
-                const serviciosSection = document.getElementById('servicios');
-                if (serviciosSection) {
-                    lenis.scrollTo(serviciosSection, { offset: -80, duration: 1.2 });
-                }
-            }, 100);
-        },
-        init() {
-            window.addEventListener('scroll', () => {
-                this.scrolled = window.scrollY > 50;
-            });
+// Video Player Logic - Initializes after DOM and Alpine.js are ready
+(function() {
+    'use strict';
+    
+    // Wait for DOM and Alpine.js to be ready
+    function initVideoPlayer() {
+        // Check if Alpine.js is loaded and the iframe exists
+        const iframe = document.querySelector('#gemelo-iframe');
+        if (!iframe) {
+            // Retry after a short delay if iframe is not ready
+            setTimeout(initVideoPlayer, 100);
+            return;
+        }
 
-            // 1. Configuración de URL para Autoplay Visual Garantizado
-            // muted=1 es CRÍTICO para que arranque en móviles y desktop sin interacción previa.
-            const baseUrl = "https://player.vimeo.com/video/1148040991";
-            const params = "?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&dnt=1&playsinline=1&transparent=0&muted=1";
-            this.videoUrl = baseUrl + params;
-
-            // 2. Cargar Vimeo SDK para gestionar SmartPlay con Audio Inteligente
+        // 1. Cargar Vimeo SDK para gestionar SmartPlay con Audio Inteligente
             const script = document.createElement('script');
             script.src = "https://player.vimeo.com/api/player.js";
             script.onload = () => {
@@ -282,4 +259,12 @@ function hardwaremania() {
             document.head.appendChild(script);
         }
     }
-}
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initVideoPlayer);
+    } else {
+        // DOM is already ready
+        initVideoPlayer();
+    }
+})();

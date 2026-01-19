@@ -32,6 +32,15 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.utils.toArray('section').forEach(section => {
     // Excluir la sección de desarrollo web de las animaciones
     if (section.id === 'desarrollo-web-section') {
+        // Forzar visibilidad de todos los elementos en esta sección
+        const elementos = section.querySelectorAll('*');
+        elementos.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.translate = 'none';
+            el.style.rotate = 'none';
+            el.style.scale = 'none';
+        });
         return;
     }
     gsap.from(section.children, {
@@ -45,4 +54,24 @@ gsap.utils.toArray('section').forEach(section => {
             toggleActions: "play none none reverse"
         }
     });
+});
+
+// Asegurar que la sección de desarrollo web siempre esté visible después de cargar
+document.addEventListener('DOMContentLoaded', () => {
+    const desarrolloSection = document.getElementById('desarrollo-web-section');
+    if (desarrolloSection) {
+        // Forzar visibilidad inmediata
+        desarrolloSection.style.opacity = '1';
+        desarrolloSection.style.visibility = 'visible';
+        
+        // Forzar visibilidad de todos los elementos hijos
+        const elementos = desarrolloSection.querySelectorAll('*');
+        elementos.forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.translate = 'none';
+            el.style.rotate = 'none';
+            el.style.scale = 'none';
+        });
+    }
 });

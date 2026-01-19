@@ -37,6 +37,48 @@
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
+    <!-- Alpine.js Data Function - Must load before Alpine.js -->
+    <script>
+        // Alpine.js Data - Video Player Logic
+        function hardwaremania() {
+            return {
+                menuOpen: false,
+                scrolled: false,
+                videoUrl: '',
+                showDesarrolloWeb: true,
+                openDesarrolloWeb() {
+                    this.showDesarrolloWeb = true;
+                    // Scroll suave a la sección después de un pequeño delay para que la transición funcione
+                    setTimeout(() => {
+                        const section = document.getElementById('desarrollo-web-section');
+                        if (section && typeof lenis !== 'undefined') {
+                            lenis.scrollTo(section, { offset: -80, duration: 1.2 });
+                        }
+                    }, 100);
+                },
+                closeDesarrolloWeb() {
+                    // Scroll suave de vuelta a servicios sin ocultar la sección
+                    setTimeout(() => {
+                        const serviciosSection = document.getElementById('servicios');
+                        if (serviciosSection && typeof lenis !== 'undefined') {
+                            lenis.scrollTo(serviciosSection, { offset: -80, duration: 1.2 });
+                        }
+                    }, 100);
+                },
+                init() {
+                    window.addEventListener('scroll', () => {
+                        this.scrolled = window.scrollY > 50;
+                    });
+
+                    // Configuración de URL para Autoplay Visual Garantizado
+                    const baseUrl = "https://player.vimeo.com/video/1148040991";
+                    const params = "?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&dnt=1&playsinline=1&transparent=0&muted=1";
+                    this.videoUrl = baseUrl + params;
+                }
+            }
+        }
+    </script>
+
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
