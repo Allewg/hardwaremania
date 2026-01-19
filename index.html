@@ -403,16 +403,16 @@
 
         <!-- Sección Desarrollo Web -->
         <section id="desarrollo-web-section" 
-            x-show="showDesarrolloWeb"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
             class="relative min-h-screen pb-28 bg-bg-deep">
             <!-- Navbar móvil / Desktop -->
-            <nav class="sticky top-0 z-50 bg-bg-deep/80 backdrop-blur-xl border-b border-glass-border px-4 md:px-6 py-4 flex items-center justify-between">
+            <nav x-show="showDesarrolloWeb"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 -translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
+                class="sticky top-0 z-50 bg-bg-deep/80 backdrop-blur-xl border-b border-glass-border px-4 md:px-6 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <button @click="closeDesarrolloWeb()" class="flex items-center gap-2 text-accent-purple hover:text-accent-cyan transition-colors">
                         <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios</span>
@@ -447,44 +447,6 @@
                                 Solicitar Cotización
                                 <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
                             </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Tecnologías que Usamos -->
-                <section class="px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
-                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 lg:mb-10">
-                        <h2 class="text-[10px] md:text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-accent-cyan whitespace-nowrap">Tecnologías que Usamos</h2>
-                        <div class="h-[1px] w-full bg-gradient-to-r from-accent-cyan/30 to-transparent"></div>
-                    </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
-                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
-                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">data_object</span>
-                            <div>
-                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Next.js 14</h3>
-                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Diseño Moderno</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
-                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">terminal</span>
-                            <div>
-                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Node.js</h3>
-                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Servidor Rápido</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
-                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">database</span>
-                            <div>
-                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">PostgreSQL</h3>
-                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">Base de Datos</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-4 md:gap-6 p-5 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl glass-card tech-icon-container border border-accent-purple/30 bg-accent-purple/5 hover:border-accent-purple/60 transition-all">
-                            <span class="material-symbols-outlined text-accent-purple text-3xl md:text-4xl lg:text-5xl">cloud_done</span>
-                            <div>
-                                <h3 class="font-bold text-white text-base md:text-lg lg:text-xl">Alojamiento</h3>
-                                <p class="text-[9px] md:text-xs text-gray-500 uppercase tracking-widest">En la Nube</p>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -529,6 +491,116 @@
                             <div class="md:text-center">
                                 <h4 class="text-white font-bold text-sm md:text-base lg:text-lg tracking-tight">Lanzamiento</h4>
                                 <p class="text-gray-500 text-[11px] md:text-xs lg:text-sm">Publicamos tu sitio web en internet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Servicios Disponibles -->
+                <section class="px-4 md:px-6 lg:px-8 py-10 md:py-12 lg:py-16">
+                    <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 lg:mb-10">
+                        <h2 class="text-[10px] md:text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-accent-cyan whitespace-nowrap">Nuestros Servicios</h2>
+                        <div class="h-[1px] w-full bg-gradient-to-r from-accent-cyan/30 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+                        <!-- Servicio 1: Página de Contacto -->
+                        <div class="group relative overflow-hidden rounded-2xl md:rounded-3xl glass-card p-6 md:p-8 border border-white/10 hover:border-accent-purple/50 transition-all duration-500 flex flex-col">
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="relative z-10 flex-1 flex flex-col">
+                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-accent-purple/20 flex items-center justify-center text-2xl md:text-3xl text-accent-purple mb-4 md:mb-6">
+                                    <span class="material-symbols-outlined">mail</span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Página de Contacto</h3>
+                                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6 flex-grow">
+                                    Sitio web profesional con formulario de contacto para que tus clientes se comuniquen contigo fácilmente.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-baseline gap-2 mb-4">
+                                        <span class="text-2xl md:text-3xl font-bold text-white">$150.000</span>
+                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
+                                    </div>
+                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Página%20de%20Contacto" 
+                                        class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
+                                        Solicitar Cotización
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicio 2: Tienda Virtual WhatsApp -->
+                        <div class="group relative overflow-hidden rounded-2xl md:rounded-3xl glass-card p-6 md:p-8 border border-white/10 hover:border-accent-cyan/50 transition-all duration-500 flex flex-col">
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="relative z-10 flex-1 flex flex-col">
+                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-accent-cyan/20 flex items-center justify-center text-2xl md:text-3xl text-accent-cyan mb-4 md:mb-6">
+                                    <span class="material-symbols-outlined">shopping_cart</span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Tienda Virtual con WhatsApp</h3>
+                                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6 flex-grow">
+                                    Tienda online completa donde tus clientes pueden ver productos y enviar pedidos directamente por WhatsApp.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-baseline gap-2 mb-4">
+                                        <span class="text-2xl md:text-3xl font-bold text-white">$250.000</span>
+                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
+                                    </div>
+                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20WhatsApp" 
+                                        class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
+                                        Solicitar Cotización
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicio 3: Tienda Virtual con Pasarela -->
+                        <div class="group relative overflow-hidden rounded-2xl md:rounded-3xl glass-card p-6 md:p-8 border border-white/10 hover:border-accent-purple/50 transition-all duration-500 flex flex-col md:col-span-2 lg:col-span-1">
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="relative z-10 flex-1 flex flex-col">
+                                <div class="flex items-center justify-between mb-4 md:mb-6">
+                                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-accent-purple/20 flex items-center justify-center text-2xl md:text-3xl text-accent-purple">
+                                        <span class="material-symbols-outlined">payments</span>
+                                    </div>
+                                    <span class="px-3 py-1 bg-accent-purple/20 text-accent-purple text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full border border-accent-purple/30">
+                                        Premium
+                                    </span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Tienda Virtual con Pasarela de Pago</h3>
+                                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6 flex-grow">
+                                    Tienda online completa con sistema de pagos integrado. Tus clientes pueden comprar y pagar directamente en línea con tarjeta de crédito o débito.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-baseline gap-2 mb-4">
+                                        <span class="text-2xl md:text-3xl font-bold text-white">$500.000</span>
+                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
+                                    </div>
+                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20Pasarela%20de%20Pago" 
+                                        class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
+                                        Solicitar Cotización
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicio 4: Página de Reservas -->
+                        <div class="group relative overflow-hidden rounded-2xl md:rounded-3xl glass-card p-6 md:p-8 border border-white/10 hover:border-accent-cyan/50 transition-all duration-500 flex flex-col">
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="relative z-10 flex-1 flex flex-col">
+                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-accent-cyan/20 flex items-center justify-center text-2xl md:text-3xl text-accent-cyan mb-4 md:mb-6">
+                                    <span class="material-symbols-outlined">event_available</span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Página de Reservas y Citas</h3>
+                                <p class="text-gray-400 text-sm md:text-base mb-4 md:mb-6 flex-grow">
+                                    Sistema de reservas online donde tus clientes pueden agendar citas o reservas directamente desde tu sitio web.
+                                </p>
+                                <div class="mt-auto">
+                                    <div class="flex items-baseline gap-2 mb-4">
+                                        <span class="text-2xl md:text-3xl font-bold text-white">$300.000</span>
+                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
+                                    </div>
+                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Página%20de%20Reservas%20y%20Citas" 
+                                        class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
+                                        Solicitar Cotización
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
