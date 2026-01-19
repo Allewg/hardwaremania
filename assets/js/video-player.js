@@ -4,7 +4,7 @@ function hardwaremania() {
         menuOpen: false,
         scrolled: false,
         videoUrl: '',
-        showDesarrolloWeb: false,
+        showDesarrolloWeb: true,
         openDesarrolloWeb() {
             this.showDesarrolloWeb = true;
             // Scroll suave a la sección después de un pequeño delay para que la transición funcione
@@ -16,8 +16,7 @@ function hardwaremania() {
             }, 100);
         },
         closeDesarrolloWeb() {
-            this.showDesarrolloWeb = false;
-            // Scroll suave de vuelta a servicios
+            // Scroll suave de vuelta a servicios sin ocultar la sección
             setTimeout(() => {
                 const serviciosSection = document.getElementById('servicios');
                 if (serviciosSection) {

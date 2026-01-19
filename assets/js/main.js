@@ -28,8 +28,12 @@ AOS.init({
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate sections on scroll
+// Animate sections on scroll (excluyendo desarrollo-web-section para que siempre esté visible)
 gsap.utils.toArray('section').forEach(section => {
+    // Excluir la sección de desarrollo web de las animaciones
+    if (section.id === 'desarrollo-web-section') {
+        return;
+    }
     gsap.from(section.children, {
         y: 50,
         opacity: 0,
