@@ -17,14 +17,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-    easing: 'ease-out-cubic'
-});
-
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
