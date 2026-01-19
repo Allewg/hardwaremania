@@ -330,16 +330,16 @@ h6 {
 }
 
 /* Force Tailwind color classes in production - Servicios section */
+/* Text colors - multiple selectors for maximum compatibility */
 #desarrollo-web-section .text-accent-purple,
-#desarrollo-web-section .text-accent-cyan {
-    color: inherit;
-}
-
-#desarrollo-web-section [class*="text-accent-purple"] {
+#desarrollo-web-section [class*="text-accent-purple"],
+#desarrollo-web-section [class*="text-accent-purple"] * {
     color: #7c3aed !important;
 }
 
-#desarrollo-web-section [class*="text-accent-cyan"] {
+#desarrollo-web-section .text-accent-cyan,
+#desarrollo-web-section [class*="text-accent-cyan"],
+#desarrollo-web-section [class*="text-accent-cyan"] * {
     color: #00f0ff !important;
 }
 

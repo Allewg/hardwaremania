@@ -49,6 +49,7 @@ gsap.utils.toArray('section').forEach(section => {
 });
 
 // Asegurar que la sección de desarrollo web siempre esté visible después de cargar
+// Y forzar aplicación de colores Tailwind como fallback
 document.addEventListener('DOMContentLoaded', () => {
     const desarrolloSection = document.getElementById('desarrollo-web-section');
     if (desarrolloSection) {
@@ -65,5 +66,102 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.rotate = 'none';
             el.style.scale = 'none';
         });
+
+        // Función para aplicar colores como fallback si Tailwind no los generó
+        function applyColorFallbacks() {
+            // Text colors
+            desarrolloSection.querySelectorAll('.text-accent-purple').forEach(el => {
+                if (getComputedStyle(el).color === 'rgb(0, 0, 0)' || 
+                    getComputedStyle(el).color === 'rgba(0, 0, 0, 0)' ||
+                    !el.style.color) {
+                    el.style.color = '#7c3aed';
+                }
+            });
+            
+            desarrolloSection.querySelectorAll('.text-accent-cyan').forEach(el => {
+                if (getComputedStyle(el).color === 'rgb(0, 0, 0)' || 
+                    getComputedStyle(el).color === 'rgba(0, 0, 0, 0)' ||
+                    !el.style.color) {
+                    el.style.color = '#00f0ff';
+                }
+            });
+
+            // Background colors
+            desarrolloSection.querySelectorAll('[class*="bg-accent-purple/20"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent' || !bgColor.includes('124')) {
+                    el.style.backgroundColor = 'rgba(124, 58, 237, 0.2)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="bg-accent-purple/30"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent' || !bgColor.includes('124')) {
+                    el.style.backgroundColor = 'rgba(124, 58, 237, 0.3)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="bg-accent-purple/5"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent' || !bgColor.includes('124')) {
+                    el.style.backgroundColor = 'rgba(124, 58, 237, 0.05)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="bg-accent-cyan/20"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+                    el.style.backgroundColor = 'rgba(0, 240, 255, 0.2)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="bg-accent-cyan/30"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+                    el.style.backgroundColor = 'rgba(0, 240, 255, 0.3)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="bg-accent-cyan/5"]').forEach(el => {
+                const bgColor = getComputedStyle(el).backgroundColor;
+                if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+                    el.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
+                }
+            });
+
+            // Border colors
+            desarrolloSection.querySelectorAll('[class*="border-accent-purple/30"]').forEach(el => {
+                const borderColor = getComputedStyle(el).borderColor;
+                if (borderColor === 'rgba(0, 0, 0, 0)' || borderColor === 'transparent' || !borderColor.includes('124')) {
+                    el.style.borderColor = 'rgba(124, 58, 237, 0.3)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="border-accent-purple/50"]').forEach(el => {
+                const borderColor = getComputedStyle(el).borderColor;
+                if (borderColor === 'rgba(0, 0, 0, 0)' || borderColor === 'transparent' || !borderColor.includes('124')) {
+                    el.style.borderColor = 'rgba(124, 58, 237, 0.5)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="border-accent-cyan/30"]').forEach(el => {
+                const borderColor = getComputedStyle(el).borderColor;
+                if (borderColor === 'rgba(0, 0, 0, 0)' || borderColor === 'transparent') {
+                    el.style.borderColor = 'rgba(0, 240, 255, 0.3)';
+                }
+            });
+
+            desarrolloSection.querySelectorAll('[class*="border-accent-cyan/50"]').forEach(el => {
+                const borderColor = getComputedStyle(el).borderColor;
+                if (borderColor === 'rgba(0, 0, 0, 0)' || borderColor === 'transparent') {
+                    el.style.borderColor = 'rgba(0, 240, 255, 0.5)';
+                }
+            });
+        }
+
+        // Aplicar fallbacks después de un pequeño delay para que Tailwind termine de procesar
+        setTimeout(applyColorFallbacks, 100);
+        setTimeout(applyColorFallbacks, 500);
+        setTimeout(applyColorFallbacks, 1000);
     }
 });
