@@ -289,3 +289,106 @@
         startInit();
     }
 })();
+
+// Video Demostrativo - Smart Play/Pause Logic
+(function() {
+    'use strict';
+    
+    function initDemoVideo() {
+        const demoIframe = document.querySelector('#demo-video-iframe');
+        if (!demoIframe || !demoIframe.src) {
+            setTimeout(initDemoVideo, 100);
+            return;
+        }
+
+        // Cargar Vimeo SDK si no está cargado
+        if (typeof Vimeo === 'undefined') {
+            const script = document.createElement('script');
+            script.src = "https://player.vimeo.com/api/player.js";
+            script.onload = () => {
+                initDemoVideoPlayer(demoIframe);
+            };
+            document.head.appendChild(script);
+        } else {
+            initDemoVideoPlayer(demoIframe);
+        }
+    }
+
+    function initDemoVideoPlayer(iframe) {
+        const player = new Vimeo.Player(iframe);
+        let isPlaying = false;
+
+        const smartPlay = async () => {
+            if (isPlaying) return;
+            try {
+                await player.setMuted(true);
+                await player.play();
+                isPlaying = true;
+            } catch (error) {
+                console.log('Demo Video: Error al reproducir', error);
+            }
+        };
+
+        const smartPause = async () => {
+            if (!isPlaying) return;
+            try {
+                await player.pause();
+                isPlaying = false;
+            } catch (error) {
+                console.log('Demo Video: Error al pausar', error);
+            }
+        };
+
+        // Gestión de Visibilidad con IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    smartPlay();
+                } else {
+                    if (document.activeElement !== iframe && !iframe.matches(':focus-within')) {
+                        smartPause();
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(iframe);
+
+        // Gestión de Focus
+        const handleFocus = () => {
+            smartPlay();
+        };
+
+        const handleBlur = () => {
+            const rect = iframe.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (!isVisible) {
+                smartPause();
+            }
+        };
+
+        iframe.addEventListener('focus', handleFocus, true);
+        iframe.addEventListener('blur', handleBlur, true);
+
+        const videoContainer = iframe.closest('.relative');
+        if (videoContainer) {
+            videoContainer.addEventListener('focusin', handleFocus);
+            videoContainer.addEventListener('focusout', handleBlur);
+        }
+
+        // Inicializar: Intentar reproducir al cargar si está visible
+        setTimeout(() => {
+            const rect = iframe.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible) {
+                smartPlay();
+            }
+        }, 500);
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDemoVideo);
+    } else {
+        initDemoVideo();
+    }
+})();
