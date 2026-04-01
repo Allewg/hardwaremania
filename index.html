@@ -232,15 +232,15 @@
                                 <!-- Play Button Overlay -->
                                 <div x-show="!videoPlaying" @click="playVideo()"
                                     class="absolute inset-0 z-20 flex flex-col items-center justify-center cursor-pointer group/play"
-                                    style="background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(0,0,0,0.7) 100%);">
-                                    <div class="relative mb-4 sm:mb-5">
+                                    style="background-image: url('multimedia/images/logo1.png'); background-size: 65%; background-repeat: no-repeat; background-position: center; background-color: #080810;">
+                                    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(124,58,237,0.25) 0%, rgba(0,0,0,0.55) 100%);"></div>
+                                    <div class="relative mb-4 sm:mb-5 z-10">
                                         <div class="absolute -inset-3 rounded-full border border-primary/30 animate-ping opacity-40"></div>
                                         <div class="absolute -inset-6 rounded-full border border-primary/15 animate-ping opacity-20" style="animation-delay:0.4s;"></div>
                                         <button class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/25 border-2 border-primary/70 flex items-center justify-center group-hover/play:bg-primary/50 group-hover/play:border-primary group-hover/play:scale-110 transition-all duration-300 backdrop-blur-sm shadow-lg shadow-primary/30">
                                             <i class="fas fa-play text-white text-xl sm:text-2xl ml-1"></i>
                                         </button>
                                     </div>
-                                    <p class="text-white/80 text-xs sm:text-sm font-medium tracking-wider uppercase">Ver presentación</p>
                                 </div>
                             </div>
                         </div>
@@ -932,6 +932,167 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección Instagram CTA -->
+        <section class="relative py-24 overflow-hidden">
+            <!-- Background -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
+            </div>
+
+            <div class="container mx-auto px-6">
+                <!-- Borde decorativo superior -->
+                <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-primary rounded-full mx-auto mb-10"></div>
+
+                <div class="max-w-4xl mx-auto text-center">
+                    <!-- Ícono Instagram animado -->
+                    <div class="flex justify-center mb-8">
+                        <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" rel="noopener noreferrer"
+                            class="relative group">
+                            <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-primary blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
+                            <div class="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-500 via-purple-600 to-primary flex items-center justify-center shadow-xl shadow-pink-500/30 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-instagram text-white text-4xl"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-white">
+                        Síguenos en Instagram
+                    </h2>
+                    <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                        Mantente al día con nuestros proyectos, novedades tecnológicas y contenido exclusivo. Cada semana compartimos lo mejor del mundo digital.
+                    </p>
+
+                    <!-- Cualidades -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
+                        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-pink-500/40 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-bolt text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">Contenido de Valor</h3>
+                            <p class="text-gray-400 text-sm">Tips, tutoriales y noticias del mundo tech que realmente importan para tu negocio.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-purple-500/40 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-primary flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-laptop-code text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">Proyectos Reales</h3>
+                            <p class="text-gray-400 text-sm">Mostramos el detrás de escena de nuestros desarrollos: desde la idea hasta el resultado final.</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-blue-500/40 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg mb-2">Comunidad Activa</h3>
+                            <p class="text-gray-400 text-sm">Conectamos con emprendedores y empresas que quieren crecer en el mundo digital.</p>
+                        </div>
+                    </div>
+
+                    <!-- Botón CTA -->
+                    <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-3 px-10 py-4 rounded-full text-white font-semibold text-lg transition-all duration-300 shadow-lg shadow-pink-500/30 hover:shadow-pink-500/60 hover:scale-105"
+                        style="background: linear-gradient(135deg, #e1306c 0%, #833ab4 50%, #7c3aed 100%);">
+                        <i class="fab fa-instagram text-xl"></i>
+                        @hardwaremania.cl
+                    </a>
+                </div>
+
+                <!-- Borde decorativo inferior -->
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-pink-500 rounded-full mx-auto mt-10"></div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN GOOGLE MAPS + RESEÑA ===== -->
+        <section class="relative py-20 overflow-hidden">
+            <!-- Background -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute top-0 right-1/3 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+            </div>
+
+            <div class="container mx-auto px-6">
+                <!-- Encabezado -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/10 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-5">
+                        <i class="fab fa-google text-sm"></i>
+                        Encuéntranos en Google
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                        ¿Ya trabajamos juntos?
+                    </h2>
+                    <p class="text-gray-400 max-w-xl mx-auto text-base leading-relaxed">
+                        Tu opinión nos ayuda a crecer y a que más empresas puedan encontrarnos. ¡Déjanos una reseña en Google!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+
+                    <!-- Mapa -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 via-primary/30 to-yellow-400/30 rounded-2xl blur opacity-40 group-hover:opacity-70 transition duration-700"></div>
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl" style="height: 320px;">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Hardwaremania+Soluciones+Digitales,+Santiago,+Chile&ll=-33.61147,-70.6930841&z=16&output=embed"
+                                width="100%"
+                                height="100%"
+                                style="border:0; filter: grayscale(20%) contrast(1.05);"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación HardwareMania">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- CTA Reseña -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Estrellas decorativas -->
+                        <div class="flex gap-1.5">
+                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white leading-snug">
+                            Tu reseña vale más<br>
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-400">que mil anuncios</span>
+                        </h3>
+
+                        <p class="text-gray-400 leading-relaxed">
+                            Si tuviste una buena experiencia con nosotros, compartirla en Google nos ayuda a seguir creciendo y a que otras personas nos encuentren cuando más nos necesitan.
+                        </p>
+
+                        <!-- Info ubicación -->
+                        <div class="flex items-center gap-3 text-gray-400 text-sm">
+                            <div class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary text-sm"></i>
+                            </div>
+                            <span>Hardwaremania Soluciones Digitales · Santiago, Chile</span>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <a href="https://www.google.com/maps/place/Hardwaremania+Soluciones+Digitales/@-33.6114655,-70.695659,17z/data=!3m1!4b1!4m6!3m5!1s0x9662d9b2b6637f4b:0x5a9874dbebf58354!8m2!3d-33.61147!4d-70.6930841!16s%2Fg%2F11z42d26pp#action=write_review"
+                               target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm text-white transition-all duration-300 hover:scale-105 shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/40"
+                               style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);">
+                                <i class="fab fa-google text-base"></i>
+                                Dejar mi reseña
+                            </a>
+                            <a href="https://www.google.com/maps/place/Hardwaremania+Soluciones+Digitales/@-33.6114655,-70.695659,17z/data=!3m1!4b1!4m6!3m5!1s0x9662d9b2b6637f4b:0x5a9874dbebf58354!8m2!3d-33.61147!4d-70.6930841!16s%2Fg%2F11z42d26pp"
+                               target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm text-white border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                                <i class="fas fa-map-marked-alt text-base"></i>
+                                Ver en Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -947,7 +1108,7 @@
                         Impulsando el futuro digital de las empresas con tecnología de vanguardia y diseño excepcional.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#"
+                        <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors"><i
                                 class="fab fa-instagram"></i></a>
                         <a href="#"
@@ -974,7 +1135,8 @@
                     <ul class="space-y-4 text-gray-400">
                         <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i>
                             <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbaca4a5b1aaa7a4a6aea7a7aaaf8ba3aab9afbcaab9aea6aaa5a2aae5a8a7">[email&#160;protected]</a></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone text-primary"></i> +56 9 2192 2139
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-primary"></i>
+                            <a href="https://wa.me/56949881171" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">+56 9 4988 1171</a>
                         </li>
                         <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-primary"></i> Santiago,
                             Chile</li>
@@ -991,3 +1153,397 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <!-- Burbuja de bienvenida -->
+        <div id="wa-bubble"
+             class="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-2xl rounded-br-sm shadow-xl whitespace-nowrap leading-snug"
+             style="animation: hmBubblePop 0.4s ease 2s both;">
+            ¡Escríbenos! 💬
+        </div>
+        <a href="https://wa.me/56949881171?text=Hola%20HardwareMania!%20Quisiera%20más%20información."
+           target="_blank" rel="noopener noreferrer"
+           id="wa-float-btn"
+           class="relative flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
+           style="background: #25D366;">
+            <i class="fab fa-whatsapp text-white text-3xl"></i>
+            <span class="absolute inset-0 rounded-full animate-ping opacity-40" style="background: #25D366;"></span>
+        </a>
+    </div>
+
+    <!-- ===== CHAT IA FLOTANTE ===== -->
+    <div id="hm-chat-widget" class="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
+
+        <!-- Burbuja de bienvenida (aparece al cargar) -->
+        <div id="hm-chat-bubble"
+             class="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-2xl rounded-bl-sm shadow-xl max-w-[180px] text-center leading-snug transition-all duration-500"
+             style="animation: hmBubblePop 0.4s ease 1.5s both;">
+            ¿Tienes alguna duda? 👋
+        </div>
+
+        <!-- Botón de abrir/cerrar chat -->
+        <button id="hm-chat-toggle"
+                class="relative flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 focus:outline-none"
+                style="background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);"
+                onclick="hmToggleChat()">
+            <i id="hm-chat-icon-open" class="fas fa-robot text-white text-2xl transition-all duration-200"></i>
+            <i id="hm-chat-icon-close" class="fas fa-times text-white text-2xl transition-all duration-200 hidden"></i>
+            <!-- Notificación punto -->
+            <span id="hm-chat-dot" class="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-white"></span>
+        </button>
+
+        <!-- Ventana del chat -->
+        <div id="hm-chat-window"
+             class="hidden flex-col w-[340px] sm:w-[380px] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+             style="background: #0f0f1a; max-height: 520px; order: -1;">
+
+            <!-- Header -->
+            <div class="flex items-center gap-3 px-4 py-3" style="background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);">
+                <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-robot text-white text-base"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white font-bold text-sm leading-none">HM Asistente</p>
+                    <p class="text-white/70 text-xs mt-0.5 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
+                        En línea ahora
+                    </p>
+                </div>
+                <button onclick="hmToggleChat()" class="text-white/70 hover:text-white transition-colors focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Mensajes -->
+            <div id="hm-chat-messages"
+                 class="flex flex-col gap-3 p-4 overflow-y-auto flex-1"
+                 style="min-height: 300px; max-height: 360px; scroll-behavior: smooth;">
+            </div>
+
+            <!-- Sugerencias rápidas -->
+            <div id="hm-quick-replies" class="flex flex-wrap gap-2 px-4 pb-2">
+                <button onclick="hmSendQuick('¿Qué servicios ofrecen?')" class="hm-quick-btn">Servicios</button>
+                <button onclick="hmSendQuick('¿Cuáles son los precios?')" class="hm-quick-btn">Precios</button>
+                <button onclick="hmSendQuick('¿Cómo los contacto?')" class="hm-quick-btn">Contacto</button>
+                <button onclick="hmSendQuick('Ver portafolio')" class="hm-quick-btn">Portafolio</button>
+            </div>
+
+            <!-- Input -->
+            <div class="flex items-center gap-2 px-4 py-3 border-t border-white/5">
+                <input id="hm-chat-input"
+                       type="text"
+                       placeholder="Escribe tu consulta..."
+                       maxlength="200"
+                       class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
+                       onkeydown="if(event.key==='Enter') hmSendMessage()" />
+                <button onclick="hmSendMessage()"
+                        class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 hover:scale-110 focus:outline-none"
+                        style="background: linear-gradient(135deg, #7c3aed, #06b6d4);">
+                    <i class="fas fa-paper-plane text-white text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes hmBubblePop {
+            from { opacity: 0; transform: scale(0.8) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .hm-quick-btn {
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #c4b5fd;
+            border: 1px solid rgba(124,58,237,0.4);
+            background: rgba(124,58,237,0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .hm-quick-btn:hover {
+            background: rgba(124,58,237,0.3);
+            border-color: rgba(124,58,237,0.8);
+            color: #fff;
+        }
+        .hm-msg-bot {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+        .hm-msg-bot .hm-bubble {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e5e7eb;
+            border-radius: 16px 16px 16px 4px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            max-width: 88%;
+        }
+        .hm-msg-user {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .hm-msg-user .hm-bubble {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            border-radius: 16px 16px 4px 16px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            max-width: 88%;
+        }
+        .hm-avatar {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hm-typing span {
+            display: inline-block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #9ca3af;
+            animation: hmDot 1.2s infinite;
+        }
+        .hm-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .hm-typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes hmDot {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+
+    <script>
+    // ── HardwareMania Chat IA ──────────────────────────────────────────
+    (function () {
+        const WA_NUMBER = '56949881171';
+
+        const KB = [
+            {
+                keys: ['hola','buenos','buenas','hey','saludos','hi'],
+                reply: () => `¡Hola! 👋 Soy el asistente de <strong>HardwareMania</strong>. Estoy aquí para ayudarte con cualquier consulta sobre nuestros servicios. ¿En qué te puedo orientar hoy?`
+            },
+            {
+                keys: ['servicio','ofrecen','hacen','qué hacen','qué ofrecen','trabajan'],
+                reply: () => `Ofrecemos tres grandes áreas: <br><br>
+🌐 <strong>Desarrollo Web</strong> — Sitios modernos, rápidos y optimizados para SEO.<br>
+🤖 <strong>Automatización</strong> — Workflows con n8n, Make y Zapier para reducir trabajo manual.<br>
+🧠 <strong>Agentes IA</strong> — Chatbots inteligentes 24/7 integrados a WhatsApp, web y CRM.<br><br>
+¿Cuál te interesa más?`
+            },
+            {
+                keys: ['precio','costo','valor','cobran','tarifa','presupuesto','cuánto','cuanto'],
+                reply: () => `Los precios varían según el proyecto 🎯<br><br>
+🌐 <strong>Desarrollo Web</strong>: desde $150.000 CLP (ref.) — incluye dominio y hosting por 1 año.<br>
+🤖 <strong>Automatización</strong>: cotización a medida según flujos.<br>
+🧠 <strong>Agentes IA</strong>: cotización personalizada.<br><br>
+Cada proyecto se evalúa de forma individual. Te recomiendo <a href="https://wa.me/${WA_NUMBER}?text=Hola,%20quiero%20una%20cotización" target="_blank" style="color:#7c3aed;font-weight:600;">contactarnos por WhatsApp</a> para una estimación sin costo.`
+            },
+            {
+                keys: ['desarrollo web','página','pagina','sitio','web','landing'],
+                reply: () => `Nuestro servicio de <strong>Desarrollo Web</strong> incluye:<br><br>
+✅ Diseño 100% responsive<br>
+✅ Optimización SEO<br>
+✅ Panel autoadministrable<br>
+✅ Dominio + Hosting por 1 año incluido<br><br>
+Desde <strong>$150.000 CLP</strong> (referencial). Cada proyecto se evalúa en detalle. ¿Te gustaría ver ejemplos en el portafolio?`
+            },
+            {
+                keys: ['automatiz','n8n','make','zapier','workflow','proceso','flujo'],
+                reply: () => `Con nuestra <strong>Automatización de procesos</strong> puedes:<br><br>
+⚡ Crear workflows sin escribir código<br>
+⚡ Integrar más de 500 aplicaciones<br>
+⚡ Recibir reportes automáticos<br><br>
+Usamos herramientas como <strong>n8n, Make y Zapier</strong>. Ideal para reducir tareas repetitivas y errores. ¿Tienes algún proceso específico en mente?`
+            },
+            {
+                keys: ['ia','agente','chatbot','inteligencia','bot','ai','whatsapp bot'],
+                reply: () => `Nuestros <strong>Agentes IA</strong> son una solución poderosa 🧠<br><br>
+🔹 Responden clientes 24/7 sin intervención humana<br>
+🔹 Califican leads y toman decisiones<br>
+🔹 Se integran a WhatsApp, sitio web y CRM<br>
+🔹 Tienen memoria de conversación y aprenden de tus datos<br><br>
+¿Quieres que un agente como este trabaje para tu negocio? ¡Cotiza sin compromiso!`
+            },
+            {
+                keys: ['contacto','contactar','hablar','llamar','escribir','comunicar','email','correo','telefono','teléfono'],
+                reply: () => `Puedes contactarnos por:<br><br>
+📱 <strong>WhatsApp</strong>: <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">+56 9 4988 1171</a><br>
+📸 <strong>Instagram</strong>: <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" style="color:#e1306c;font-weight:600;">@hardwaremania.cl</a><br>
+📍 <strong>Ubicación</strong>: Santiago, Chile<br><br>
+¡Respondemos rápido! ⚡`
+            },
+            {
+                keys: ['portafolio','portfolio','trabajo','proyecto','ejemplo','cliente','clientes'],
+                reply: () => `Hemos trabajado con clientes de distintos rubros 🚀<br><br>
+Entre nuestros proyectos destacan sitios para gimnasios, tiendas, servicios de salud, bodegas y más. Puedes ver algunos en la sección <strong>Portafolio</strong> de esta misma página.<br><br>
+¿Buscas algo en particular? Te ayudo a encontrarlo.`
+            },
+            {
+                keys: ['ubicacion','ubicación','donde','dónde','ciudad','pais','país','chile','santiago'],
+                reply: () => `Estamos en <strong>Santiago, Chile</strong> 📍<br><br>
+Trabajamos de forma <strong>100% remota</strong>, por lo que podemos atender clientes en todo Chile y Latinoamérica sin problema. ¿Eres de fuera de Santiago?`
+            },
+            {
+                keys: ['tiempo','demora','plazo','cuándo','cuando','entrega'],
+                reply: () => `Los plazos dependen del proyecto:<br><br>
+🌐 <strong>Sitio web básico</strong>: 5 a 15 días hábiles.<br>
+⚙️ <strong>Proyectos complejos</strong>: se definen en la consulta inicial.<br><br>
+Siempre mantenemos comunicación constante durante el proceso para que estés al tanto de cada avance. ¿Tienes alguna fecha límite?`
+            },
+            {
+                keys: ['instagram','redes sociales','seguir','follow'],
+                reply: () => `¡Síguenos en Instagram! 📸<br><br>
+Publicamos contenido sobre tecnología, nuestros proyectos y tips digitales.<br>
+👉 <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" style="color:#e1306c;font-weight:600;">@hardwaremania.cl</a>`
+            },
+            {
+                keys: ['seo','posicionamiento','google','búsqueda','busqueda'],
+                reply: () => `Sí, todos nuestros sitios web incluyen <strong>optimización SEO</strong> básica:<br><br>
+🔍 Estructura de URLs correcta<br>
+🔍 Meta etiquetas optimizadas<br>
+🔍 Velocidad de carga optimizada<br>
+🔍 Diseño mobile-first<br><br>
+También ofrecemos estrategias SEO avanzadas como servicio adicional. ¿Te interesa?`
+            },
+            {
+                keys: ['gracias','thank','perfecto','excelente','genial','listo'],
+                reply: () => `¡Con gusto! 😊 Si surge alguna otra duda, aquí estaré. Recuerda que también puedes escribirnos por <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a> para una atención más personalizada.`
+            },
+        ];
+
+        const FALLBACK = [
+            `Esa es una buena pregunta 🤔 No quiero darte información incorrecta. Te recomiendo consultarlo directamente con nuestro equipo por <a href="https://wa.me/${WA_NUMBER}?text=Hola,%20tengo%20una%20consulta" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a>, ¡te responden rápido!`,
+            `Hmm, no tengo detalles exactos sobre eso. Para darte la mejor respuesta, escríbenos directo a <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">+56 9 4988 1171</a> por WhatsApp.`,
+            `Me quedo corto en esa consulta específica 😅 Pero nuestro equipo sí puede ayudarte. Contáctanos por <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a> para orientarte mejor.`,
+        ];
+
+        let fallbackIdx = 0;
+        let chatOpened = false;
+
+        window.hmToggleChat = function () {
+            const win = document.getElementById('hm-chat-window');
+            const iconOpen = document.getElementById('hm-chat-icon-open');
+            const iconClose = document.getElementById('hm-chat-icon-close');
+            const dot = document.getElementById('hm-chat-dot');
+            const bubble = document.getElementById('hm-chat-bubble');
+
+            const isHidden = win.classList.contains('hidden');
+
+            if (isHidden) {
+                win.classList.remove('hidden');
+                win.classList.add('flex');
+                iconOpen.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                dot.classList.add('hidden');
+                if (bubble) bubble.style.display = 'none';
+
+                if (!chatOpened) {
+                    chatOpened = true;
+                    setTimeout(() => hmAddBot(`¡Hola! 👋 Soy el asistente de <strong>HardwareMania</strong>.<br>Estoy aquí para ayudarte con tus dudas sobre nuestros servicios. ¿En qué te puedo orientar?`), 400);
+                } else {
+                    hmScrollBottom();
+                }
+            } else {
+                win.classList.add('hidden');
+                win.classList.remove('flex');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                dot.classList.remove('hidden');
+            }
+        };
+
+        window.hmSendQuick = function (text) {
+            document.getElementById('hm-chat-input').value = text;
+            hmSendMessage();
+        };
+
+        window.hmSendMessage = function () {
+            const input = document.getElementById('hm-chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+
+            hmAddUser(text);
+            hmShowTyping();
+
+            setTimeout(() => {
+                hmRemoveTyping();
+                hmAddBot(hmGetReply(text));
+            }, 900 + Math.random() * 400);
+        };
+
+        function hmGetReply(text) {
+            const q = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            for (const entry of KB) {
+                if (entry.keys.some(k => q.includes(k))) {
+                    return entry.reply();
+                }
+            }
+            return FALLBACK[fallbackIdx++ % FALLBACK.length];
+        }
+
+        function hmAddBot(html) {
+            const msgs = document.getElementById('hm-chat-messages');
+            msgs.innerHTML += `
+                <div class="hm-msg-bot">
+                    <div class="hm-avatar"><i class="fas fa-robot text-white" style="font-size:11px;"></i></div>
+                    <div class="hm-bubble">${html}</div>
+                </div>`;
+            hmScrollBottom();
+        }
+
+        function hmAddUser(text) {
+            const msgs = document.getElementById('hm-chat-messages');
+            msgs.innerHTML += `
+                <div class="hm-msg-user">
+                    <div class="hm-bubble">${hmEscape(text)}</div>
+                </div>`;
+            hmScrollBottom();
+        }
+
+        function hmShowTyping() {
+            const msgs = document.getElementById('hm-chat-messages');
+            msgs.innerHTML += `
+                <div class="hm-msg-bot" id="hm-typing-indicator">
+                    <div class="hm-avatar"><i class="fas fa-robot text-white" style="font-size:11px;"></i></div>
+                    <div class="hm-bubble hm-typing" style="padding:12px 16px;">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>`;
+            hmScrollBottom();
+        }
+
+        function hmRemoveTyping() {
+            const el = document.getElementById('hm-typing-indicator');
+            if (el) el.remove();
+        }
+
+        function hmScrollBottom() {
+            const msgs = document.getElementById('hm-chat-messages');
+            if (msgs) msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function hmEscape(str) {
+            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
+        // Auto-hide bubbles after 6s
+        setTimeout(() => {
+            const b = document.getElementById('hm-chat-bubble');
+            if (b) { b.style.transition = 'opacity 0.5s'; b.style.opacity = '0'; setTimeout(() => b && (b.style.display='none'), 500); }
+            const w = document.getElementById('wa-bubble');
+            if (w) { w.style.transition = 'opacity 0.5s'; w.style.opacity = '0'; setTimeout(() => w && (w.style.display='none'), 500); }
+        }, 6000);
+    })();
+    </script>
+</body>
+</html>
