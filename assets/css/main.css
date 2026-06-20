@@ -409,3 +409,187 @@ h6 {
 #desarrollo-web-section [class*="border-accent-cyan/50"] {
     border-color: rgba(0, 240, 255, 0.5) !important;
 }
+
+/* Presentation Experience */
+.hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.14) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
+}
+
+.hero-scanline {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 240, 255, 0.08) 48%,
+        transparent 52%,
+        transparent 100%
+    );
+    background-size: 100% 220px;
+    animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+    from {
+        background-position: 0 -220px;
+    }
+    to {
+        background-position: 0 220px;
+    }
+}
+
+.hero-signal-card {
+    min-height: 74px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.045);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+}
+
+.hero-signal-card span {
+    font-size: 0.68rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
+
+.hero-signal-card strong {
+    color: #ffffff;
+    font-size: clamp(0.74rem, 1.8vw, 0.95rem);
+    line-height: 1.15;
+}
+
+.diagnostic-choice {
+    min-height: 152px;
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+        rgba(8, 8, 24, 0.9);
+    color: #ffffff;
+    text-align: left;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.diagnostic-choice:hover,
+.diagnostic-choice.is-active {
+    transform: translateY(-4px);
+    border-color: rgba(0, 240, 255, 0.45);
+    background:
+        linear-gradient(135deg, rgba(0, 240, 255, 0.11), rgba(124, 58, 237, 0.11)),
+        rgba(8, 8, 24, 0.95);
+}
+
+.diagnostic-choice i {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    color: #00f0ff;
+    background: rgba(0, 240, 255, 0.1);
+}
+
+.diagnostic-choice span {
+    display: block;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.diagnostic-choice small {
+    display: block;
+    color: #94a3b8;
+    line-height: 1.45;
+}
+
+.diagnostic-output {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.045);
+    padding: 24px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.diagnostic-output a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 800;
+    background: #25D366;
+}
+
+.case-strip {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.case-strip span {
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 8px 10px;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.74rem;
+    line-height: 1.3;
+}
+
+.digital-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    background:
+        linear-gradient(145deg, rgba(124, 58, 237, 0.16), rgba(0, 240, 255, 0.07)),
+        rgba(15, 12, 41, 0.86);
+    padding: 28px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+}
+
+.qr-frame {
+    border-radius: 18px;
+    padding: 10px;
+    background: #ffffff;
+    width: 120px;
+    height: 120px;
+}
+
+.qr-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .hero-signal-card {
+        min-height: 66px;
+        padding: 10px;
+    }
+
+    .diagnostic-choice {
+        min-height: 132px;
+        padding: 20px;
+    }
+
+    .digital-card {
+        padding: 22px;
+    }
+}

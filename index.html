@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HardwareMania | Soluciones Tecnológicas Premium</title>
+    <meta name="description"
+        content="Hardwaremania, trabajador de tecnologías digitales. Desarrollo web, automatización, soporte TI y agentes IA para negocios que quieren verse y operar mejor." />
+    <meta property="og:title" content="HardwareMania" />
+    <meta property="og:description"
+        content="Una tarjeta digital interactiva para descubrir soluciones web, IA y automatización para tu negocio." />
+    <meta property="og:image" content="https://hardwaremania.cl/multimedia/images/logo1.png" />
+    <meta property="og:url" content="https://hardwaremania.cl/" />
+    <meta name="theme-color" content="#030014" />
+    <title>HardwareMania</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 
@@ -119,6 +127,12 @@
                     <span
                         class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </a>
+                <a href="#diagnostico"
+                    class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
+                    Diagnóstico
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="#portafolio"
                     class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group">
                     Portafolio
@@ -154,6 +168,8 @@
                     class="text-gray-300 hover:text-primary transition-colors">Inicio</a>
                 <a href="#servicios" @click="menuOpen = false"
                     class="text-gray-300 hover:text-primary transition-colors">Servicios</a>
+                <a href="#diagnostico" @click="menuOpen = false"
+                    class="text-gray-300 hover:text-primary transition-colors">Diagnóstico</a>
                 <a href="#portafolio" @click="menuOpen = false"
                     class="text-gray-300 hover:text-primary transition-colors">Portafolio</a>
                 <a href="#nosotros" @click="menuOpen = false"
@@ -169,15 +185,9 @@
         <section id="home"
             class="relative w-full min-h-screen overflow-hidden flex items-center justify-center py-24 lg:py-0">
             <!-- Background Elements -->
-            <div class="absolute inset-0 z-0">
-                <div
-                    class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-dark-bg to-dark-bg">
+           <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-dark-bg to-dark-bg">
                 </div>
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse">
-                </div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[128px] animate-pulse"
-                    style="animation-delay: 2s;"></div>
-            </div>
+            <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-0 opacity-50"></canvas>
 
             <div class="container mx-auto px-4 sm:px-6 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -186,30 +196,47 @@
                         <div
                             class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-2 sm:mb-4 animate-fade-in-up">
                             <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-400 animate-pulse"></span>
-                            <span class="text-xs sm:text-sm font-medium text-gray-300">Innovación Tecnológica 2026</span>
+                            <span class="text-xs sm:text-sm font-medium text-gray-300"> Tecnologías digitales</span>
                         </div>
 
                         <h1
-                            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 tracking-tight leading-tight">
-                            Transformamos el <br />
-                            <span class="text-gradient-purple">Futuro Digital</span>
+                            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-3 sm:mb-4 tracking-tight leading-tight">
+                             Creamos <br />
+                            <span class="text-gradient-purple"> tu experiencia digital</span>
                         </h1>
 
-                        <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mb-4 sm:mb-6 font-light leading-relaxed">
-                            Soluciones integrales en desarrollo web, soporte TI e inteligencia artificial para potenciar
-                            tu negocio al siguiente nivel.
+                        <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mb-4 sm:mb-6 font-light leading-relaxed">
+                            Uso desarrollo web, automatización, soporte TI e inteligencia artificial para que tu negocio
+                            se vea mejor, atienda más rápido y opere al 100 %.
                         </p>
 
+                        <div class="grid grid-cols-3 gap-2 sm:gap-3 w-full max-w-xl mb-5 sm:mb-7">
+                            <div class="hero-signal-card">
+                                <span class="text-accent-cyan">01</span>
+                                <strong>Web</strong>
+                            </div>
+                            <div class="hero-signal-card">
+                                <span class="text-green-400">02</span>
+                                <strong>IA</strong>
+                            </div>
+                            <div class="hero-signal-card">
+                                <span class="text-purple-300">03</span>
+                                <strong>Automatización</strong>
+                            </div>
+                        </div>
+
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
-                            <a href="#servicios"
+                            <a href="#diagnostico"
                                 class="btn-glow px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-primary text-white font-semibold text-xs sm:text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-1">
-                                Explorar Servicios
+                                Diagnóstico Digital
                             </a>
-                            <a href="#contacto"
+                            <a href="#portafolio"
                                 class="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-xs sm:text-sm hover:bg-white/10 transition-all backdrop-blur-sm">
-                                Contáctanos
+                                Ver Proyectos
                             </a>
                         </div>
+
+                       
                     </div>
 
                     <!-- Right Column: Video -->
@@ -245,9 +272,19 @@
                             </div>
                         </div>
                         <!-- Decorative Elements -->
-                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/20 rounded-full blur-2xl -z-10">
-                        </div>
-                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-600/10 rounded-full blur-2xl -z-10"></div>
+          <div class="absolute -bottom-1 -right-1 sm:-bottom-5 sm:-right-5 z-50 hidden sm:block w-32 sm:w-52 rounded-xl sm:rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl p-2 sm:p-4 shadow-2xl">
+    <div class="flex items-center justify-between text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-gray-500">
+        <span>Live Stack</span>
+        <span class="text-green-400">online</span>
+    </div>
+    
+    <div class="mt-2 sm:mt-3 grid grid-cols-2 gap-1 sm:gap-2 text-[9px] sm:text-xs">
+        <span class="rounded-md sm:rounded-lg bg-white/5 px-1.5 py-1 text-gray-300 text-center">Web UI</span>
+        <span class="rounded-md sm:rounded-lg bg-white/5 px-1.5 py-1 text-gray-300 text-center">Agentes IA</span>
+        <span class="rounded-md sm:rounded-lg bg-white/5 px-1.5 py-1 text-gray-300 text-center">WhatsApp</span>
+        <span class="rounded-md sm:rounded-lg bg-white/5 px-1.5 py-1 text-gray-300 text-center">Automatiza</span>
+    </div>
+</div>
                     </div>
                 </div>
             </div>
@@ -255,6 +292,67 @@
             <!-- Scroll Indicator -->
             <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
                 <i class="fas fa-chevron-down text-gray-500 text-xl"></i>
+            </div>
+        </section>
+
+        <!-- Diagnóstico Digital -->
+        <section id="diagnostico" class="relative py-24 overflow-hidden bg-[#060615]">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-200 text-xs font-bold uppercase tracking-[0.22em] mb-5">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            Diagnóstico Express
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+                            Descubre qué tecnología le conviene primero a tu negocio.
+                        </h2>
+                        <p class="text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
+                            Elige el objetivo que más te representa y la página te recomienda un primer movimiento:
+                            web, automatización, agente IA, reservas o tienda digital.
+                        </p>
+                        <div class="diagnostic-output" id="diagnostic-output">
+                            <p class="text-xs uppercase tracking-[0.28em] text-gray-500 mb-3">Resultado inicial</p>
+                            <h3 class="text-2xl font-bold text-white mb-3">Tu ruta digital aparecerá aquí.</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Toca una opción para generar una recomendación clara y enviarla directo por WhatsApp.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="diagnostic-choice" data-diagnostic="ventas">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Quiero vender más</span>
+                            <small>Tienda, landing o embudo comercial</small>
+                        </button>
+                        <button class="diagnostic-choice" data-diagnostic="atencion">
+                            <i class="fas fa-headset"></i>
+                            <span>Quiero atender mejor</span>
+                            <small>Agente IA y respuestas 24/7</small>
+                        </button>
+                        <button class="diagnostic-choice" data-diagnostic="operacion">
+                            <i class="fas fa-gears"></i>
+                            <span>Quiero ordenar procesos</span>
+                            <small>Automatización y flujos internos</small>
+                        </button>
+                        <button class="diagnostic-choice" data-diagnostic="presencia">
+                            <i class="fas fa-display"></i>
+                            <span>Quiero verme premium</span>
+                            <small>Sitio de presentación y autoridad</small>
+                        </button>
+                        <button class="diagnostic-choice" data-diagnostic="reservas">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Quiero recibir reservas</span>
+                            <small>Agenda, citas y confirmaciones</small>
+                        </button>
+                        <button class="diagnostic-choice" data-diagnostic="soporte">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Necesito soporte TI</span>
+                            <small>Estabilidad, continuidad y ayuda técnica</small>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -270,10 +368,10 @@
                 <div class="text-center mb-12 sm:mb-16 md:mb-20">
                     <h2
                         class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-purple-400">
-                        Nuestros Servicios
+                        Qué puedo construir contigo
                     </h2>
                     <p class="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                        Soluciones tecnológicas de alto impacto diseñadas para escalar tu negocio.
+                        Soluciones digitales pensadas para causar una primera impresión fuerte y mejorar cómo trabaja tu negocio.
                     </p>
                     <p class="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 italic px-4">
                         * Precios referenciales. Cada proyecto se evalúa de forma personalizada según los requerimientos
@@ -295,24 +393,19 @@
                                 class="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center text-3xl text-secondary mb-6">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Desarrollo Web</h3>
-                            <p class="text-gray-400 mb-6 flex-grow">Sitios web de alto rendimiento, optimizados para
-                                conversión y SEO. Incluye dominio y hosting por un año.</p>
+                            <h3 class="text-2xl font-bold text-white mb-2">Sitios web que venden confianza</h3>
+                            <p class="text-gray-400 mb-6 flex-grow">Páginas de presentación, tiendas, reservas y landings con estética premium, estructura clara y llamado directo a contacto.</p>
                             <ul class="space-y-3 mb-8 text-gray-400 text-sm">
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Diseño
-                                    Responsive</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Optimización
-                                    SEO</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Panel
-                                    Autoadministrable</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Dominio
-                                    + Hosting incluido</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Diseño responsive y orientado a conversión</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Integración con WhatsApp, formularios o agenda</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Presentación visual lista para compartir</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-secondary"></i> Dominio + hosting por un año según proyecto</li>
                             </ul>
                             <div class="mt-auto">
-                                <p class="text-sm text-gray-400 mb-4">Desde $150.000 (Ref.)</p>
+                                <p class="text-sm text-gray-400 mb-4">Desde $150.000 CLP (ref.)</p>
                                 <button @click="openDesarrolloWeb()"
                                     class="block w-full py-3 rounded-full border border-white/20 text-white text-center hover:bg-white/10 transition-colors cursor-pointer relative z-20">
-                                    Ver Planes
+                                    Ver formatos web
                                 </button>
                             </div>
                         </div>
@@ -331,16 +424,16 @@
                                 </div>
                                 <span class="px-3 py-1 rounded-full bg-green-400/10 text-green-400 text-xs font-bold">Eficiencia</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Automatización</h3>
-                            <p class="text-gray-400 text-sm mb-4">Automatizamos flujos de trabajo repetitivos con n8n, Make y Zapier. Reduce costos operativos y elimina errores humanos.</p>
+                            <h3 class="text-xl font-bold text-white mb-2">Automatización operativa</h3>
+                            <p class="text-gray-400 text-sm mb-4">Conecto herramientas y creo flujos para que tareas repetitivas dejen de depender de memoria, planillas sueltas o mensajes manuales.</p>
                             <ul class="space-y-2 mb-6 text-gray-400 text-xs">
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Workflows sin código</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Integración con +500 apps</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Reportes automáticos</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Leads, formularios y alertas ordenadas</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Integración con apps y canales de venta</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Reportes y seguimientos automáticos</li>
                             </ul>
                             <div class="flex items-center justify-between">
                                 <p class="text-sm font-bold text-white">A medida</p>
-                                <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20Automatización%20de%20procesos"
+                                <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20automatizar%20procesos%20en%20mi%20negocio"
                                     class="px-5 py-2 rounded-full bg-white/10 hover:bg-green-400 text-white font-semibold text-sm transition-colors">
                                     Cotizar
                                 </a>
@@ -361,16 +454,16 @@
                                 </div>
                                 <span class="px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-400 text-xs font-bold">IA Avanzada</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Agentes IA</h3>
-                            <p class="text-gray-400 text-sm mb-4">Agentes inteligentes que responden clientes, califican leads y toman decisiones 24/7. Integración con WhatsApp, web y CRM.</p>
+                            <h3 class="text-xl font-bold text-white mb-2">Agentes IA para atención y ventas</h3>
+                            <p class="text-gray-400 text-sm mb-4">Asistentes que guían clientes, responden preguntas frecuentes, califican interesados y empujan la conversación hacia una acción.</p>
                             <ul class="space-y-2 mb-6 text-gray-400 text-xs">
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Chatbots con memoria</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> RAG sobre tus datos</li>
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Multi-canal (WA / Web / Email)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Guía comercial en sitio web</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Respuestas basadas en tus servicios</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Derivación directa a WhatsApp</li>
                             </ul>
                             <div class="flex items-center justify-between">
                                 <p class="text-sm font-bold text-white">A medida</p>
-                                <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20un%20Agente%20IA"
+                                <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20un%20agente%20IA%20para%20mi%20negocio"
                                     class="px-5 py-2 rounded-full bg-white/10 hover:bg-cyan-400 text-white font-semibold text-sm transition-colors">
                                     Cotizar
                                 </a>
@@ -378,6 +471,320 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulador de Automatizaciones -->
+        <section id="simulador" class="relative py-24 overflow-hidden bg-[#050510] border-y border-white/5" x-data="{
+            simState: 'idle',
+            selectedTrigger: 'web',
+            selectedActions: ['sheets', 'whatsapp_reply', 'slack_alert'],
+            logs: [],
+            currentStep: -1,
+            toggleAction(action) {
+                if (this.selectedActions.includes(action)) {
+                    this.selectedActions = this.selectedActions.filter(a => a !== action);
+                } else {
+                    this.selectedActions.push(action);
+                }
+            },
+            runSimulation() {
+                if (this.simState === 'running') return;
+                this.simState = 'running';
+                this.logs = [];
+                this.currentStep = 0;
+                
+                const triggerNames = {
+                    web: 'Nuevo Lead en Formulario Web',
+                    whatsapp: 'Mensaje entrante de WhatsApp',
+                    store: 'Nueva compra en Tienda Online'
+                };
+                
+                this.addLog('⚡ [Disparador] Detectado: ' + triggerNames[this.selectedTrigger], 'trigger');
+                
+                let delay = 1200;
+                
+                // Paso 1: Conectores y primera acción
+                setTimeout(() => {
+                    this.currentStep = 1;
+                    if (this.selectedActions.includes('sheets')) {
+                        this.addLog('⚙️ [Google Sheets] Creando fila con datos del cliente...', 'action');
+                        setTimeout(() => {
+                            this.addLog('✅ [Google Sheets] Fila guardada correctamente.', 'success');
+                        }, 600);
+                    } else {
+                        this.addLog('⏭️ [Google Sheets] Omitido.', 'skip');
+                    }
+                }, delay);
+                
+                // Paso 2: Segunda acción
+                delay += 1800;
+                setTimeout(() => {
+                    this.currentStep = 2;
+                    if (this.selectedActions.includes('whatsapp_reply')) {
+                        this.addLog('🤖 [Agente IA] Redactando respuesta contextual...', 'action');
+                        setTimeout(() => {
+                            this.addLog('✉️ [WhatsApp] Mensaje enviado al cliente con éxito.', 'success');
+                        }, 800);
+                    } else {
+                        this.addLog('⏭️ [WhatsApp] Envío de mensaje omitido.', 'skip');
+                    }
+                }, delay);
+                
+                // Paso 3: Tercera acción
+                delay += 1800;
+                setTimeout(() => {
+                    this.currentStep = 3;
+                    if (this.selectedActions.includes('slack_alert')) {
+                        this.addLog('🔔 [Notificación] Enviando alerta de venta a Slack...', 'action');
+                        setTimeout(() => {
+                            this.addLog('🎉 [Slack] Notificación enviada al canal #ventas.', 'success');
+                        }, 600);
+                    } else {
+                        this.addLog('⏭️ [Notificación] Alerta omitida.', 'skip');
+                    }
+                }, delay);
+                
+                // Paso Final
+                delay += 1800;
+                setTimeout(() => {
+                    this.currentStep = 4;
+                    this.simState = 'done';
+                    this.addLog('🏁 [Fin] Simulación completada en 0.04s de tiempo de proceso.', 'info');
+                }, delay);
+            },
+            addLog(msg, type) {
+                const colors = {
+                    trigger: 'text-accent-cyan font-semibold',
+                    action: 'text-purple-300',
+                    success: 'text-green-400',
+                    skip: 'text-gray-500 italic',
+                    info: 'text-white font-bold'
+                };
+                const time = new Date().toLocaleTimeString();
+                this.logs.push({ text: `[${time}] ${msg}`, color: colors[type] || 'text-gray-300' });
+                this.$nextTick(() => {
+                    const container = document.getElementById('sim-logs-container');
+                    if (container) container.scrollTop = container.scrollHeight;
+                });
+            }
+        }">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+                <div class="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-purple-200 text-xs font-bold uppercase tracking-[0.22em] mb-5">
+                        <i class="fas fa-network-wired"></i>
+                        Interactúa y Conecta
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+                        Simulador de Automatizaciones
+                    </h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+                        Elige cómo entra un cliente y qué herramientas quieres que trabajen juntas. Haz clic en "Ejecutar Flujo" para ver el viaje de los datos en tiempo real.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+                    <!-- Panel Izquierdo: Configuración (4 cols) -->
+                    <div class="lg:col-span-5 flex flex-col gap-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8">
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-accent-cyan"></span>
+                                1. Elige el Disparador
+                            </h3>
+                            <div class="flex flex-col gap-3">
+                                <label class="flex items-center justify-between p-3.5 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                                       :class="selectedTrigger === 'web' ? 'border-accent-cyan bg-accent-cyan/5' : ''">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-accent-cyan/10 flex items-center justify-center text-accent-cyan">
+                                            <i class="fas fa-globe"></i>
+                                        </div>
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Formulario Web</span>
+                                            <span class="block text-xs text-gray-400">Cliente envía una consulta</span>
+                                        </div>
+                                    </div>
+                                    <input type="radio" name="trigger" value="web" x-model="selectedTrigger" class="hidden">
+                                    <div class="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center" :class="selectedTrigger === 'web' ? 'border-accent-cyan' : ''">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-accent-cyan" x-show="selectedTrigger === 'web'"></div>
+                                    </div>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3.5 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                                       :class="selectedTrigger === 'whatsapp' ? 'border-accent-cyan bg-accent-cyan/5' : ''">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </div>
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">WhatsApp</span>
+                                            <span class="block text-xs text-gray-400">Cliente escribe un mensaje</span>
+                                        </div>
+                                    </div>
+                                    <input type="radio" name="trigger" value="whatsapp" x-model="selectedTrigger" class="hidden">
+                                    <div class="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center" :class="selectedTrigger === 'whatsapp' ? 'border-accent-cyan' : ''">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-accent-cyan" x-show="selectedTrigger === 'whatsapp'"></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-accent-purple"></span>
+                                2. Acciones del Flujo
+                            </h3>
+                            <div class="flex flex-col gap-3">
+                                <div @click="toggleAction('sheets')" class="flex items-center justify-between p-3.5 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                                     :class="selectedActions.includes('sheets') ? 'border-accent-purple bg-accent-purple/5' : ''">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-green-600/10 flex items-center justify-center text-green-500">
+                                            <i class="fas fa-file-excel"></i>
+                                        </div>
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Registrar en Base de Datos</span>
+                                            <span class="block text-xs text-gray-400">Guarda en Google Sheets</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-5 h-5 rounded-lg border border-white/30 flex items-center justify-center" :class="selectedActions.includes('sheets') ? 'border-accent-purple bg-accent-purple/20' : ''">
+                                        <i class="fas fa-check text-xs text-accent-purple" x-show="selectedActions.includes('sheets')"></i>
+                                    </div>
+                                </div>
+
+                                <div @click="toggleAction('whatsapp_reply')" class="flex items-center justify-between p-3.5 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                                     :class="selectedActions.includes('whatsapp_reply') ? 'border-accent-purple bg-accent-purple/5' : ''">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Responder con Agente IA</span>
+                                            <span class="block text-xs text-gray-400">Envía respuesta por WhatsApp</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-5 h-5 rounded-lg border border-white/30 flex items-center justify-center" :class="selectedActions.includes('whatsapp_reply') ? 'border-accent-purple bg-accent-purple/20' : ''">
+                                        <i class="fas fa-check text-xs text-accent-purple" x-show="selectedActions.includes('whatsapp_reply')"></i>
+                                    </div>
+                                </div>
+
+                                <div @click="toggleAction('slack_alert')" class="flex items-center justify-between p-3.5 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer hover:bg-white/5 transition-all"
+                                     :class="selectedActions.includes('slack_alert') ? 'border-accent-purple bg-accent-purple/5' : ''">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Alerta de Ventas</span>
+                                            <span class="block text-xs text-gray-400">Notifica a tu equipo por Slack/Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-5 h-5 rounded-lg border border-white/30 flex items-center justify-center" :class="selectedActions.includes('slack_alert') ? 'border-accent-purple bg-accent-purple/20' : ''">
+                                        <i class="fas fa-check text-xs text-accent-purple" x-show="selectedActions.includes('slack_alert')"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button @click="runSimulation()" 
+                                class="w-full py-4 rounded-2xl bg-gradient-to-r from-accent-purple to-accent-cyan text-white font-bold tracking-widest uppercase hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-lg shadow-purple-500/20"
+                                :disabled="simState === 'running'"
+                                :class="simState === 'running' ? 'opacity-50 cursor-not-allowed' : ''">
+                            <span x-text="simState === 'running' ? 'Ejecutando...' : 'Ejecutar Flujo'"></span>
+                            <i class="fas" :class="simState === 'running' ? 'fa-spinner animate-spin' : 'fa-play'"></i>
+                        </button>
+                    </div>
+
+                    <!-- Panel Derecho: Canvas e Historial de Eventos (7 cols) -->
+                    <div class="lg:col-span-7 flex flex-col gap-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 justify-between">
+                        <!-- Canvas del flujo SVG -->
+                        <div class="relative bg-black/40 rounded-2xl border border-white/5 p-6 h-64 flex items-center justify-center overflow-hidden">
+                            <!-- SVG lines connecting nodes -->
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Trigger to Action 1 -->
+                                <path d="M 60,128 L 150,128" stroke="rgba(255,255,255,0.08)" stroke-width="3" fill="none" id="line-trigger-sheets"></path>
+                                <path d="M 60,128 L 150,128" stroke="#00f0ff" stroke-width="3" fill="none" stroke-dasharray="10, 150" 
+                                      :style="currentStep === 1 && simState === 'running' ? 'animation: simPulse 1.2s linear infinite;' : 'display:none;'"></path>
+
+                                <!-- Action 1 to Action 2 -->
+                                <path d="M 210,128 L 300,128" stroke="rgba(255,255,255,0.08)" stroke-width="3" fill="none" id="line-sheets-wa"></path>
+                                <path d="M 210,128 L 300,128" stroke="#7c3aed" stroke-width="3" fill="none" stroke-dasharray="10, 150" 
+                                      :style="currentStep === 2 && simState === 'running' ? 'animation: simPulse 1.2s linear infinite;' : 'display:none;'"></path>
+
+                                <!-- Action 2 to Action 3 -->
+                                <path d="M 360,128 L 450,128" stroke="rgba(255,255,255,0.08)" stroke-width="3" fill="none" id="line-wa-slack"></path>
+                                <path d="M 360,128 L 450,128" stroke="#ff0055" stroke-width="3" fill="none" stroke-dasharray="10, 150" 
+                                      :style="currentStep === 3 && simState === 'running' ? 'animation: simPulse 1.2s linear infinite;' : 'display:none;'"></path>
+                            </svg>
+
+                            <style>
+                                @keyframes simPulse {
+                                    0% { stroke-dashoffset: 160; }
+                                    100% { stroke-dashoffset: 0; }
+                                }
+                            </style>
+
+                            <!-- Nodes Grid -->
+                            <div class="flex items-center justify-between w-full relative z-10 px-4">
+                                <!-- Trigger Node -->
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 border-2"
+                                         :class="currentStep >= 0 ? 'bg-accent-cyan/20 border-accent-cyan scale-110 shadow-[0_0_20px_rgba(0,240,255,0.4)]' : 'bg-white/5 border-white/10'">
+                                        <i class="fas text-xl" :class="selectedTrigger === 'web' ? 'fa-globe text-accent-cyan' : 'fa-comment-alt text-green-400'"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase tracking-wider text-gray-400 font-bold" x-text="selectedTrigger === 'web' ? 'Web' : 'WhatsApp'"></span>
+                                </div>
+
+                                <!-- Action 1 Node: Sheets -->
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 border-2"
+                                         :class="selectedActions.includes('sheets') && currentStep >= 1 ? 'bg-green-500/20 border-green-500 scale-110 shadow-[0_0_20px_rgba(34,197,94,0.4)]' : 'bg-white/5 border-white/10 opacity-40'">
+                                        <i class="fas fa-file-excel text-xl" :class="selectedActions.includes('sheets') && currentStep >= 1 ? 'text-green-400' : 'text-gray-500'"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Sheets</span>
+                                </div>
+
+                                <!-- Action 2 Node: AI / WhatsApp -->
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 border-2"
+                                         :class="selectedActions.includes('whatsapp_reply') && currentStep >= 2 ? 'bg-accent-purple/20 border-accent-purple scale-110 shadow-[0_0_20px_rgba(124,58,237,0.4)]' : 'bg-white/5 border-white/10 opacity-40'">
+                                        <i class="fas fa-robot text-xl" :class="selectedActions.includes('whatsapp_reply') && currentStep >= 2 ? 'text-accent-purple' : 'text-gray-500'"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Agente IA</span>
+                                </div>
+
+                                <!-- Action 3 Node: Slack -->
+                                <div class="flex flex-col items-center gap-2">
+                                    <div class="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 border-2"
+                                         :class="selectedActions.includes('slack_alert') && currentStep >= 3 ? 'bg-red-500/20 border-red-500 scale-110 shadow-[0_0_20px_rgba(239,68,68,0.4)]' : 'bg-white/5 border-white/10 opacity-40'">
+                                        <i class="fas fa-bell text-xl" :class="selectedActions.includes('slack_alert') && currentStep >= 3 ? 'text-red-400' : 'text-gray-500'"></i>
+                                    </div>
+                                    <span class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Slack</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logs Console -->
+                        <div class="flex flex-col flex-grow">
+                            <span class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-bold flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-ping"></span>
+                                Consola de Procesamiento
+                            </span>
+                            <div id="sim-logs-container" class="bg-black/60 border border-white/10 rounded-2xl p-4 h-48 font-mono text-xs overflow-y-auto space-y-2 select-none hide-scrollbar">
+                                <template x-if="logs.length === 0">
+                                    <div class="text-gray-500 italic">Listo para ejecutar. Elige tus disparadores y acciones y presiona "Ejecutar Flujo".</div>
+                                </template>
+                                <template x-for="log in logs">
+                                    <div :class="log.color" class="leading-relaxed" x-html="log.text"></div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -411,12 +818,12 @@
                         </div>
                         <div class="max-w-2xl lg:max-w-3xl">
                             <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight text-gradient">
-                                Desarrollo Web <br/><span class="text-accent-cyan italic">Premium</span>
+                                Webs que se sienten <br/><span class="text-accent-cyan italic">como experiencia</span>
                             </h1>
                             <p class="text-gray-400 text-sm md:text-base lg:text-lg font-light leading-relaxed max-w-[90%] md:max-w-full mt-4 md:mt-6">
-                                Creamos sitios web modernos y rápidos que se ven bien en cualquier dispositivo. Diseñamos y programamos páginas web que ayudan a tu negocio a crecer.
+                                Diseño páginas que funcionan como presentación, vendedor silencioso y punto de contacto. La meta es que el cliente entienda rápido, confíe y quiera conversar.
                             </p>
-                            <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20el%20Desarrollo%20Web%20Ultra-Premium" 
+                            <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20el%20Desarrollo%20Web%20Ultra-Premium" 
                                 class="mt-4 md:mt-6 w-full md:w-auto md:inline-flex md:px-8 bg-accent-purple text-white py-4 md:py-3 lg:py-4 rounded-xl font-bold text-sm md:text-base tracking-widest uppercase flex items-center justify-center gap-2 purple-glow-btn hover:bg-accent-purple/90 transition-all">
                                 Solicitar Cotización
                                 <span class="material-symbols-outlined text-sm md:text-base">arrow_forward</span>
@@ -519,7 +926,7 @@
                                         <span class="text-2xl md:text-3xl font-bold text-white">$150.000</span>
                                         <span class="text-xs md:text-sm text-gray-500">desde</span>
                                     </div>
-                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Página%20de%20Contacto" 
+                                    <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Página%20de%20Contacto" 
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
                                         Solicitar Cotización
                                     </a>
@@ -543,7 +950,7 @@
                                         <span class="text-2xl md:text-3xl font-bold text-white">$250.000</span>
                                         <span class="text-xs md:text-sm text-gray-500">desde</span>
                                     </div>
-                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20WhatsApp" 
+                                    <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20WhatsApp" 
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
                                         Solicitar Cotización
                                     </a>
@@ -572,7 +979,7 @@
                                         <span class="text-2xl md:text-3xl font-bold text-white">$500.000</span>
                                         <span class="text-xs md:text-sm text-gray-500">desde</span>
                                     </div>
-                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20Pasarela%20de%20Pago" 
+                                    <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20Pasarela%20de%20Pago" 
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
                                         Solicitar Cotización
                                     </a>
@@ -596,7 +1003,7 @@
                                         <span class="text-2xl md:text-3xl font-bold text-white">$300.000</span>
                                         <span class="text-xs md:text-sm text-gray-500">desde</span>
                                     </div>
-                                    <a href="https://wa.me/56921922139?text=Hola,%20me%20interesa%20una%20Página%20de%20Reservas%20y%20Citas" 
+                                    <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Página%20de%20Reservas%20y%20Citas" 
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
                                         Solicitar Cotización
                                     </a>
@@ -609,189 +1016,241 @@
         </section>
 
         <!-- section portafolio -->
-        <section id="portafolio" class="relative min-h-screen py-24 bg-[#050505]">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-20">
-                    <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
-                        Nuestro <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Portafolio</span>
-                    </h2>
-                    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                        Proyectos que definen el futuro digital.
-                    </p>
+      <section id="portafolio" class="relative min-h-screen py-24 bg-[#050505]">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+                Proyectos <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">con intención</span>
+            </h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                Cada caso muestra una necesidad concreta: vender, reservar, presentarse mejor o automatizar el contacto.
+            </p>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Project 1: Fitzone (Estandarizado y Ajustado para Imagen Completa Estética) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <!-- Contenedor de imagen ajustado para formato 4:3 (más alto) para mostrar más imagen -->
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/fitzone.jpg" alt="Fitzone"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
                 </div>
 
-                <!-- Portfolio Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <!-- Project 1: SFITS (Hidden) -->
-                    <div
-                        class="hidden group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
-                                alt="SFITS"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">SFITS</h3>
-                            <p class="text-gray-400 text-sm mb-4">Comunidad fitness de élite con enfoque en constancia y
-                                progreso real.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Fitness</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Community</span>
-                            </div>
-                            <a href="https://allewg.github.io/SFITS/" target="_blank" class="absolute inset-0 z-10"></a>
-                        </div>
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
                     </div>
 
-                    <!-- Project 1: Vallesur -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-green-400/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="multimedia/images/vallesur.png" alt="Vallesur"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-400 flex items-center justify-center text-white shadow-lg shadow-green-400/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2"> Vallesur</h3>
-                            <p class="text-gray-400 text-sm mb-4">Tienda Virtual Whatsapp E-commerce de frutas congeladas premium. Berries y
-                                frutas tropicales 100% naturales del sur de Chile.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">E-commerce</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Food</span>
-                            </div>
-                            <a href="https://allewg.github.io/vallesur/" target="_blank"
-                                class="absolute inset-0 z-10"></a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: Odin Gym -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-secondary/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="multimedia/images/odingym.webp" alt="Odin Gym"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Odin Gym</h3>
-                            <p class="text-gray-400 text-sm mb-4">Pagina de contacto + Reserva Odin Gimnasio privado inspirado en la mitología nórdica.
-                                Entrenamiento personalizado.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Gym</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Private</span>
-                            </div>
-                            <a href="https://allewg.github.io/odin/" target="_blank" class="absolute inset-0 z-10"></a>
-                        </div>
-                    </div>
-
-                   
-
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Fitzone</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Página de presentación y agenda de clases gratuitas para gimnasio.</p>
                     
-
-                    <!-- Project 3: Nexo Deportes -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="multimedia/images/boxnexo.heic" alt="Nexo Deportes"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Capturar nuevos alumnos.</p>
                         </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Nexo Deportes</h3>
-                            <p class="text-gray-400 text-sm mb-4">Plataforma de gestión deportiva con sistema de
-                                reservas y membresías.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Web App</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">UX/UI</span>
-                            </div>
-                            <a href="https://allewg.github.io/nexodeportes" target="_blank"
-                                class="absolute inset-0 z-10"></a>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Reserva de clase gratuita y UI optimizada.</p>
                         </div>
                     </div>
 
-                    <!-- Project 4: Montpellier Eventos -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-secondary/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="multimedia/images/montpellier.jpg" alt="Montpellier"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg shadow-secondary/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Montpellier Eventos</h3>
-                            <p class="text-gray-400 text-sm mb-4">Sitio corporativo elegante con galería inmersiva y
-                                cotizador en línea.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Corporate</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Design</span>
-                            </div>
-                            <a href="https://allewg.github.io/montpelliereventos" target="_blank"
-                                class="absolute inset-0 z-10"></a>
-                        </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Gimnasio</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Reserva</span>
                     </div>
 
-                    <!-- Project 5: Vibra Athletic Center -->
-                    <div
-                        class="group relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-500">
-                        <div class="aspect-video overflow-hidden">
-                            <img src="multimedia/images/VIBRA.jpeg" alt="Vibra Athletic Center"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div
-                                class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/50 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Vibra Athletic Center</h3>
-                            <p class="text-gray-400 text-sm mb-4">Centro de HYROX en San Bernardo. Página de contacto e sistema de reservas para entrenamientos especializados.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Athletic</span>
-                                <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-gray-300">Reservas</span>
-                            </div>
-                            <a href="https://vibraathleticcenter.cl/" target="_blank"
-                                class="absolute inset-0 z-10"></a>
-                        </div>
-                    </div>
-
+                    <a href="https://allewg.github.io/fitsongym/" target="_blank" class="absolute inset-0 z-10"></a>
                 </div>
             </div>
-        </section>
 
+            <!-- Project 2: Vallesur (Estandarizado) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/vallesur.png" alt="Vallesur"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
+                </div>
+
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Vallesur</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Tienda virtual por WhatsApp para productos congelados premium.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Ordenar catálogo.</p>
+                        </div>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Compra guiada por WhatsApp.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">E-commerce</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Food</span>
+                    </div>
+
+                    <a href="https://allewg.github.io/vallesur/" target="_blank" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+            <!-- Project 3: Odin Gym (Estandarizado) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/odingym.webp" alt="Odin Gym"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
+                </div>
+
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Odin Gym</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Página de contacto y reservas para un gimnasio privado.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Captar alumnos.</p>
+                        </div>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Contacto + agenda.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Gym</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Private</span>
+                    </div>
+
+                    <a href="https://allewg.github.io/odin/" target="_blank" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+            <!-- Project 4: Nexo Deportes (Estandarizado) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/boxnexo.heic" alt="Nexo Deportes"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
+                </div>
+
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Nexo Deportes</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Presencia digital deportiva orientada a reservas y membresías.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Gestión deportiva.</p>
+                        </div>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Flujo de reservas.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Web App</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">UX/UI</span>
+                    </div>
+
+                    <a href="https://allewg.github.io/nexodeportes" target="_blank" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+            <!-- Project 5: Montpellier Eventos (Estandarizado) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/montpellier.jpg" alt="Montpellier"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
+                </div>
+
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Montpellier Eventos</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Sitio elegante para presentar espacios y elevar percepción de marca.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Confianza visual.</p>
+                        </div>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Vitrina premium.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Corporate</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Design</span>
+                    </div>
+
+                    <a href="https://allewg.github.io/montpelliereventos" target="_blank" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+            <!-- Project 6: Vibra Athletic Center (Estandarizado) -->
+            <div class="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-green-400/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-green-900/10">
+                <div class="aspect-video overflow-hidden">
+                    <img src="multimedia/images/VIBRA.jpeg" alt="Vibra Athletic Center"
+                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60"></div>
+                </div>
+
+                <div class="p-6 relative">
+                    <div class="absolute -top-6 right-6 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-black shadow-lg shadow-green-500/20 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-1 tracking-tight">Vibra Athletic Center</h3>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed">Página de contacto y reservas para entrenamientos especializados.</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="border-l-2 border-green-500/50 pl-3">
+                            <p class="text-[10px] uppercase text-green-400 font-semibold tracking-wider">Reto</p>
+                            <p class="text-xs text-gray-300">Reservas claras.</p>
+                        </div>
+                        <div class="border-l-2 border-white/10 pl-3">
+                            <p class="text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Solución</p>
+                            <p class="text-xs text-gray-300">Landing de acción.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Athletic</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] font-medium text-gray-300 uppercase tracking-wide">Reservas</span>
+                    </div>
+
+                    <a href="https://vibraathleticcenter.cl/" target="_blank" class="absolute inset-0 z-10"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
         <!-- Quiénes Somos Section -->
         <section id="nosotros" class="relative min-h-screen py-24 bg-[#030014] overflow-hidden">
             <!-- Background Elements -->
@@ -805,13 +1264,14 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 class="text-5xl font-bold mb-8 text-white">
-                            Innovación que <br>
+                            Tecnología con <br>
                             <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Transforma</span>
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">criterio humano</span>
                         </h2>
                         <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-                            En Hardwaremania, no solo reparamos tecnología; construimos el futuro digital de tu empresa.
-                            Fusionamos ingeniería de precisión con diseño de vanguardia.
+                            Trabajo con negocios que necesitan verse profesionales, responder mejor y ordenar su operación.
+                            Combino diseño, desarrollo, soporte técnico, automatización e IA con una mirada práctica:
+                            que la tecnología se entienda, se use y genere confianza.
                         </p>
 
                         <div class="space-y-6">
@@ -821,9 +1281,8 @@
                                     <i class="fas fa-rocket"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Misión</h3>
-                                    <p class="text-gray-400">Acelerar la transformación digital con soluciones robustas
-                                        y escalables.</p>
+                                    <h3 class="text-xl font-bold text-white mb-2">Enfoque</h3>
+                                    <p class="text-gray-400">Construir soluciones claras, modernas y sostenibles para negocios reales.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4">
@@ -832,9 +1291,8 @@
                                     <i class="fas fa-eye"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Visión</h3>
-                                    <p class="text-gray-400">Ser el referente indiscutible en infraestructura
-                                        tecnológica y desarrollo web.</p>
+                                    <h3 class="text-xl font-bold text-white mb-2">Diferencia</h3>
+                                    <p class="text-gray-400">No vendo solo una página: diseño una experiencia de presentación, contacto y confianza.</p>
                                 </div>
                             </div>
                         </div>
@@ -844,89 +1302,56 @@
                         <div class="relative z-10 grid grid-cols-2 gap-4">
                             <div class="space-y-4 mt-8">
                                 <div class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10">
-                                    <h4 class="text-4xl font-bold text-white mb-2">500+</h4>
-                                    <p class="text-gray-400 text-sm">Proyectos Completados</p>
+                                    <h4 class="text-4xl font-bold text-white mb-2">Web</h4>
+                                    <p class="text-gray-400 text-sm">Landing, tienda, reservas y portafolio</p>
                                 </div>
                                 <div class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10">
-                                    <h4 class="text-4xl font-bold text-white mb-2">98%</h4>
-                                    <p class="text-gray-400 text-sm">Satisfacción Cliente</p>
+                                    <h4 class="text-4xl font-bold text-white mb-2">IA</h4>
+                                    <p class="text-gray-400 text-sm">Asistentes y guías comerciales</p>
                                 </div>
                             </div>
                             <div class="space-y-4">
                                 <div class="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10">
-                                    <h4 class="text-4xl font-bold text-white mb-2">24/7</h4>
-                                    <p class="text-gray-400 text-sm">Soporte Activo</p>
+                                    <h4 class="text-4xl font-bold text-white mb-2">TI</h4>
+                                    <p class="text-gray-400 text-sm">Soporte y continuidad tecnológica</p>
                                 </div>
                                 <div
                                     class="bg-gradient-to-br from-primary to-secondary p-6 rounded-2xl shadow-lg shadow-primary/20">
-                                    <h4 class="text-4xl font-bold text-white mb-2">10+</h4>
-                                    <p class="text-white/80 text-sm">Años de Experiencia</p>
+                                    <h4 class="text-4xl font-bold text-white mb-2">Auto</h4>
+                                    <p class="text-white/80 text-sm">Procesos y flujos conectados</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonials -->
+                <!-- Experiencia de trabajo -->
                 <div class="mt-32">
-                    <h3 class="text-3xl font-bold text-center text-white mb-16">Lo que dicen nuestros clientes</h3>
+                    <h3 class="text-3xl font-bold text-center text-white mb-16">Cómo se siente trabajar conmigo</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Testimonial 1 -->
                         <div
                             class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex text-yellow-400 mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <div class="w-12 h-12 rounded-2xl bg-primary/20 text-primary flex items-center justify-center mb-5">
+                                <i class="fas fa-comments"></i>
                             </div>
-                            <p class="text-gray-300 mb-6">"Hardwaremania transformó completamente nuestra
-                                infraestructura. La migración a la nube fue impecable."</p>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold">
-                                    CG</div>
-                                <div>
-                                    <p class="text-white font-bold">Carlos Gómez</p>
-                                    <p class="text-gray-500 text-sm">Gerente TI</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Comunicación clara</h4>
+                            <p class="text-gray-300">Te explico qué conviene, qué no conviene todavía y qué se puede resolver primero sin inflar el proyecto.</p>
                         </div>
-                        <!-- Testimonial 2 -->
                         <div
                             class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex text-yellow-400 mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-400/20 text-cyan-300 flex items-center justify-center mb-5">
+                                <i class="fas fa-layer-group"></i>
                             </div>
-                            <p class="text-gray-300 mb-6">"El rediseño de nuestra web aumentó las conversiones un 40%.
-                                Diseño moderno y funcional."</p>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-gradient-to-r from-secondary to-pink-500 flex items-center justify-center text-white font-bold">
-                                    AT</div>
-                                <div>
-                                    <p class="text-white font-bold">Ana Torres</p>
-                                    <p class="text-gray-500 text-sm">COO RetailPlus</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Diseño con intención</h4>
+                            <p class="text-gray-300">Cada sección tiene una tarea: impactar, orientar, probar confianza o llevar al cliente hacia contacto.</p>
                         </div>
-                        <!-- Testimonial 3 -->
                         <div
                             class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-primary/30 transition-colors">
-                            <div class="flex text-yellow-400 mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <div class="w-12 h-12 rounded-2xl bg-green-400/20 text-green-300 flex items-center justify-center mb-5">
+                                <i class="fas fa-screwdriver-wrench"></i>
                             </div>
-                            <p class="text-gray-300 mb-6">"Soporte técnico de primer nivel. Siempre disponibles cuando
-                                los necesitamos."</p>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-primary flex items-center justify-center text-white font-bold">
-                                    MP</div>
-                                <div>
-                                    <p class="text-white font-bold">Marcos Pinto</p>
-                                    <p class="text-gray-500 text-sm">CEO Fintech Nova</p>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Mirada técnica real</h4>
+                            <p class="text-gray-300">Además de verse bien, la solución debe ser mantenible, entendible y útil para el día a día del negocio.</p>
                         </div>
                     </div>
                 </div>
@@ -958,10 +1383,10 @@
                     </div>
 
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-white">
-                        Síguenos en Instagram
+                        Mira el proceso detrás de la tecnología
                     </h2>
                     <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-                        Mantente al día con nuestros proyectos, novedades tecnológicas y contenido exclusivo. Cada semana compartimos lo mejor del mundo digital.
+                        En Instagram comparto proyectos, ideas, pruebas y contenido para negocios que quieren usar mejor la tecnología.
                     </p>
 
                     <!-- Cualidades -->
@@ -1000,6 +1425,63 @@
 
                 <!-- Borde decorativo inferior -->
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-pink-500 rounded-full mx-auto mt-10"></div>
+            </div>
+        </section>
+
+        <!-- Tarjeta Digital -->
+        <section id="tarjeta" class="relative py-24 overflow-hidden bg-[#050510]">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-bold uppercase tracking-[0.22em] mb-5">
+                            <i class="fas fa-id-card"></i>
+                            Tarjeta digital
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+                            Guarda mi contacto y vuelve cuando necesites convertir una idea en sistema.
+                        </h2>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                            Esta página es mi presentación: si te gusta cómo se siente, podemos diseñar una experiencia
+                            igual de clara para tu marca, servicio o negocio.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AGonzalo%20Mellad%0AORG%3AHardwareMania%0ATITLE%3ATrabajador%20de%20tecnolog%C3%ADas%20digitales%0ATEL%3BTYPE%3DCELL%3A%2B56949881171%0AEMAIL%3Agonzalomellad%40hardwaremania.cl%0AURL%3Ahttps%3A%2F%2Fhardwaremania.cl%0AADR%3A%3B%3B%3B%3BSantiago%3B%3BChile%0AEND%3AVCARD"
+                                download="HardwareMania.vcf"
+                                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-bold hover:bg-primary-dark transition-all shadow-lg shadow-primary/25">
+                                <i class="fas fa-address-book"></i>
+                                Guardar contacto
+                            </a>
+                            <a href="https://wa.me/56949881171?text=Hola%20Gonzalo,%20vi%20tu%20tarjeta%20digital%20y%20quiero%20conversar%20sobre%20una%20soluci%C3%B3n%20tecnol%C3%B3gica."
+                                target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/15 bg-white/5 text-white font-bold hover:bg-white/10 transition-all">
+                                <i class="fab fa-whatsapp"></i>
+                                Escribir por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="digital-card">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="multimedia/images/logo1.png" alt="HardwareMania" class="w-14 h-14 object-contain rounded-xl bg-white/5 p-2" />
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.24em] text-gray-500">HardwareMania</p>
+                                <h3 class="text-2xl font-bold text-white">Gonzalo Mellad</h3>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6">Desarrollo web, automatización, soporte TI y agentes IA para negocios que quieren verse y operar mejor.</p>
+                        <div class="grid grid-cols-[120px_1fr] gap-5 items-center">
+                            <div class="qr-frame">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fhardwaremania.cl" alt="QR HardwareMania" />
+                            </div>
+                            <div class="space-y-3 text-sm text-gray-400">
+                                <p><i class="fas fa-globe text-accent-cyan mr-2"></i>hardwaremania.cl</p>
+                                <p><i class="fab fa-whatsapp text-green-400 mr-2"></i>+56 9 4988 1171</p>
+                                <p><i class="fas fa-envelope text-primary mr-2"></i>gonzalomellad@hardwaremania.cl</p>
+                                <p><i class="fas fa-location-dot text-pink-400 mr-2"></i>Santiago, Chile</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1105,16 +1587,16 @@
                         <span class="text-2xl font-bold text-white">Hardwaremania</span>
                     </div>
                     <p class="text-gray-400 max-w-sm mb-8">
-                        Impulsando el futuro digital de las empresas con tecnología de vanguardia y diseño excepcional.
+                        Presentación digital de Gonzalo Mellad: desarrollo web, IA, automatización y soporte TI para negocios modernos.
                     </p>
                     <div class="flex gap-4">
                         <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="#"
+                        <a href="https://wa.me/56949881171" target="_blank" rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="#"
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://github.com/allewg" target="_blank" rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary transition-colors"><i
                                 class="fab fa-github"></i></a>
                     </div>
@@ -1125,8 +1607,9 @@
                     <ul class="space-y-4 text-gray-400">
                         <li><a href="#home" class="hover:text-primary transition-colors">Inicio</a></li>
                         <li><a href="#servicios" class="hover:text-primary transition-colors">Servicios</a></li>
+                        <li><a href="#diagnostico" class="hover:text-primary transition-colors">Diagnóstico</a></li>
                         <li><a href="#portafolio" class="hover:text-primary transition-colors">Portafolio</a></li>
-                        <li><a href="#nosotros" class="hover:text-primary transition-colors">Nosotros</a></li>
+                        <li><a href="#tarjeta" class="hover:text-primary transition-colors">Tarjeta Digital</a></li>
                     </ul>
                 </div>
 
@@ -1134,7 +1617,7 @@
                     <h4 class="text-white font-bold mb-6">Contacto</h4>
                     <ul class="space-y-4 text-gray-400">
                         <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i>
-                            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbaca4a5b1aaa7a4a6aea7a7aaaf8ba3aab9afbcaab9aea6aaa5a2aae5a8a7">[email&#160;protected]</a></li>
+                            <a href="mailto:gonzalomellad@hardwaremania.cl" class="hover:text-primary transition-colors">gonzalomellad@hardwaremania.cl</a></li>
                         <li class="flex items-center gap-3"><i class="fas fa-phone text-primary"></i>
                             <a href="https://wa.me/56949881171" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">+56 9 4988 1171</a>
                         </li>
@@ -1145,10 +1628,10 @@
             </div>
 
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">© 2024 Hardwaremania. Todos los derechos reservados.</p>
+                <p class="text-gray-500 text-sm">© 2026 Hardwaremania. Todos los derechos reservados.</p>
                 <div class="flex gap-6 text-sm text-gray-500">
-                    <a href="#" class="hover:text-white transition-colors">Privacidad</a>
-                    <a href="#" class="hover:text-white transition-colors">Términos</a>
+                    <a href="#diagnostico" class="hover:text-white transition-colors">Diagnóstico</a>
+                    <a href="#tarjeta" class="hover:text-white transition-colors">Tarjeta digital</a>
                 </div>
             </div>
         </div>
@@ -1160,9 +1643,9 @@
         <div id="wa-bubble"
              class="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-2xl rounded-br-sm shadow-xl whitespace-nowrap leading-snug"
              style="animation: hmBubblePop 0.4s ease 2s both;">
-            ¡Escríbenos! 💬
+            Conversemos
         </div>
-        <a href="https://wa.me/56949881171?text=Hola%20HardwareMania!%20Quisiera%20más%20información."
+        <a href="https://wa.me/56949881171?text=Hola%20Gonzalo,%20vi%20tu%20tarjeta%20digital%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
            target="_blank" rel="noopener noreferrer"
            id="wa-float-btn"
            class="relative flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
@@ -1179,7 +1662,7 @@
         <div id="hm-chat-bubble"
              class="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-2xl rounded-bl-sm shadow-xl max-w-[180px] text-center leading-snug transition-all duration-500"
              style="animation: hmBubblePop 0.4s ease 1.5s both;">
-            ¿Tienes alguna duda? 👋
+            ¿Te ayudo a elegir?
         </div>
 
         <!-- Botón de abrir/cerrar chat -->
@@ -1204,7 +1687,7 @@
                     <i class="fas fa-robot text-white text-base"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <p class="text-white font-bold text-sm leading-none">HM Asistente</p>
+                    <p class="text-white font-bold text-sm leading-none">Asistente Hardwaremania </p>
                     <p class="text-white/70 text-xs mt-0.5 flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
                         En línea ahora
@@ -1223,10 +1706,10 @@
 
             <!-- Sugerencias rápidas -->
             <div id="hm-quick-replies" class="flex flex-wrap gap-2 px-4 pb-2">
+                <button onclick="hmSendQuick('Quiero hacer un diagnóstico digital')" class="hm-quick-btn">Diagnóstico</button>
                 <button onclick="hmSendQuick('¿Qué servicios ofrecen?')" class="hm-quick-btn">Servicios</button>
                 <button onclick="hmSendQuick('¿Cuáles son los precios?')" class="hm-quick-btn">Precios</button>
-                <button onclick="hmSendQuick('¿Cómo los contacto?')" class="hm-quick-btn">Contacto</button>
-                <button onclick="hmSendQuick('Ver portafolio')" class="hm-quick-btn">Portafolio</button>
+                <button onclick="hmSendQuick('Quiero guardar tu contacto')" class="hm-quick-btn">Contacto</button>
             </div>
 
             <!-- Input -->
@@ -1321,7 +1804,70 @@
         }
     </style>
 
+    <script src="assets/js/main.js"></script>
+
     <script>
+    // Diagnóstico Digital Express
+    (function () {
+        const WA_NUMBER = '56949881171';
+        const output = document.getElementById('diagnostic-output');
+        const choices = document.querySelectorAll('.diagnostic-choice');
+        const recommendations = {
+            ventas: {
+                title: 'Primer movimiento: landing o tienda conectada a WhatsApp.',
+                body: 'Tu prioridad es convertir visitas en conversaciones. Recomiendo una página enfocada en oferta, prueba visual, catálogo simple y botón de contacto directo.',
+                service: 'landing o tienda digital'
+            },
+            atencion: {
+                title: 'Primer movimiento: agente IA comercial.',
+                body: 'Tu prioridad es responder mejor sin estar disponible todo el día. Recomiendo una guía IA para preguntas frecuentes, filtros de clientes y derivación a WhatsApp.',
+                service: 'agente IA para atención'
+            },
+            operacion: {
+                title: 'Primer movimiento: automatización de flujo interno.',
+                body: 'Tu prioridad es reducir tareas repetitivas. Recomiendo mapear formularios, mensajes, planillas, avisos y reportes para conectar lo que hoy haces manualmente.',
+                service: 'automatización de procesos'
+            },
+            presencia: {
+                title: 'Primer movimiento: sitio de presentación premium.',
+                body: 'Tu prioridad es impactar y generar confianza. Recomiendo una página con relato claro, portafolio, prueba social, tarjeta digital y CTA directo.',
+                service: 'sitio de presentación premium'
+            },
+            reservas: {
+                title: 'Primer movimiento: página de reservas y confirmación.',
+                body: 'Tu prioridad es ordenar agenda y evitar mensajes repetidos. Recomiendo una página con servicios, horarios, confirmación y contacto rápido.',
+                service: 'sistema de reservas'
+            },
+            soporte: {
+                title: 'Primer movimiento: revisión TI y plan de continuidad.',
+                body: 'Tu prioridad es estabilidad. Recomiendo revisar herramientas, correos, equipos, respaldos y puntos críticos para bajar riesgo operativo.',
+                service: 'soporte TI'
+            }
+        };
+
+        if (!output || !choices.length) return;
+
+        choices.forEach((button) => {
+            button.addEventListener('click', () => {
+                choices.forEach((item) => item.classList.remove('is-active'));
+                button.classList.add('is-active');
+
+                const result = recommendations[button.dataset.diagnostic];
+                const text = `Hola Gonzalo, hice el diagnóstico en tu web y creo que necesito: ${result.service}. Quiero conversar sobre mi negocio.`;
+                const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+                output.innerHTML = `
+                    <p class="text-xs uppercase tracking-[0.28em] text-accent-cyan mb-3">Recomendación</p>
+                    <h3 class="text-2xl font-bold text-white mb-3">${result.title}</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">${result.body}</p>
+                    <a href="${waLink}" target="_blank" rel="noopener noreferrer">
+                        Enviar diagnóstico por WhatsApp
+                    </a>
+                `;
+            });
+        });
+    })();
+
     // ── HardwareMania Chat IA ──────────────────────────────────────────
     (function () {
         const WA_NUMBER = '56949881171';
@@ -1329,101 +1875,98 @@
         const KB = [
             {
                 keys: ['hola','buenos','buenas','hey','saludos','hi'],
-                reply: () => `¡Hola! 👋 Soy el asistente de <strong>HardwareMania</strong>. Estoy aquí para ayudarte con cualquier consulta sobre nuestros servicios. ¿En qué te puedo orientar hoy?`
+                reply: () => `¡Hola! Soy la <strong>Guía Digital de HardwareMania</strong> 🤖. Estoy aquí para orientarte sobre desarrollo web, automatizaciones y soporte TI. ¿Qué te gustaría explorar?<br><br>
+                <div class='flex flex-col gap-1.5 mt-2'>
+                    <button onclick="hmSendQuick('¿Qué servicios ofrecen?')" class='text-left text-xs bg-white/5 border border-white/10 rounded-lg p-2 hover:bg-primary/20 transition-all text-accent-cyan'>⚡ Ver Servicios</button>
+                    <button onclick="hmSendQuick('Probar simulador de flujos')" class='text-left text-xs bg-white/5 border border-white/10 rounded-lg p-2 hover:bg-primary/20 transition-all text-accent-purple'>⚙️ Probar Simulador de Flujos</button>
+                </div>`
+            },
+            {
+                keys: ['diagnostico','diagnóstico','recomienda','recomendacion','recomendación','que necesito','qué necesito'],
+                reply: () => `La forma más rápida es usar el <strong>Diagnóstico Digital Express</strong> de esta página. Elige tu objetivo y te recomiendo un primer movimiento.<br><br><a href="#diagnostico" style="color:#00f0ff;font-weight:700;text-decoration:underline;">Ir al Diagnóstico Express</a>`
+            },
+            {
+                keys: ['simulador','flujo','flujos','automatizar flujo'],
+                reply: () => `¡Claro! Hemos diseñado un <strong>Simulador interactivo de Automatizaciones</strong> más arriba en la página. Puedes elegir un disparador y ver cómo viajan los datos en tiempo real.<br><br><a href="#simulador" style="color:#7c3aed;font-weight:700;text-decoration:underline;">Ir al Simulador de Flujos</a>`
+            },
+            {
+                keys: ['tarjeta','guardar contacto','vcard','contacto digital','qr'],
+                reply: () => `Puedes guardar el contacto de Gonzalo directamente desde la sección <strong>Tarjeta Digital</strong>. Incluye código QR y acceso rápido.<br><br><a href="#tarjeta" style="color:#00f0ff;font-weight:700;text-decoration:underline;">Ver tarjeta digital</a>`
             },
             {
                 keys: ['servicio','ofrecen','hacen','qué hacen','qué ofrecen','trabajan'],
-                reply: () => `Ofrecemos tres grandes áreas: <br><br>
-🌐 <strong>Desarrollo Web</strong> — Sitios modernos, rápidos y optimizados para SEO.<br>
-🤖 <strong>Automatización</strong> — Workflows con n8n, Make y Zapier para reducir trabajo manual.<br>
-🧠 <strong>Agentes IA</strong> — Chatbots inteligentes 24/7 integrados a WhatsApp, web y CRM.<br><br>
-¿Cuál te interesa más?`
+                reply: () => `Te ayudo a resolver en cuatro frentes clave:<br><br>
+                🌐 <strong>Desarrollo Web:</strong> Sitios y tiendas orientadas a convertir visitas en clientes.<br>
+                ⚙️ <strong>Automatización:</strong> Conexión de apps para eliminar tareas repetitivas.<br>
+                🤖 <strong>Agentes IA:</strong> Chatbots inteligentes para atención comercial 24/7.<br>
+                🛠️ <strong>Soporte TI:</strong> Estabilidad técnica y continuidad operativa.<br><br>
+                <div class='flex gap-2 mt-2'>
+                    <button onclick="hmSendQuick('¿Cuáles son los precios?')" class='flex-1 text-center text-xs bg-white/5 border border-white/10 rounded-lg p-1.5 hover:bg-primary/20 text-accent-cyan'>Ver Precios</button>
+                    <button onclick="hmSendQuick('Ver portafolio')" class='flex-1 text-center text-xs bg-white/5 border border-white/10 rounded-lg p-1.5 hover:bg-primary/20 text-accent-purple'>Ver Proyectos</button>
+                </div>`
             },
             {
                 keys: ['precio','costo','valor','cobran','tarifa','presupuesto','cuánto','cuanto'],
-                reply: () => `Los precios varían según el proyecto 🎯<br><br>
-🌐 <strong>Desarrollo Web</strong>: desde $150.000 CLP (ref.) — incluye dominio y hosting por 1 año.<br>
-🤖 <strong>Automatización</strong>: cotización a medida según flujos.<br>
-🧠 <strong>Agentes IA</strong>: cotización personalizada.<br><br>
-Cada proyecto se evalúa de forma individual. Te recomiendo <a href="https://wa.me/${WA_NUMBER}?text=Hola,%20quiero%20una%20cotización" target="_blank" style="color:#7c3aed;font-weight:600;">contactarnos por WhatsApp</a> para una estimación sin costo.`
+                reply: () => `Cada solución se adapta a los requerimientos de tu negocio. Como precios referenciales:<br><br>
+                🌐 <strong>Web de presentación:</strong> desde $150.000 CLP.<br>
+                🛒 <strong>Tienda online o reservas:</strong> desde $250.000 CLP.<br>
+                🤖 <strong>Automatización e IA:</strong> cotizado a la medida de tu flujo de datos.<br><br>
+                <a href="https://wa.me/${WA_NUMBER}?text=Hola%20Gonzalo,%20quiero%20cotizar%20un%20proyecto" target="_blank" class='inline-block text-center text-xs bg-green-500 hover:bg-green-600 text-white font-bold rounded-full px-4 py-2 mt-1 transition-all'>Escribir por WhatsApp</a>`
             },
             {
                 keys: ['desarrollo web','página','pagina','sitio','web','landing'],
-                reply: () => `Nuestro servicio de <strong>Desarrollo Web</strong> incluye:<br><br>
-✅ Diseño 100% responsive<br>
-✅ Optimización SEO<br>
-✅ Panel autoadministrable<br>
-✅ Dominio + Hosting por 1 año incluido<br><br>
-Desde <strong>$150.000 CLP</strong> (referencial). Cada proyecto se evalúa en detalle. ¿Te gustaría ver ejemplos en el portafolio?`
+                reply: () => `Diseño páginas enfocadas en que tus clientes entiendan rápido tu valor, confíen y te escriban. Hacemos landings de venta, agendas de reservas y tiendas virtuales.<br><br>
+                <button onclick="hmSendQuick('¿Qué servicios ofrecen?')" class='w-full text-left text-xs bg-white/5 border border-white/10 rounded-lg p-2 hover:bg-primary/20 text-accent-cyan'>Ver otros formatos</button>`
             },
             {
                 keys: ['automatiz','n8n','make','zapier','workflow','proceso','flujo'],
-                reply: () => `Con nuestra <strong>Automatización de procesos</strong> puedes:<br><br>
-⚡ Crear workflows sin escribir código<br>
-⚡ Integrar más de 500 aplicaciones<br>
-⚡ Recibir reportes automáticos<br><br>
-Usamos herramientas como <strong>n8n, Make y Zapier</strong>. Ideal para reducir tareas repetitivas y errores. ¿Tienes algún proceso específico en mente?`
+                reply: () => `Automatizar significa conectar tus herramientas (ej. WhatsApp, Google Sheets, correos, CRMs) para que las tareas repetitivas se hagan solas. Ahorras horas de trabajo diario.<br><br>
+                <button onclick="hmSendQuick('Probar simulador de flujos')" class='w-full text-center text-xs bg-white/5 border border-white/10 rounded-lg p-2 hover:bg-accent-purple/20 text-accent-purple font-bold'>⚙️ Probar Simulador ahora</button>`
             },
             {
                 keys: ['ia','agente','chatbot','inteligencia','bot','ai','whatsapp bot'],
-                reply: () => `Nuestros <strong>Agentes IA</strong> son una solución poderosa 🧠<br><br>
-🔹 Responden clientes 24/7 sin intervención humana<br>
-🔹 Califican leads y toman decisiones<br>
-🔹 Se integran a WhatsApp, sitio web y CRM<br>
-🔹 Tienen memoria de conversación y aprenden de tus datos<br><br>
-¿Quieres que un agente como este trabaje para tu negocio? ¡Cotiza sin compromiso!`
+                reply: () => `Implementamos agentes inteligentes entrenados con tus servicios para responder preguntas frecuentes, calificar prospectos y derivar de forma ordenada a tu WhatsApp.<br><br>
+                <a href="https://wa.me/${WA_NUMBER}?text=Hola%20Gonzalo,%20me%20interesa%20un%20agente%20IA" target="_blank" class='inline-block text-xs bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan font-bold rounded-full px-4 py-2 mt-1'>Consultar sobre Agentes IA</a>`
             },
             {
                 keys: ['contacto','contactar','hablar','llamar','escribir','comunicar','email','correo','telefono','teléfono'],
-                reply: () => `Puedes contactarnos por:<br><br>
-📱 <strong>WhatsApp</strong>: <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">+56 9 4988 1171</a><br>
-📸 <strong>Instagram</strong>: <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" style="color:#e1306c;font-weight:600;">@hardwaremania.cl</a><br>
-📍 <strong>Ubicación</strong>: Santiago, Chile<br><br>
-¡Respondemos rápido! ⚡`
+                reply: () => `Puedes comunicarte directamente con Gonzalo Mellad:<br><br>
+                📱 <strong>WhatsApp:</strong> +56 9 4988 1171<br>
+                ✉️ <strong>Correo:</strong> gonzalomellad@hardwaremania.cl<br>
+                📸 <strong>Instagram:</strong> @hardwaremania.cl<br><br>
+                <a href="https://wa.me/${WA_NUMBER}" target="_blank" class='inline-block text-xs bg-green-500 text-white font-bold rounded-full px-4 py-2 mt-1'>Chatear en WhatsApp</a>`
             },
             {
                 keys: ['portafolio','portfolio','trabajo','proyecto','ejemplo','cliente','clientes'],
-                reply: () => `Hemos trabajado con clientes de distintos rubros 🚀<br><br>
-Entre nuestros proyectos destacan sitios para gimnasios, tiendas, servicios de salud, bodegas y más. Puedes ver algunos en la sección <strong>Portafolio</strong> de esta misma página.<br><br>
-¿Buscas algo en particular? Te ayudo a encontrarlo.`
+                reply: () => `He desarrollado soluciones digitales para gimnasios, centros de eventos, tiendas online y academias de entrenamiento. Puedes ver capturas y detalles de los retos/soluciones en la sección de portafolio.<br><br><a href="#portafolio" style="color:#00f0ff;font-weight:700;text-decoration:underline;">Ver portafolio de proyectos</a>`
             },
             {
                 keys: ['ubicacion','ubicación','donde','dónde','ciudad','pais','país','chile','santiago'],
-                reply: () => `Estamos en <strong>Santiago, Chile</strong> 📍<br><br>
-Trabajamos de forma <strong>100% remota</strong>, por lo que podemos atender clientes en todo Chile y Latinoamérica sin problema. ¿Eres de fuera de Santiago?`
+                reply: () => `Estamos basados en <strong>Santiago de Chile</strong>, y colaboramos de forma 100% remota con negocios de todo el país y Latinoamérica.<br><br>
+                <a href="#contacto" style="color:#7c3aed;font-weight:700;">Ver información de contacto</a>`
             },
             {
                 keys: ['tiempo','demora','plazo','cuándo','cuando','entrega'],
-                reply: () => `Los plazos dependen del proyecto:<br><br>
-🌐 <strong>Sitio web básico</strong>: 5 a 15 días hábiles.<br>
-⚙️ <strong>Proyectos complejos</strong>: se definen en la consulta inicial.<br><br>
-Siempre mantenemos comunicación constante durante el proceso para que estés al tanto de cada avance. ¿Tienes alguna fecha límite?`
+                reply: () => `Una landing page básica o página de contacto suele entregarse entre 5 y 15 días hábiles. Desarrollos complejos o integraciones de sistemas se planifican a medida.`
             },
             {
                 keys: ['instagram','redes sociales','seguir','follow'],
-                reply: () => `¡Síguenos en Instagram! 📸<br><br>
-Publicamos contenido sobre tecnología, nuestros proyectos y tips digitales.<br>
-👉 <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" style="color:#e1306c;font-weight:600;">@hardwaremania.cl</a>`
+                reply: () => `Síguenos en Instagram para ver tutoriales rápidos, avances de proyectos y consejos de tecnología para pymes.<br><br>👉 <a href="https://www.instagram.com/hardwaremania.cl/" target="_blank" style="color:#e1306c;font-weight:700;text-decoration:underline;">@hardwaremania.cl</a>`
             },
             {
                 keys: ['seo','posicionamiento','google','búsqueda','busqueda'],
-                reply: () => `Sí, todos nuestros sitios web incluyen <strong>optimización SEO</strong> básica:<br><br>
-🔍 Estructura de URLs correcta<br>
-🔍 Meta etiquetas optimizadas<br>
-🔍 Velocidad de carga optimizada<br>
-🔍 Diseño mobile-first<br><br>
-También ofrecemos estrategias SEO avanzadas como servicio adicional. ¿Te interesa?`
+                reply: () => `Todas las webs que construimos vienen con estructura SEO optimizada, optimización de velocidad de carga y etiquetas meta para aparecer en los motores de búsqueda.`
             },
             {
                 keys: ['gracias','thank','perfecto','excelente','genial','listo'],
-                reply: () => `¡Con gusto! 😊 Si surge alguna otra duda, aquí estaré. Recuerda que también puedes escribirnos por <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a> para una atención más personalizada.`
+                reply: () => `¡Con gusto! Si tienes cualquier otra pregunta, aquí estaré. Si quieres conversar en detalle sobre tu negocio, ¡escríbenos por WhatsApp! ⚡`
             },
         ];
 
         const FALLBACK = [
-            `Esa es una buena pregunta 🤔 No quiero darte información incorrecta. Te recomiendo consultarlo directamente con nuestro equipo por <a href="https://wa.me/${WA_NUMBER}?text=Hola,%20tengo%20una%20consulta" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a>, ¡te responden rápido!`,
-            `Hmm, no tengo detalles exactos sobre eso. Para darte la mejor respuesta, escríbenos directo a <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">+56 9 4988 1171</a> por WhatsApp.`,
-            `Me quedo corto en esa consulta específica 😅 Pero nuestro equipo sí puede ayudarte. Contáctanos por <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:600;">WhatsApp</a> para orientarte mejor.`,
+            `Esa es una buena consulta 🤔 Te sugiero que lo conversemos directamente por WhatsApp con Gonzalo para darte la información más exacta: <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline;">Escribir a WhatsApp</a>`,
+            `Para esa consulta técnica en particular, te recomiendo contactar directamente al soporte por WhatsApp (+56 9 4988 1171) para brindarte ayuda al instante.`,
+            `No tengo esa respuesta guardada 😅, pero Gonzalo te puede ayudar en minutos si le escribes por aquí: <a href="https://wa.me/${WA_NUMBER}" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline;">Ir a WhatsApp</a>`,
         ];
 
         let fallbackIdx = 0;
@@ -1448,7 +1991,7 @@ También ofrecemos estrategias SEO avanzadas como servicio adicional. ¿Te inter
 
                 if (!chatOpened) {
                     chatOpened = true;
-                    setTimeout(() => hmAddBot(`¡Hola! 👋 Soy el asistente de <strong>HardwareMania</strong>.<br>Estoy aquí para ayudarte con tus dudas sobre nuestros servicios. ¿En qué te puedo orientar?`), 400);
+                    setTimeout(() => hmAddBot(`¡Hola! Soy la <strong>Guía Digital de HardwareMania</strong> 🤖.<br>¿En qué puedo ayudarte a mejorar tu negocio hoy?`), 400);
                 } else {
                     hmScrollBottom();
                 }
