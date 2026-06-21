@@ -135,11 +135,11 @@ requestAnimationFrame(raf);
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Animate sections on scroll (excluyendo desarrollo-web-section para que siempre esté visible)
+// Animate sections on scroll (excluyendo sub-secciones de servicios para que siempre estén visibles)
+const SERVICE_SECTIONS = ['desarrollo-web-section', 'posicionamiento-section'];
+
 gsap.utils.toArray('section').forEach(section => {
-    // Excluir la sección de desarrollo web de las animaciones
-    if (section.id === 'desarrollo-web-section') {
-        // Forzar visibilidad de todos los elementos en esta sección
+    if (SERVICE_SECTIONS.includes(section.id)) {
         const elementos = section.querySelectorAll('*');
         elementos.forEach(el => {
             el.style.opacity = '1';
@@ -163,17 +163,16 @@ gsap.utils.toArray('section').forEach(section => {
     });
 });
 
-// Asegurar que la sección de desarrollo web siempre esté visible después de cargar
-// Y forzar aplicación de colores Tailwind como fallback
+// Asegurar que las sub-secciones de servicios siempre estén visibles después de cargar
 document.addEventListener('DOMContentLoaded', () => {
-    const desarrolloSection = document.getElementById('desarrollo-web-section');
-    if (desarrolloSection) {
-        // Forzar visibilidad inmediata
-        desarrolloSection.style.opacity = '1';
-        desarrolloSection.style.visibility = 'visible';
-        
-        // Forzar visibilidad de todos los elementos hijos
-        const elementos = desarrolloSection.querySelectorAll('*');
+    SERVICE_SECTIONS.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        section.style.opacity = '1';
+        section.style.visibility = 'visible';
+
+        const elementos = section.querySelectorAll('*');
         elementos.forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'none';
@@ -181,8 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.rotate = 'none';
             el.style.scale = 'none';
         });
+    });
 
-        // Función para aplicar colores como fallback si Tailwind no los generó
+    const desarrolloSection = document.getElementById('desarrollo-web-section');
+    if (desarrolloSection) {
         function applyColorFallbacks() {
             // Text colors
             desarrolloSection.querySelectorAll('.text-accent-purple').forEach(el => {

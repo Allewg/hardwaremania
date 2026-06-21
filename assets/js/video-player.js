@@ -1,48 +1,35 @@
 // ============================================================
 // SMART AUDIO - VIDEO PLAYER
 // ============================================================
-// El video del hero arranca CON audio (el usuario hizo clic en Play).
 // Smart Audio se encarga de:
 //   → Mutear cuando el video sale del viewport (scroll)
 //   → Mutear cuando se cambia de tab o minimiza la ventana
 //   → Desmutear automáticamente al volver al video
+// Soporta: #gemelo-iframe, #posicionamiento-iframe
 // ============================================================
 
 (function () {
     'use strict';
 
-    /* ─── HERO VIDEO (#gemelo-iframe) ─────────────────────── */
-
-    function initVideoPlayer() {
-        const iframe = document.querySelector('#gemelo-iframe');
-        if (!iframe || !iframe.src || iframe.src === 'about:blank') {
-            setTimeout(initVideoPlayer, 100);
+    function loadVimeoSdk(callback) {
+        if (typeof Vimeo !== 'undefined') {
+            callback();
             return;
         }
-
-        // Load Vimeo SDK if not already loaded
-        if (typeof Vimeo !== 'undefined') {
-            setupHeroPlayer(iframe);
-        } else {
-            const script = document.createElement('script');
-            script.src = 'https://player.vimeo.com/api/player.js';
-            script.onload = () => setupHeroPlayer(iframe);
-            document.head.appendChild(script);
-        }
+        const script = document.createElement('script');
+        script.src = 'https://player.vimeo.com/api/player.js';
+        script.onload = callback;
+        document.head.appendChild(script);
     }
 
-    function setupHeroPlayer(iframe) {
+    function setupSmartAudioPlayer(iframe) {
         if (!iframe || !iframe.src) return;
 
         const player = new Vimeo.Player(iframe);
 
-        // State
-        let videoIsVisible = false;  // IntersectionObserver
-        let windowFocused  = !document.hidden;
+        let videoIsVisible = false;
+        let windowFocused = !document.hidden;
 
-        console.log('[SmartAudio] Hero player init');
-
-        /* ── Mute / Unmute ───────────────────────────────── */
         const muteNow = async () => {
             try { await player.setMuted(true); } catch (_) {}
         };
@@ -54,79 +41,74 @@
             } catch (_) {}
         };
 
-        /* ── Sync: the one function that decides audio state ─ */
-        // Audio ON  = video visible + window/tab focused
-        // Audio OFF = anything else
         const syncAudio = async () => {
             if (videoIsVisible && windowFocused) {
-                console.log('[SmartAudio] → UNMUTE (visible + focused)');
                 await unmuteNow();
             } else {
-                console.log('[SmartAudio] → MUTE (not visible or not focused)');
                 await muteNow();
             }
         };
 
-        /* ── IntersectionObserver: track viewport visibility ── */
         const container = iframe.closest('.relative') || iframe;
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 videoIsVisible = entry.isIntersecting;
-                console.log('[SmartAudio] Visible:', videoIsVisible);
                 syncAudio();
             });
         }, { threshold: 0.25 });
         observer.observe(container);
 
-        /* ── Tab / Window focus ──────────────────────────── */
         document.addEventListener('visibilitychange', () => {
             windowFocused = !document.hidden;
-            console.log('[SmartAudio] Tab active:', windowFocused);
             syncAudio();
         });
 
         window.addEventListener('blur', () => {
             windowFocused = false;
-            console.log('[SmartAudio] Window blur');
-            muteNow(); // instant mute
+            muteNow();
         });
 
         window.addEventListener('focus', () => {
             windowFocused = true;
-            console.log('[SmartAudio] Window focus');
             syncAudio();
         });
 
-        /* ── Initial state once Vimeo is ready ───────────── */
         player.ready().then(() => {
-            console.log('[SmartAudio] Vimeo player ready');
-            // Check if visible right now
             const rect = container.getBoundingClientRect();
             videoIsVisible = rect.top < window.innerHeight && rect.bottom > 0;
             syncAudio();
-        }).catch(err => {
-            console.log('[SmartAudio] Player error:', err.message);
-        });
+        }).catch(() => {});
     }
 
-    /* ─── Wait for Alpine to set the iframe src ──────────── */
+    function initSmartAudioPlayer(selector, options = {}) {
+        const { pollForSrc = false } = options;
+
+        function tryInit() {
+            const iframe = document.querySelector(selector);
+            if (!iframe) {
+                if (pollForSrc) setTimeout(tryInit, 200);
+                return;
+            }
+            if (!iframe.src || iframe.src === 'about:blank' || !iframe.src.includes('vimeo.com')) {
+                if (pollForSrc) setTimeout(tryInit, 200);
+                return;
+            }
+            loadVimeoSdk(() => setupSmartAudioPlayer(iframe));
+        }
+
+        tryInit();
+    }
+
     function startInit() {
         if (typeof Alpine === 'undefined' || document.readyState === 'loading') {
             setTimeout(startInit, 50);
             return;
         }
-
-        function poll() {
-            const iframe = document.querySelector('#gemelo-iframe');
-            if (iframe && iframe.src && iframe.src !== 'about:blank' && iframe.src.includes('vimeo.com')) {
-                console.log('[SmartAudio] Detected Vimeo URL, starting init');
-                initVideoPlayer();
-            } else {
-                setTimeout(poll, 200);
-            }
-        }
-        setTimeout(poll, 300);
+        setTimeout(() => {
+            initSmartAudioPlayer('#gemelo-iframe', { pollForSrc: true });
+            initSmartAudioPlayer('#posicionamiento-iframe');
+        }, 300);
     }
 
     if (document.readyState === 'loading') {
