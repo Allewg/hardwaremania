@@ -257,9 +257,17 @@
                                 <!-- Iframe: solo visible cuando está reproduciendo -->
                                 <iframe x-show="videoPlaying" id="gemelo-iframe" :src="videoUrl"
                                     class="absolute top-0 left-1/2 h-full w-[320%] -translate-x-1/2 pointer-events-none"
-                                    style="border: 0;" allow="autoplay; fullscreen"
+                                    style="border: 0;" allow="autoplay; fullscreen; encrypted-media"
                                     title="Gemelo Digital HardwareMania">
                                 </iframe>
+
+                                <!-- Smart Audio Indicator (visibility controlled by video-player.js) -->
+                                <div id="audio-indicator"
+                                    class="absolute bottom-4 right-4 z-30 items-center gap-2 px-4 py-2 rounded-full cursor-pointer select-none"
+                                    style="display: none; background: rgba(124,58,237,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); transition: opacity 0.3s ease; box-shadow: 0 4px 20px rgba(124,58,237,0.4);">
+                                    <i class="fas fa-volume-up text-white text-sm"></i>
+                                    <span class="text-white text-xs font-medium tracking-wide">Activar Audio</span>
+                                </div>
 
                                 <!-- Play Button Overlay -->
                                 <div x-show="!videoPlaying" @click="playVideo()"
@@ -395,8 +403,7 @@
                         negocio.
                     </p>
                     <p class="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 italic px-4">
-                        * Precios referenciales. Cada proyecto se evalúa de forma personalizada según los requerimientos
-                        del negocio.
+                        * Cada proyecto se evalúa de forma personalizada según los requerimientos del negocio.
                     </p>
                 </div>
 
@@ -428,7 +435,6 @@
                                     + hosting por un año según proyecto</li>
                             </ul>
                             <div class="mt-auto">
-                                <p class="text-sm text-gray-400 mb-4">Desde $150.000 CLP (ref.)</p>
                                 <button @click="openDesarrolloWeb()"
                                     class="block w-full py-3 rounded-full border border-white/20 text-white text-center hover:bg-white/10 transition-colors cursor-pointer relative z-20">
                                     Ver formatos web
@@ -1058,10 +1064,6 @@
                                     contigo fácilmente.
                                 </p>
                                 <div class="mt-auto">
-                                    <div class="flex items-baseline gap-2 mb-4">
-                                        <span class="text-2xl md:text-3xl font-bold text-white">$150.000</span>
-                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
-                                    </div>
                                     <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Página%20de%20Contacto"
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
                                         Solicitar Cotización
@@ -1088,10 +1090,6 @@
                                     directamente por WhatsApp.
                                 </p>
                                 <div class="mt-auto">
-                                    <div class="flex items-baseline gap-2 mb-4">
-                                        <span class="text-2xl md:text-3xl font-bold text-white">$250.000</span>
-                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
-                                    </div>
                                     <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20WhatsApp"
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
                                         Solicitar Cotización
@@ -1124,10 +1122,6 @@
                                     pagar directamente en línea con tarjeta de crédito o débito.
                                 </p>
                                 <div class="mt-auto">
-                                    <div class="flex items-baseline gap-2 mb-4">
-                                        <span class="text-2xl md:text-3xl font-bold text-white">$500.000</span>
-                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
-                                    </div>
                                     <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Tienda%20Virtual%20con%20Pasarela%20de%20Pago"
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-purple/20 hover:bg-accent-purple/30 border border-accent-purple/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-purple/50">
                                         Solicitar Cotización
@@ -1154,10 +1148,6 @@
                                     directamente desde tu sitio web.
                                 </p>
                                 <div class="mt-auto">
-                                    <div class="flex items-baseline gap-2 mb-4">
-                                        <span class="text-2xl md:text-3xl font-bold text-white">$300.000</span>
-                                        <span class="text-xs md:text-sm text-gray-500">desde</span>
-                                    </div>
                                     <a href="https://wa.me/56949881171?text=Hola,%20me%20interesa%20una%20Página%20de%20Reservas%20y%20Citas"
                                         class="block w-full py-3 md:py-3.5 rounded-xl bg-accent-cyan/20 hover:bg-accent-cyan/30 border border-accent-cyan/30 text-white text-center font-semibold text-sm md:text-base transition-all hover:border-accent-cyan/50">
                                         Solicitar Cotización
@@ -1962,7 +1952,7 @@
                 <button onclick="hmSendQuick('Quiero hacer un diagnóstico digital')"
                     class="hm-quick-btn">Diagnóstico</button>
                 <button onclick="hmSendQuick('¿Qué servicios ofrecen?')" class="hm-quick-btn">Servicios</button>
-                <button onclick="hmSendQuick('¿Cuáles son los precios?')" class="hm-quick-btn">Precios</button>
+                <button onclick="hmSendQuick('¿Cómo se cotizan los proyectos?')" class="hm-quick-btn">Cotizar</button>
                 <button onclick="hmSendQuick('Quiero guardar tu contacto')" class="hm-quick-btn">Contacto</button>
             </div>
 
@@ -2089,6 +2079,7 @@
     </style>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/video-player.js"></script>
 
     <script>
         // Diagnóstico Digital Express
@@ -2185,16 +2176,13 @@
                 🤖 <strong>Agentes IA:</strong> Chatbots inteligentes para atención comercial 24/7.<br>
                 🛠️ <strong>Soporte TI:</strong> Estabilidad técnica y continuidad operativa.<br><br>
                 <div class='flex gap-2 mt-2'>
-                    <button onclick="hmSendQuick('¿Cuáles son los precios?')" class='flex-1 text-center text-xs bg-white/5 border border-white/10 rounded-lg p-1.5 hover:bg-primary/20 text-accent-cyan'>Ver Precios</button>
+                    <button onclick="hmSendQuick('¿Cómo se cotizan los proyectos?')" class='flex-1 text-center text-xs bg-white/5 border border-white/10 rounded-lg p-1.5 hover:bg-primary/20 text-accent-cyan'>Cotizar</button>
                     <button onclick="hmSendQuick('Ver portafolio')" class='flex-1 text-center text-xs bg-white/5 border border-white/10 rounded-lg p-1.5 hover:bg-primary/20 text-accent-purple'>Ver Proyectos</button>
                 </div>`
                 },
                 {
-                    keys: ['precio', 'costo', 'valor', 'cobran', 'tarifa', 'presupuesto', 'cuánto', 'cuanto'],
-                    reply: () => `Cada solución se adapta a los requerimientos de tu negocio. Como precios referenciales:<br><br>
-                🌐 <strong>Web de presentación:</strong> desde $150.000 CLP.<br>
-                🛒 <strong>Tienda online o reservas:</strong> desde $250.000 CLP.<br>
-                🤖 <strong>Automatización e IA:</strong> cotizado a la medida de tu flujo de datos.<br><br>
+                    keys: ['precio', 'costo', 'valor', 'cobran', 'tarifa', 'presupuesto', 'cuánto', 'cuanto', 'cotizar', 'cotizacion', 'cotización'],
+                    reply: () => `Cada proyecto es evaluado de forma individual y personalizada según sus requerimientos específicos. No contamos con tarifas fijas, ya que adaptamos el presupuesto a la medida de tu negocio.<br><br>
                 <a href="https://wa.me/${WA_NUMBER}?text=Hola%20Gonzalo,%20quiero%20cotizar%20un%20proyecto" target="_blank" class='inline-block text-center text-xs bg-green-500 hover:bg-green-600 text-white font-bold rounded-full px-4 py-2 mt-1 transition-all'>Escribir por WhatsApp</a>`
                 },
                 {
